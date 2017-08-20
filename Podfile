@@ -5,6 +5,8 @@ use_frameworks!
 target 'Bluestar' do
 
 pod 'IQKeyboardManagerSwift'
+pod ‘FMDB’
+
 
 
 # Don’t delete below line of code is mandatory to build the pod

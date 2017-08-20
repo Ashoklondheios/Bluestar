@@ -76,12 +76,13 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                 showProgressLoader()
                 ServerManager.sharedInstance().getAttendance(userID: userId, in_out_flag: in_out_flag, ipAddress: "10.236.125.14", lattitude: "\(currentLocation.coordinate.latitude)", longitude:  "\(currentLocation.coordinate.longitude)", address: address) { (result, data) in
                     print(result)
-                    DispatchQueue.main.async {
-                        self.hideProgressLoader()
-                    }                    
+                    
                     let parser = XMLParser(data: data)
                     parser.delegate = self
                     let success:Bool = parser.parse()
+                    DispatchQueue.main.async {
+                        self.hideProgressLoader()
+                    }
                     
                     if success {
                         if ServerManager.sharedInstance().getAttendenceDict.count > 0 {
@@ -99,7 +100,11 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                                     }
                                 UserDefaults.standard.set(true, forKey: "isAttendenceMarked")
                                 UserDefaults.standard.set(Date(), forKey: "CurrentDate")
-                                self.performSegue(withIdentifier: "assignedLeadSegue", sender: nil)
+                                    let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+                                    DispatchQueue.main.asyncAfter(deadline: when) {
+                                       self.performSegue(withIdentifier: "assignedLeadSegue", sender: nil)
+                                    }
+                                
                                     
                                 }
                                 break

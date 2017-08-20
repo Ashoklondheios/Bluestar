@@ -84,15 +84,21 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tabSelectionView.frame = CGRect(x: self.generateLeadButton.frame.origin.x, y: self.generateLeadButton.frame.origin.y + self.generateLeadButton.frame.size.height , width: self.generateLeadButton.frame.size.width, height: 2)
         self.tabSelectionView.layoutIfNeeded()
         self.leadTableView.register(UINib(nibName: "AssignedLeadTableViewCell", bundle: nil), forCellReuseIdentifier: "assignedLeadCell")
-        self.view.layoutIfNeeded()
         if isGenerateLead {
             self.generateLeadButton.setTitle("Generate Lead", for: .normal)
         } else {
             self.generateLeadButton.setTitle("Update Lead", for: .normal)
         }
         addCustomNavigationButton()
-        self.leadTableView.layoutIfNeeded()
-        self.leadTableView.updateConstraintsIfNeeded()
+        
+        DispatchQueue.main.async {
+            self.leadTableView.layoutIfNeeded()
+            self.leadTableView.updateConstraintsIfNeeded()
+            self.leadTableView.setNeedsDisplay()
+            self.leadTableView.reloadData()
+        }
+        
+        
     }
     
     @IBAction func generateLeadAction(_ sender: UIButton) {
@@ -131,11 +137,21 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.leadTableView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.hidesBackButton = false
         addRightNavigationBarButton()
         getCityList()
+        self.leadTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(LeadViewController.getDetailsApi), name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
     }
     
@@ -171,11 +187,15 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 }
                 
                 DispatchQueue.main.async {
+                    //self.leadTableView.reloadData()
                     self.generateLeadCell.productModelTextField.pickerData = self.modelList
                     self.productNameArray = [String]()
                     for product in self.productNameList {
                         if let productName = product.value(forKey: "ProductName") as? String {
-                            self.productNameArray.append(productName)
+                            if !self.productNameArray.contains(productName) {
+                                self.productNameArray.append(productName)
+                            }
+
                         }
                     }
                     if self.productNameArray.count > 0 {
@@ -189,7 +209,9 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
         }
         
-        
+        DispatchQueue.main.async {
+            self.leadTableView.reloadData()
+        }
     }
     
     func getCityList() {
@@ -221,7 +243,9 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         self.generateLeadCell.followupDateTextField.isHidden = false
                     } else {
                         self.generateLeadCell.followupDateTextField.isHidden = true
+                        self.generateLeadCell.followupDateTextField.text = ""
                     }
+                    
                     self.view.layoutIfNeeded()
                     self.leadTableView.reloadData()
                     self.generateLeadCell.productNameTextField.data = self.productList
@@ -338,7 +362,9 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     
                 }
                 searchLeadCell = cell!
-                searchProductList.append(contentsOf: productList)
+                if searchProductList.count == 1 {
+                    searchProductList.append(contentsOf: productList)
+                }
                 cell?.productName.data = searchProductList
                 cell?.selectionStyle = .none
                 cell?.layer.masksToBounds = false
@@ -389,6 +415,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 cell?.followupDateTextField.isHidden = false
             } else {
                 cell?.followupDateTextField.isHidden = true
+                cell?.followupDateTextField.text = ""
             }
             if isGenerateLead {
                 cell?.updateButton.setTitle("Save Lead", for: .normal)
@@ -398,28 +425,63 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 cell?.updateButton.setTitle("Update", for: .normal)
                 cell?.leadNumberLabel.isHidden = false
                 
-                if let customerName = lead.value(forKey: "CustomerName") as? String {
-                    cell?.customerNameTextField.text = customerName
+                if let customerName = lead.value(forKey: "CustomerName") as? String  {
+                    if (cell?.customerNameTextField.text?.isEmpty)! {
+                        cell?.customerNameTextField.text = customerName
+                    }
+                    
                 }
+                if let alternateNumber = lead.value(forKey: "AlternateMobileNumber") as? String  {
+                    if (cell?.alternameMobileNoTextField.text?.isEmpty)! {
+                        cell?.alternameMobileNoTextField.text = alternateNumber
+                    }
+                    
+                }
+
+                if let comments = lead.value(forKey: "Comments") as? String  {
+                    if (cell?.commentTextField.text?.isEmpty)! {
+                        cell?.commentTextField.text = comments
+                    }
+                    
+                }
+
+                
                 if let customerMobileNoTextField = lead.value(forKey: "MobileNumber") as? String {
-                    cell?.customerMobileNoTextField.text = customerMobileNoTextField
+                    if (cell?.customerMobileNoTextField.text?.isEmpty)! {
+                        cell?.customerMobileNoTextField.text = customerMobileNoTextField
+                    }
                 }
                 
                 if let status = lead.value(forKey: "Stauts") as? String {
-                    cell?.stateTextField.text = status
+
+                    if (cell?.stateTextField.text?.isEmpty)! {
+                        cell?.stateTextField.text = status
+                    }
                 }
                 
                 if let address = lead.value(forKey: "Address") as? String {
-                    cell?.addressTextField.text = address
+                    if (cell?.addressTextField.text?.isEmpty)! {
+                        cell?.addressTextField.text = address
+                    }
+                }
+                if let pincode = lead.value(forKey: "Pincode") as? String  {
+                    if (cell?.pinCodeTextField.text?.isEmpty)! {
+                        cell?.pinCodeTextField.text = pincode
+                    }
+                    
                 }
                 
                 if let seriesNumber =  self.lead.value(forKey: "SeriesNumber") as? String {
-                    cell?.leadNumberLabel.text = "Lead No.: \(seriesNumber)"
+                    if (cell?.leadNumberLabel.text?.isEmpty)! {
+                        cell?.leadNumberLabel.text = "Lead No.: \(seriesNumber)"
+                    } 
                 }
                 
                 
                 if let productName =  self.lead.value(forKey: "ProductName") as? String {
-                    cell?.productNameTextField.text = productName
+                    if (cell?.productNameTextField.text?.isEmpty)! {
+                        cell?.productNameTextField.text = productName
+                    }
                 }
             }
             generateLeadCell = cell!
@@ -511,9 +573,11 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 if isGenerateLead {
                     
                    if FNSReachability.checkInternetConnectivity() {
-                    
-                   } else {
                     ServerManager.sharedInstance().generateLead(leadDetails: dict) { (result, data) in
+                        
+                        DispatchQueue.main.async {
+                            self.hideProgressLoader()
+                        }
                         
                         if result == "Request time out error...!!!" {
                             DispatchQueue.main.async {
@@ -524,9 +588,6 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                             let parser = XMLParser(data: data)
                             parser.delegate = self
                             let success:Bool = parser.parse()
-                            DispatchQueue.main.async {
-                                self.hideProgressLoader()
-                            }
                             
                             if success {
                                 DispatchQueue.main.async {
@@ -540,7 +601,14 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                             
                         }
                     }
-                }
+
+                   } else {
+                        DatabaseManager.shared.insertLeadData(leadDetails: dict)
+                    DispatchQueue.main.async {
+                        self.hideProgressLoader()
+                    }
+                        showToast(message: "Lead data saved offline.")
+                    }
                     
                 } else {
                     if let seriesNumber = self.lead.value(forKey: "SeriesNumber") as? String {

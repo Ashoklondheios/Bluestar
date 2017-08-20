@@ -137,6 +137,9 @@ class ServerManager {
             var followUpDate = ""
             if let followUp = leadDetails["FollowUpDate"] {
                 followUpDate = followUp
+                let date = followUpDate.dateFromString()
+                followUpDate = followUpDate.dateToString(dateTime: date)
+
             }
             
             let date = demoFixedDate.dateFromString()
@@ -171,6 +174,8 @@ class ServerManager {
                     }.resume()
             }
             
+        } else {
+            NotificationCenter.default.post(name: Notification.Name("InternetConnecionLostNotification"), object: nil)
         }
     }
     

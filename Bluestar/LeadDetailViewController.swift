@@ -53,11 +53,12 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 let parser = XMLParser(data: data)
                 parser.delegate = self
                 let success:Bool = parser.parse()
-                if success {
-                    self.getCityName()
-                }
                 DispatchQueue.main.async {
                     self.hideProgressLoader()
+                }
+
+                if success {
+                    self.getCityName()
                 }
             }
             
@@ -284,7 +285,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
         if segue.identifier == "leadSegue" {
             let vc = segue.destination as? LeadViewController
             vc?.isGenerateLead = false
-            vc?.lead = self.lead
+            vc?.lead = self.leads[0]
         }
     }
     
@@ -294,6 +295,8 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func historyButtonAction(_ sender: UIButton) {
+        
+        if leads.count > 0 {
         showProgressLoader()
         if let seriesNumber = self.leads[0].value(forKey: "SeriesNumber") as? String {
             ServerManager.sharedInstance().getLeadHistory(seriesNumber: seriesNumber) { (result, data) in
@@ -314,6 +317,9 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 }
                 
             }
+        }
+        } else {
+            showToast(message: "No history Found.")
         }
     }
     

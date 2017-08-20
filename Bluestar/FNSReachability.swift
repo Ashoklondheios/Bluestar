@@ -49,7 +49,7 @@ public class FNSReachability {
             return true
         } else {
             print("Internet connection FAILED")
-            NotificationCenter.default.post(name: Notification.Name("InternetConnecionLostNotification"), object: nil)
+//            NotificationCenter.default.post(name: Notification.Name("InternetConnecionLostNotification"), object: nil)
             return false
             
         }

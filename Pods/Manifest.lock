@@ -1,12 +1,17 @@
 PODS:
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
   - IQKeyboardManagerSwift (4.0.10)
 
 DEPENDENCIES:
+  - FMDB
   - IQKeyboardManagerSwift
 
 SPEC CHECKSUMS:
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
 
-PODFILE CHECKSUM: 7e060f2d42b7bc2dd542cb2af4fb13510b51a812
+PODFILE CHECKSUM: 279097d44a44c2b1f4551b3c93c1b8eea61ca0a4
 
 COCOAPODS: 1.2.1

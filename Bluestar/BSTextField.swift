@@ -148,10 +148,12 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         self.layer.borderColor = self.borderColors[self.status.rawValue].cgColor
         self.layer.layoutIfNeeded()
         self.layer.masksToBounds = true
+        self.layoutSubviews()
+        self.layoutIfNeeded()
     }
     
     func updateStyle() {
-        
+        updateSelf()
         if self.textFieldBorderStyle != .None {
             self.delegate = self
             self.setBorderToTextField(vBorder: .Bottom, withBorderColor: UIColor.gray, withBorderWidth: 1)
@@ -184,31 +186,26 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             pickerView.dataSource = self
             if data.count > 0 && self.tag == 100 {
                 self.text = "\(data[0].value(forKey: "Name")!)"
-               // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
+
             }
             
             if statusData.count > 0 && self.tag == 101 {
                 self.text = "\(statusData[0])"
-                // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
+    
             }
 
-            
             if data.count > 0 && self.tag == 102 {
                 self.text = "\(data[0].value(forKey: "ProductName")!)"
-               // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
             }
 
             if pickerData.count > 0 && self.tag == 103 {
                 self.text = "\(pickerData[0])"
-              //  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
             }
             
             if statusData.count > 0  && self.tag == 105 {
                 self.text = "\(statusData[0])"
-               // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
             }
-            
-            // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
+         
             
             if let rightSideImageName = rightImageName {
                 self.textFieldImage = UIImage(named: rightSideImageName)
@@ -235,8 +232,6 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 self.rightView = rightIcon
                 
             }
-
-           // self.setAttributedText(defaultPlaceholder: textFieldDefaultText)
             break
         case .Email:
             self.delegate = self
@@ -258,8 +253,6 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         case .Password:
             self.delegate = self
             self.keyboardType = .default
-           // self.isSecureTextEntry = true
-            //self.setAttributedText(defaultPlaceholder: textFieldDefaultPasswordText)
             self.textFieldImage = UIImage(named: "ic_key")
             let rightIcon = UIImageView(image: self.textFieldImage)
             let rect = CGRect(origin: CGPoint(x: textFieldImage.size.width, y: 0), size: CGSize(width: 20, height: 20))
@@ -281,13 +274,12 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 self.rightView = rightIcon
                 
             }
-            //self.setAttributedText(defaultPlaceholder: textFieldDefaultText)
+
             break
             
         case .PhoneNumber:
             self.delegate = self
             self.backgroundColor = UIColor.white
-            // self.setAttributedText(defaultPlaceholder: textFieldDefaultPhoneText)
             self.keyboardType = .phonePad
             break
             
@@ -474,7 +466,8 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.setBorderToTextField(vBorder: .Bottom, withBorderColor: .blue, withBorderWidth: 1.0)
+        
+        self.setBorderToTextField(vBorder: .Bottom, withBorderColor: UIColor(red: (0.0/255.0), green: (122.0/255.0), blue: (255.0/255.0), alpha: 1), withBorderWidth: 1.0)
        // textField.layer.borderColor = UIColor.blue.cgColor
         if self.style == .DatePicker {
             self.addDatePickerToTextField()

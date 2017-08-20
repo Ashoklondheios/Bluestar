@@ -35,12 +35,28 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         applyStyleForActivityIndicator()
         NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.noNetworkConnection), name: NSNotification.Name(rawValue: "InternetConnecionLostNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.offlineLeadSaved), name: NSNotification.Name(rawValue: "LeadSavedNotification"), object: nil)
+        if FNSReachability.checkInternetConnectivity() {
+            DatabaseManager.shared.loadData()
+        } else {
+            
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if FNSReachability.checkInternetConnectivity() {
+            DatabaseManager.shared.loadData()
+        } else {
+          
+        }
     }
 
+    func offlineLeadSaved() {
+        showToast(message: "Previous lead data uploaded sucessfully.")
+    }
+    
     func addCustomNavigationButton() {
         
         navigationItem.setHidesBackButton(true, animated: false)
