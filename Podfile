@@ -4,7 +4,6 @@ use_frameworks!
 
 target 'Bluestar' do
 
-   pod 'RealmSwift'
 pod 'IQKeyboardManagerSwift'
 
 
