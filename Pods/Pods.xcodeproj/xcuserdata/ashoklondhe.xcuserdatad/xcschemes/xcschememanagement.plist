@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Bluestar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3D4FEA759C3B4AA5F7715E4BB72C1FCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C235F77E101E742652CCF98FFDFA5182</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEA14125CF0F8CCD78900463D7D94964</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFD478A5F7D31CB09D990840E32EB6EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

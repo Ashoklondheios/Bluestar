@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Device UDIDs</key>
+	<array>
+		<dict>
+			<key>deviceIdentifier</key>
+			<string>b9ecf7dd26ea75951a5996d4b8085d806c206f04</string>
+			<key>deviceName</key>
+			<string>Brijesh iPhone</string>
+		</dict>
+		<dict>
+			<key>deviceIdentifier</key>
+			<string>9b25d05381e66076fe76b71fff615287ddc5ac21</string>
+			<key>deviceName</key>
+			<string> Madhur iPhone </string>
+		</dict>
+		<dict>
+			<key>deviceIdentifier</key>
+			<string>bf3d44a6ef8c68aa6126e548ec86e01259fedd9e</string>
+			<key>deviceName</key>
+			<string> Dinakaran iPhone </string>
+		</dict>
+		<dict>
+			<key>deviceIdentifier</key>
+			<string>f08302aee6aa9ff8efaded8dfbcfa6eff9143092 </string>
+			<key>deviceName</key>
+			<string>Tanya iPhone</string>
+		</dict>
+		<dict>
+			<key>deviceIdentifier</key>
+			<string>db615c628e71a9c009cdab6377bc7f3f9da3437a</string>
+			<key>deviceName</key>
+			<string>Dipti iPhone</string>
+		</dict>
+	</array>
+</dict>
+</plist>

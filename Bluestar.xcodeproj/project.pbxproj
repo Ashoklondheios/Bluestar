@@ -7,13 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFB12ACCA1C5EC708C430649 /* Pods_Bluestar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302C27CC06078550E87B5D0 /* Pods_Bluestar.framework */; };
+		F7279D001F3DE9B2003C54C0 /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279CFD1F3DE9B2003C54C0 /* IQKeyboardManager.swift */; };
+		F7279D011F3DE9B2003C54C0 /* IQKeyboardManagerSwift.h in Sources */ = {isa = PBXBuildFile; fileRef = F7279CFE1F3DE9B2003C54C0 /* IQKeyboardManagerSwift.h */; };
+		F7279D021F3DE9B2003C54C0 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279CFF1F3DE9B2003C54C0 /* IQKeyboardReturnKeyHandler.swift */; };
+		F7279D091F3DE9DE003C54C0 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D031F3DE9DE003C54C0 /* IQNSArray+Sort.swift */; };
+		F7279D0A1F3DE9DE003C54C0 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D041F3DE9DE003C54C0 /* IQUIScrollView+Additions.swift */; };
+		F7279D0B1F3DE9DE003C54C0 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D051F3DE9DE003C54C0 /* IQUITextFieldView+Additions.swift */; };
+		F7279D0C1F3DE9DE003C54C0 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D061F3DE9DE003C54C0 /* IQUIView+Hierarchy.swift */; };
+		F7279D0D1F3DE9DE003C54C0 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D071F3DE9DE003C54C0 /* IQUIViewController+Additions.swift */; };
+		F7279D0E1F3DE9DE003C54C0 /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D081F3DE9DE003C54C0 /* IQUIWindow+Hierarchy.swift */; };
+		F7279D111F3DE9F5003C54C0 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D0F1F3DE9F5003C54C0 /* IQKeyboardManagerConstants.swift */; };
+		F7279D121F3DE9F5003C54C0 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D101F3DE9F5003C54C0 /* IQKeyboardManagerConstantsInternal.swift */; };
+		F7279D141F3DEA16003C54C0 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D131F3DEA16003C54C0 /* IQTextView.swift */; };
+		F7279D1A1F3DEA27003C54C0 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D151F3DEA27003C54C0 /* IQBarButtonItem.swift */; };
+		F7279D1B1F3DEA27003C54C0 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D161F3DEA27003C54C0 /* IQPreviousNextView.swift */; };
+		F7279D1C1F3DEA27003C54C0 /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D171F3DEA27003C54C0 /* IQTitleBarButtonItem.swift */; };
+		F7279D1D1F3DEA27003C54C0 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D181F3DEA27003C54C0 /* IQToolbar.swift */; };
+		F7279D1E1F3DEA27003C54C0 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D191F3DEA27003C54C0 /* IQUIView+IQKeyboardToolbar.swift */; };
+		F7279D201F3DEB02003C54C0 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7279D1F1F3DEB02003C54C0 /* IQKeyboardManager.bundle */; };
+		F7279D231F3E3864003C54C0 /* SearchLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */; };
+		F7279D241F3E3864003C54C0 /* SearchLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */; };
+		F7279D261F3E4524003C54C0 /* leadSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D251F3E4524003C54C0 /* leadSearchView.swift */; };
+		F7279D281F3E453D003C54C0 /* leadSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7279D271F3E453D003C54C0 /* leadSearchView.xib */; };
+		F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D291F3F42BF003C54C0 /* FNSReachability.swift */; };
+		F782A08D1F44D5F2005EF594 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A08C1F44D5F2005EF594 /* User.swift */; };
+		F782A08F1F44D8D0005EF594 /* Lead.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A08E1F44D8D0005EF594 /* Lead.swift */; };
+		F789BBBF1F43643400506D50 /* LeadHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */; };
+		F789BBC01F43643400506D50 /* LeadHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */; };
+		F79152181F36FE2A00A0DB74 /* LeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79152171F36FE2A00A0DB74 /* LeadViewController.swift */; };
+		F791521C1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F791521A1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift */; };
+		F791521D1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F791521B1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib */; };
+		F7B4B47E1F40F26C00CFEE96 /* ViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */; };
+		F7B4B47F1F40F26C00CFEE96 /* ViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */; };
+		F7B4B4811F40F44F00CFEE96 /* LeadDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4B4801F40F44F00CFEE96 /* LeadDetailViewController.swift */; };
+		F7C332E81F1BA11100786FDC /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C332E71F1BA11100786FDC /* Validation.swift */; };
+		F7C332EA1F1BA22300786FDC /* ValidationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C332E91F1BA22300786FDC /* ValidationMessages.swift */; };
+		F7C332ED1F1BFACB00786FDC /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C332EC1F1BFACB00786FDC /* UIViewController.swift */; };
+		F7D503951F3B815600D6F2E4 /* AssignedLeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D503941F3B815600D6F2E4 /* AssignedLeadViewController.swift */; };
+		F7D503981F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D503961F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift */; };
+		F7D503991F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D503971F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib */; };
+		F7D5039B1F3BAE6600D6F2E4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D5039A1F3BAE6600D6F2E4 /* BaseViewController.swift */; };
+		F7E07F1D1F229B8C00C8B61D /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E07F1C1F229B8C00C8B61D /* AttendanceViewController.swift */; };
 		F7F56D8E1F1A880D006F0490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56D8D1F1A880D006F0490 /* AppDelegate.swift */; };
-		F7F56D901F1A880D006F0490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56D8F1F1A880D006F0490 /* ViewController.swift */; };
+		F7F56D901F1A880D006F0490 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56D8F1F1A880D006F0490 /* LoginViewController.swift */; };
 		F7F56D931F1A880D006F0490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F56D911F1A880D006F0490 /* Main.storyboard */; };
 		F7F56D951F1A880D006F0490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7F56D941F1A880D006F0490 /* Assets.xcassets */; };
 		F7F56D981F1A880D006F0490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F56D961F1A880D006F0490 /* LaunchScreen.storyboard */; };
 		F7F56DA31F1A880E006F0490 /* BluestarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56DA21F1A880E006F0490 /* BluestarTests.swift */; };
 		F7F56DAE1F1A880E006F0490 /* BluestarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56DAD1F1A880E006F0490 /* BluestarUITests.swift */; };
+		F7F56DBD1F1A8E32006F0490 /* BSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56DBC1F1A8E32006F0490 /* BSTextField.swift */; };
+		F7F801941F212CCE00D4AB8C /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F801931F212CCE00D4AB8C /* ServerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +78,57 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3302C27CC06078550E87B5D0 /* Pods_Bluestar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bluestar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6E46D6F2A6634DB16B44B2 /* Pods-Bluestar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bluestar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bluestar/Pods-Bluestar.release.xcconfig"; sourceTree = "<group>"; };
+		E99A6A20CCB36A7C9432C6D7 /* Pods-Bluestar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bluestar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bluestar/Pods-Bluestar.debug.xcconfig"; sourceTree = "<group>"; };
+		F7279CF51F3DE7F4003C54C0 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Bluestar-hlgxnirvhibddwefhuycnxnbosjz/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"; sourceTree = "<group>"; };
+		F7279CF71F3DE8E3003C54C0 /* IQKeyboardManagerSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = IQKeyboardManagerSwift; path = Bluestar/IQKeyboardManagerSwift; sourceTree = "<group>"; };
+		F7279CFA1F3DE922003C54C0 /* IQKeyboardManagerSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IQKeyboardManagerSwift; sourceTree = "<group>"; };
+		F7279CFD1F3DE9B2003C54C0 /* IQKeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQKeyboardManager.swift; path = Bluestar/IQKeyboardManagerSwift/IQKeyboardManager.swift; sourceTree = "<group>"; };
+		F7279CFE1F3DE9B2003C54C0 /* IQKeyboardManagerSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerSwift.h; path = Bluestar/IQKeyboardManagerSwift/IQKeyboardManagerSwift.h; sourceTree = "<group>"; };
+		F7279CFF1F3DE9B2003C54C0 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = Bluestar/IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
+		F7279D031F3DE9DE003C54C0 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "Bluestar/IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
+		F7279D041F3DE9DE003C54C0 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "Bluestar/IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
+		F7279D051F3DE9DE003C54C0 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "Bluestar/IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		F7279D061F3DE9DE003C54C0 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQUIView+Hierarchy.swift"; path = "Bluestar/IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		F7279D071F3DE9DE003C54C0 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "Bluestar/IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
+		F7279D081F3DE9DE003C54C0 /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQUIWindow+Hierarchy.swift"; path = "Bluestar/IQKeyboardManagerSwift/Categories/IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
+		F7279D0F1F3DE9F5003C54C0 /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = Bluestar/IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
+		F7279D101F3DE9F5003C54C0 /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = Bluestar/IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		F7279D131F3DEA16003C54C0 /* IQTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = Bluestar/IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
+		F7279D151F3DEA27003C54C0 /* IQBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = Bluestar/IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
+		F7279D161F3DEA27003C54C0 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = Bluestar/IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
+		F7279D171F3DEA27003C54C0 /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = Bluestar/IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
+		F7279D181F3DEA27003C54C0 /* IQToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = Bluestar/IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
+		F7279D191F3DEA27003C54C0 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "Bluestar/IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
+		F7279D1F1F3DEB02003C54C0 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = Bluestar/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLeadTableViewCell.swift; sourceTree = "<group>"; };
+		F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchLeadTableViewCell.xib; sourceTree = "<group>"; };
+		F7279D251F3E4524003C54C0 /* leadSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leadSearchView.swift; sourceTree = "<group>"; };
+		F7279D271F3E453D003C54C0 /* leadSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = leadSearchView.xib; sourceTree = "<group>"; };
+		F7279D291F3F42BF003C54C0 /* FNSReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNSReachability.swift; sourceTree = "<group>"; };
+		F782A08C1F44D5F2005EF594 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F782A08E1F44D8D0005EF594 /* Lead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lead.swift; sourceTree = "<group>"; };
+		F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		F79152171F36FE2A00A0DB74 /* LeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadViewController.swift; sourceTree = "<group>"; };
+		F791521A1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateLeadTableViewCell.swift; sourceTree = "<group>"; };
+		F791521B1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateLeadTableViewCell.xib; sourceTree = "<group>"; };
+		F79FCEBE1F3A647300F71F24 /* Bluestar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bluestar-Bridging-Header.h"; sourceTree = "<group>"; };
+		F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTableViewCell.swift; sourceTree = "<group>"; };
+		F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewTableViewCell.xib; sourceTree = "<group>"; };
+		F7B4B4801F40F44F00CFEE96 /* LeadDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadDetailViewController.swift; sourceTree = "<group>"; };
+		F7C332E71F1BA11100786FDC /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		F7C332E91F1BA22300786FDC /* ValidationMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationMessages.swift; sourceTree = "<group>"; };
+		F7C332EC1F1BFACB00786FDC /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		F7D503941F3B815600D6F2E4 /* AssignedLeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedLeadViewController.swift; sourceTree = "<group>"; };
+		F7D503961F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedLeadTableViewCell.swift; sourceTree = "<group>"; };
+		F7D503971F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssignedLeadTableViewCell.xib; sourceTree = "<group>"; };
+		F7D5039A1F3BAE6600D6F2E4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F7E07F1C1F229B8C00C8B61D /* AttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		F7F56D8A1F1A880D006F0490 /* Bluestar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bluestar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F56D8D1F1A880D006F0490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F7F56D8F1F1A880D006F0490 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F7F56D8F1F1A880D006F0490 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F7F56D921F1A880D006F0490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7F56D941F1A880D006F0490 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7F56D971F1A880D006F0490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +139,8 @@
 		F7F56DA91F1A880E006F0490 /* BluestarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluestarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F56DAD1F1A880E006F0490 /* BluestarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluestarUITests.swift; sourceTree = "<group>"; };
 		F7F56DAF1F1A880E006F0490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7F56DBC1F1A8E32006F0490 /* BSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSTextField.swift; sourceTree = "<group>"; };
+		F7F801931F212CCE00D4AB8C /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB12ACCA1C5EC708C430649 /* Pods_Bluestar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +169,111 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60266E1B6F31CA52A8927245 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7279CF71F3DE8E3003C54C0 /* IQKeyboardManagerSwift */,
+				F7279CF51F3DE7F4003C54C0 /* IQKeyboardManagerSwift.framework */,
+				3302C27CC06078550E87B5D0 /* Pods_Bluestar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9B9B572DC139C8C00992E82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E99A6A20CCB36A7C9432C6D7 /* Pods-Bluestar.debug.xcconfig */,
+				CD6E46D6F2A6634DB16B44B2 /* Pods-Bluestar.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F7279CF91F3DE911003C54C0 /* Third Party Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				F7279D291F3F42BF003C54C0 /* FNSReachability.swift */,
+				F7279CFA1F3DE922003C54C0 /* IQKeyboardManagerSwift */,
+			);
+			name = "Third Party Libraries";
+			sourceTree = "<group>";
+		};
+		F782A08B1F44D553005EF594 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F782A08C1F44D5F2005EF594 /* User.swift */,
+				F782A08E1F44D8D0005EF594 /* Lead.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F79152191F36FE7100A0DB74 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F791521A1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift */,
+				F791521B1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib */,
+				F7D503961F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift */,
+				F7D503971F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib */,
+				F7D5039A1F3BAE6600D6F2E4 /* BaseViewController.swift */,
+				F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */,
+				F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */,
+				F7279D251F3E4524003C54C0 /* leadSearchView.swift */,
+				F7279D271F3E453D003C54C0 /* leadSearchView.xib */,
+				F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */,
+				F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */,
+				F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */,
+				F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		F7C332EB1F1BFA9C00786FDC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F7C332EC1F1BFACB00786FDC /* UIViewController.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		F7E07F1B1F229AFA00C8B61D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F7F56D8F1F1A880D006F0490 /* LoginViewController.swift */,
+				F7E07F1C1F229B8C00C8B61D /* AttendanceViewController.swift */,
+				F79152171F36FE2A00A0DB74 /* LeadViewController.swift */,
+				F7D503941F3B815600D6F2E4 /* AssignedLeadViewController.swift */,
+				F7B4B4801F40F44F00CFEE96 /* LeadDetailViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
 		F7F56D811F1A880D006F0490 = {
 			isa = PBXGroup;
 			children = (
+				F7279D1F1F3DEB02003C54C0 /* IQKeyboardManager.bundle */,
+				F7279D151F3DEA27003C54C0 /* IQBarButtonItem.swift */,
+				F7279D161F3DEA27003C54C0 /* IQPreviousNextView.swift */,
+				F7279D171F3DEA27003C54C0 /* IQTitleBarButtonItem.swift */,
+				F7279D181F3DEA27003C54C0 /* IQToolbar.swift */,
+				F7279D191F3DEA27003C54C0 /* IQUIView+IQKeyboardToolbar.swift */,
+				F7279D131F3DEA16003C54C0 /* IQTextView.swift */,
+				F7279D0F1F3DE9F5003C54C0 /* IQKeyboardManagerConstants.swift */,
+				F7279D101F3DE9F5003C54C0 /* IQKeyboardManagerConstantsInternal.swift */,
+				F7279D031F3DE9DE003C54C0 /* IQNSArray+Sort.swift */,
+				F7279D041F3DE9DE003C54C0 /* IQUIScrollView+Additions.swift */,
+				F7279D051F3DE9DE003C54C0 /* IQUITextFieldView+Additions.swift */,
+				F7279D061F3DE9DE003C54C0 /* IQUIView+Hierarchy.swift */,
+				F7279D071F3DE9DE003C54C0 /* IQUIViewController+Additions.swift */,
+				F7279D081F3DE9DE003C54C0 /* IQUIWindow+Hierarchy.swift */,
+				F7279CFD1F3DE9B2003C54C0 /* IQKeyboardManager.swift */,
+				F7279CFE1F3DE9B2003C54C0 /* IQKeyboardManagerSwift.h */,
+				F7279CFF1F3DE9B2003C54C0 /* IQKeyboardReturnKeyHandler.swift */,
+				F79FCEBE1F3A647300F71F24 /* Bluestar-Bridging-Header.h */,
 				F7F56D8C1F1A880D006F0490 /* Bluestar */,
 				F7F56DA11F1A880E006F0490 /* BluestarTests */,
 				F7F56DAC1F1A880E006F0490 /* BluestarUITests */,
 				F7F56D8B1F1A880D006F0490 /* Products */,
+				C9B9B572DC139C8C00992E82 /* Pods */,
+				60266E1B6F31CA52A8927245 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +290,14 @@
 		F7F56D8C1F1A880D006F0490 /* Bluestar */ = {
 			isa = PBXGroup;
 			children = (
+				F782A08B1F44D553005EF594 /* Model */,
+				F7279CF91F3DE911003C54C0 /* Third Party Libraries */,
+				F79152191F36FE7100A0DB74 /* Custom Cells */,
+				F7E07F1B1F229AFA00C8B61D /* View Controller */,
+				F7F801921F212C5600D4AB8C /* Server */,
+				F7C332EB1F1BFA9C00786FDC /* Extension */,
+				F7F56DBB1F1A8DEF006F0490 /* Custom Cumponents */,
 				F7F56D8D1F1A880D006F0490 /* AppDelegate.swift */,
-				F7F56D8F1F1A880D006F0490 /* ViewController.swift */,
 				F7F56D911F1A880D006F0490 /* Main.storyboard */,
 				F7F56D941F1A880D006F0490 /* Assets.xcassets */,
 				F7F56D961F1A880D006F0490 /* LaunchScreen.storyboard */,
@@ -125,6 +324,24 @@
 			path = BluestarUITests;
 			sourceTree = "<group>";
 		};
+		F7F56DBB1F1A8DEF006F0490 /* Custom Cumponents */ = {
+			isa = PBXGroup;
+			children = (
+				F7F56DBC1F1A8E32006F0490 /* BSTextField.swift */,
+				F7C332E71F1BA11100786FDC /* Validation.swift */,
+				F7C332E91F1BA22300786FDC /* ValidationMessages.swift */,
+			);
+			name = "Custom Cumponents";
+			sourceTree = "<group>";
+		};
+		F7F801921F212C5600D4AB8C /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				F7F801931F212CCE00D4AB8C /* ServerManager.swift */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +349,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7F56DB21F1A880E006F0490 /* Build configuration list for PBXNativeTarget "Bluestar" */;
 			buildPhases = (
+				9CF9381779AE56528C53CED5 /* [CP] Check Pods Manifest.lock */,
 				F7F56D861F1A880D006F0490 /* Sources */,
 				F7F56D871F1A880D006F0490 /* Frameworks */,
 				F7F56D881F1A880D006F0490 /* Resources */,
+				28C1698EC08D60E87D6B96AC /* [CP] Embed Pods Frameworks */,
+				0815084740291626D2B6630B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +413,7 @@
 				TargetAttributes = {
 					F7F56D891F1A880D006F0490 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = H3AGJE8Q6M;
 						ProvisioningStyle = Automatic;
 					};
 					F7F56D9D1F1A880E006F0490 = {
@@ -232,9 +453,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7279D201F3DEB02003C54C0 /* IQKeyboardManager.bundle in Resources */,
 				F7F56D981F1A880D006F0490 /* LaunchScreen.storyboard in Resources */,
+				F7279D281F3E453D003C54C0 /* leadSearchView.xib in Resources */,
 				F7F56D951F1A880D006F0490 /* Assets.xcassets in Resources */,
+				F789BBC01F43643400506D50 /* LeadHistoryTableViewCell.xib in Resources */,
+				F7279D241F3E3864003C54C0 /* SearchLeadTableViewCell.xib in Resources */,
+				F791521D1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib in Resources */,
+				F7D503991F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib in Resources */,
 				F7F56D931F1A880D006F0490 /* Main.storyboard in Resources */,
+				F7B4B47F1F40F26C00CFEE96 /* ViewTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +482,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0815084740291626D2B6630B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bluestar/Pods-Bluestar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28C1698EC08D60E87D6B96AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bluestar/Pods-Bluestar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CF9381779AE56528C53CED5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F7F56D861F1A880D006F0490 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7F56D901F1A880D006F0490 /* ViewController.swift in Sources */,
+				F7279D1A1F3DEA27003C54C0 /* IQBarButtonItem.swift in Sources */,
+				F7279D1B1F3DEA27003C54C0 /* IQPreviousNextView.swift in Sources */,
+				F7279D1C1F3DEA27003C54C0 /* IQTitleBarButtonItem.swift in Sources */,
+				F7279D1D1F3DEA27003C54C0 /* IQToolbar.swift in Sources */,
+				F7279D1E1F3DEA27003C54C0 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				F7279D141F3DEA16003C54C0 /* IQTextView.swift in Sources */,
+				F7B4B47E1F40F26C00CFEE96 /* ViewTableViewCell.swift in Sources */,
+				F7279D111F3DE9F5003C54C0 /* IQKeyboardManagerConstants.swift in Sources */,
+				F7279D121F3DE9F5003C54C0 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				F7279D091F3DE9DE003C54C0 /* IQNSArray+Sort.swift in Sources */,
+				F7279D0A1F3DE9DE003C54C0 /* IQUIScrollView+Additions.swift in Sources */,
+				F7279D0B1F3DE9DE003C54C0 /* IQUITextFieldView+Additions.swift in Sources */,
+				F7279D0C1F3DE9DE003C54C0 /* IQUIView+Hierarchy.swift in Sources */,
+				F7279D0D1F3DE9DE003C54C0 /* IQUIViewController+Additions.swift in Sources */,
+				F7279D0E1F3DE9DE003C54C0 /* IQUIWindow+Hierarchy.swift in Sources */,
+				F7279D001F3DE9B2003C54C0 /* IQKeyboardManager.swift in Sources */,
+				F789BBBF1F43643400506D50 /* LeadHistoryTableViewCell.swift in Sources */,
+				F7279D231F3E3864003C54C0 /* SearchLeadTableViewCell.swift in Sources */,
+				F7279D011F3DE9B2003C54C0 /* IQKeyboardManagerSwift.h in Sources */,
+				F7279D021F3DE9B2003C54C0 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				F7D5039B1F3BAE6600D6F2E4 /* BaseViewController.swift in Sources */,
+				F7F56D901F1A880D006F0490 /* LoginViewController.swift in Sources */,
+				F7C332EA1F1BA22300786FDC /* ValidationMessages.swift in Sources */,
+				F782A08D1F44D5F2005EF594 /* User.swift in Sources */,
+				F7C332ED1F1BFACB00786FDC /* UIViewController.swift in Sources */,
+				F7279D261F3E4524003C54C0 /* leadSearchView.swift in Sources */,
+				F7F56DBD1F1A8E32006F0490 /* BSTextField.swift in Sources */,
+				F79152181F36FE2A00A0DB74 /* LeadViewController.swift in Sources */,
+				F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */,
+				F7D503981F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift in Sources */,
+				F7F801941F212CCE00D4AB8C /* ServerManager.swift in Sources */,
+				F791521C1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift in Sources */,
+				F7B4B4811F40F44F00CFEE96 /* LeadDetailViewController.swift in Sources */,
+				F7C332E81F1BA11100786FDC /* Validation.swift in Sources */,
 				F7F56D8E1F1A880D006F0490 /* AppDelegate.swift in Sources */,
+				F782A08F1F44D8D0005EF594 /* Lead.swift in Sources */,
+				F7D503951F3B815600D6F2E4 /* AssignedLeadViewController.swift in Sources */,
+				F7E07F1D1F229B8C00C8B61D /* AttendanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -401,7 +713,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -412,24 +724,34 @@
 		};
 		F7F56DB31F1A880E006F0490 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E99A6A20CCB36A7C9432C6D7 /* Pods-Bluestar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H3AGJE8Q6M;
 				INFOPLIST_FILE = Bluestar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Ashok.Bluestar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F7F56DB41F1A880E006F0490 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD6E46D6F2A6634DB16B44B2 /* Pods-Bluestar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H3AGJE8Q6M;
 				INFOPLIST_FILE = Bluestar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Ashok.Bluestar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -507,6 +829,7 @@
 				F7F56DB41F1A880E006F0490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7F56DB51F1A880E006F0490 /* Build configuration list for PBXNativeTarget "BluestarTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +838,7 @@
 				F7F56DB71F1A880E006F0490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7F56DB81F1A880E006F0490 /* Build configuration list for PBXNativeTarget "BluestarUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +847,7 @@
 				F7F56DBA1F1A880E006F0490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
