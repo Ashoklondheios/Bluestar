@@ -64,8 +64,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluestar_logo" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
                                 <rect key="frame" x="110" y="117.5" width="155" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="YWS-OP-Esp"/>
-                                    <constraint firstAttribute="width" constant="155" id="viZ-Ob-2mx"/>
                                     <constraint firstAttribute="width" secondItem="R1l-HO-kJg" secondAttribute="height" multiplier="31:15" id="wtE-61-hgt"/>
                                 </constraints>
                             </imageView>
@@ -144,7 +142,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="S9S-gr-x8n" secondAttribute="trailing" constant="112" id="IqN-QH-0Bj"/>
                             <constraint firstAttribute="trailing" secondItem="w30-ji-ItZ" secondAttribute="trailing" constant="72" id="M7X-8f-Te0"/>
                             <constraint firstItem="w30-ji-ItZ" firstAttribute="leading" secondItem="xn3-SU-XXi" secondAttribute="leading" constant="72" id="Wky-jg-jyx"/>
                             <constraint firstItem="S9S-gr-x8n" firstAttribute="centerY" secondItem="xn3-SU-XXi" secondAttribute="centerY" id="YST-dI-VjB"/>
@@ -152,11 +149,11 @@
                             <constraint firstItem="w30-ji-ItZ" firstAttribute="top" secondItem="S9S-gr-x8n" secondAttribute="bottom" constant="45" id="aZp-HV-LGE"/>
                             <constraint firstItem="VfX-3n-vVo" firstAttribute="leading" secondItem="xn3-SU-XXi" secondAttribute="leading" constant="61" id="eRn-bh-Wkz"/>
                             <constraint firstItem="S9S-gr-x8n" firstAttribute="top" secondItem="VfX-3n-vVo" secondAttribute="bottom" constant="47" id="gOM-S3-AqW"/>
-                            <constraint firstItem="S9S-gr-x8n" firstAttribute="leading" secondItem="xn3-SU-XXi" secondAttribute="leading" constant="111" id="hN4-Nh-P7e"/>
                             <constraint firstItem="S9S-gr-x8n" firstAttribute="centerX" secondItem="xn3-SU-XXi" secondAttribute="centerX" id="k9u-CH-57z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="markAttendenceButtion" destination="w30-ji-ItZ" id="Bl6-qY-370"/>
                         <segue destination="VhD-7f-UO9" kind="show" identifier="assignedLeadSegue" id="lsZ-XK-bjV"/>
                     </connections>
                 </viewController>
@@ -429,11 +426,11 @@
     </scenes>
     <resources>
         <image name="bluestar_logo" width="155" height="75"/>
-        <image name="ic_user" width="24" height="24"/>
+        <image name="ic_user" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MNI-vy-3Vd"/>
         <segue reference="lsZ-XK-bjV"/>
         <segue reference="2nX-01-WSt"/>
+        <segue reference="MNI-vy-3Vd"/>
     </inferredMetricsTieBreakers>
 </document>

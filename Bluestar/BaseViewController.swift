@@ -34,12 +34,11 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         applyStyleForActivityIndicator()
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.noNetworkConnection), name: NSNotification.Name(rawValue: "InternetConnecionLostNotification"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.noNetworkConnection), name: NSNotification.Name(rawValue: "InternetConnecionLostNotification"), object: nil)
-        
     }
 
     func addCustomNavigationButton() {
@@ -62,8 +61,10 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func noNetworkConnection()  {
-        self.hideProgressLoader()
-        self.showToast(message: "Please check you network connection...!!!")
+        DispatchQueue.main.async {
+            self.hideProgressLoader()
+            self.showToast(message: noNetworkConnectionMessage)
+        }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(manager.location?.coordinate.latitude ?? "")

@@ -28,8 +28,6 @@
 		F7279D201F3DEB02003C54C0 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7279D1F1F3DEB02003C54C0 /* IQKeyboardManager.bundle */; };
 		F7279D231F3E3864003C54C0 /* SearchLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */; };
 		F7279D241F3E3864003C54C0 /* SearchLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */; };
-		F7279D261F3E4524003C54C0 /* leadSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D251F3E4524003C54C0 /* leadSearchView.swift */; };
-		F7279D281F3E453D003C54C0 /* leadSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7279D271F3E453D003C54C0 /* leadSearchView.xib */; };
 		F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D291F3F42BF003C54C0 /* FNSReachability.swift */; };
 		F782A08D1F44D5F2005EF594 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A08C1F44D5F2005EF594 /* User.swift */; };
 		F782A08F1F44D8D0005EF594 /* Lead.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782A08E1F44D8D0005EF594 /* Lead.swift */; };
@@ -58,6 +56,7 @@
 		F7F56DAE1F1A880E006F0490 /* BluestarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56DAD1F1A880E006F0490 /* BluestarUITests.swift */; };
 		F7F56DBD1F1A8E32006F0490 /* BSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F56DBC1F1A8E32006F0490 /* BSTextField.swift */; };
 		F7F801941F212CCE00D4AB8C /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F801931F212CCE00D4AB8C /* ServerManager.swift */; };
+		F7FB5D611F48C8C000D191B3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FB5D601F48C8C000D191B3 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,8 +103,6 @@
 		F7279D1F1F3DEB02003C54C0 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = Bluestar/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLeadTableViewCell.swift; sourceTree = "<group>"; };
 		F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchLeadTableViewCell.xib; sourceTree = "<group>"; };
-		F7279D251F3E4524003C54C0 /* leadSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leadSearchView.swift; sourceTree = "<group>"; };
-		F7279D271F3E453D003C54C0 /* leadSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = leadSearchView.xib; sourceTree = "<group>"; };
 		F7279D291F3F42BF003C54C0 /* FNSReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNSReachability.swift; sourceTree = "<group>"; };
 		F782A08C1F44D5F2005EF594 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F782A08E1F44D8D0005EF594 /* Lead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lead.swift; sourceTree = "<group>"; };
@@ -141,6 +138,7 @@
 		F7F56DAF1F1A880E006F0490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7F56DBC1F1A8E32006F0490 /* BSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSTextField.swift; sourceTree = "<group>"; };
 		F7F801931F212CCE00D4AB8C /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		F7FB5D601F48C8C000D191B3 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = ../String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,8 +214,6 @@
 				F7D5039A1F3BAE6600D6F2E4 /* BaseViewController.swift */,
 				F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */,
 				F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */,
-				F7279D251F3E4524003C54C0 /* leadSearchView.swift */,
-				F7279D271F3E453D003C54C0 /* leadSearchView.xib */,
 				F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */,
 				F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */,
 				F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */,
@@ -229,6 +225,7 @@
 		F7C332EB1F1BFA9C00786FDC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F7FB5D601F48C8C000D191B3 /* String.swift */,
 				F7C332EC1F1BFACB00786FDC /* UIViewController.swift */,
 			);
 			name = Extension;
@@ -455,7 +452,6 @@
 			files = (
 				F7279D201F3DEB02003C54C0 /* IQKeyboardManager.bundle in Resources */,
 				F7F56D981F1A880D006F0490 /* LaunchScreen.storyboard in Resources */,
-				F7279D281F3E453D003C54C0 /* leadSearchView.xib in Resources */,
 				F7F56D951F1A880D006F0490 /* Assets.xcassets in Resources */,
 				F789BBC01F43643400506D50 /* LeadHistoryTableViewCell.xib in Resources */,
 				F7279D241F3E3864003C54C0 /* SearchLeadTableViewCell.xib in Resources */,
@@ -560,8 +556,8 @@
 				F7C332EA1F1BA22300786FDC /* ValidationMessages.swift in Sources */,
 				F782A08D1F44D5F2005EF594 /* User.swift in Sources */,
 				F7C332ED1F1BFACB00786FDC /* UIViewController.swift in Sources */,
-				F7279D261F3E4524003C54C0 /* leadSearchView.swift in Sources */,
 				F7F56DBD1F1A8E32006F0490 /* BSTextField.swift in Sources */,
+				F7FB5D611F48C8C000D191B3 /* String.swift in Sources */,
 				F79152181F36FE2A00A0DB74 /* LeadViewController.swift in Sources */,
 				F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */,
 				F7D503981F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift in Sources */,

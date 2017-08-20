@@ -68,6 +68,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     var leads = [NSMutableDictionary]()
     var isSource = false
     var  selectedLead = 0
+    var inputDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -216,6 +217,13 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                     print(self.statusArray)
                     self.generateLeadCell.statusTextField.statusData = self.statusArray
+                    if self.generateLeadCell.statusTextField.text == "Follow Up" {
+                        self.generateLeadCell.followupDateTextField.isHidden = false
+                    } else {
+                        self.generateLeadCell.followupDateTextField.isHidden = true
+                    }
+                    self.view.layoutIfNeeded()
+                    self.leadTableView.reloadData()
                     self.generateLeadCell.productNameTextField.data = self.productList
                     self.generateLeadCell.enquiryTextField.statusData = self.sourceArray
                     self.getDetailsApi()
@@ -241,16 +249,39 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func punchout() {
-        print(self.navigationController?.viewControllers)
-        let vc = storyboard?.instantiateViewController(withIdentifier: "attendenceVC")
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = self.inputDateFormat
+        formatter.timeZone = TimeZone.current
+        //        formatter.dateFormat = "h:mm a 'on' MMMM dd, yyyy"
+        formatter.dateFormat = "'at' h:mm a"
+        formatter.amSymbol = "AM"
+        formatter.pmSymbol = "PM"
+        if let dateTime = UserDefaults.standard.value(forKey: "CurrentDate") as? Date {
+            let isAttendenceMarked =  UserDefaults.standard.bool(forKey: "isAttendenceMarked")
+            if formatter.calendar.isDateInToday(dateTime) && isAttendenceMarked && UserDefaults.standard.bool(forKey: "isPunchOut") {
+                DispatchQueue.main.async {
+                    self.showToast(message: "You have already Punch Out.")
+                }
+                UserDefaults.standard.set(false, forKey: "isFromPunchOut")
+            } else {
+               gotoAttendentPunchOut()
+            }
+            
+        } else {
+            gotoAttendentPunchOut()
+        }
+    }
+    
+    func gotoAttendentPunchOut() {
         for controller in (navigationController?.viewControllers)! {
             if controller.isKind(of: AttendanceViewController.self) {
-                UserDefaults.standard.removeObject(forKey: "isAttendenceMarked")
-                UserDefaults.standard.removeObject(forKey: "CurrentDate")
+                UserDefaults.standard.set(false, forKey: "isPunchOut")
+                UserDefaults.standard.set(true, forKey: "isFromPunchOut")
                 navigationController?.popToViewController(controller, animated: true)
             }
         }
-        self.navigationController?.popToViewController(vc!, animated: true)
+
     }
     
     func nextButtonClicked() {
@@ -317,7 +348,6 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 cell?.layer.shadowOffset = CGSize(width: 0, height: 2)
                 cell?.layer.shadowRadius = 2
                 cell?.clipsToBounds = false
-                
                 cell?.searchButtion.addTarget(self, action: #selector(self.searchLead(button:)), for: .touchUpInside)
                 cell?.clearButton.addTarget(self, action: #selector(self.clearAction), for: .touchUpInside)
                 return  cell!
@@ -412,16 +442,13 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         var roleId = ""
         var createdBy = ""
         
-        if let location = getCurrentLocation() {
+        
             if let roleID = userDetails.value(forKey: "RoleID") as? String, let createdByUser = userDetails.value(forKey: "ID") as? String {
                 roleId = roleID
                 createdBy = createdByUser
                 
             }
-            
-            
-            let lattitude = "\(location.coordinate.latitude)"
-            let longitude = "\(location.coordinate.longitude)"
+        
             
             if (generateLeadCell.customerNameTextField.text?.isEmpty)! {
                 showAlert(title: "Error", message: "Customer Name can not be blank")
@@ -453,6 +480,10 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             } else if (generateLeadCell.commentTextField.text?.isEmpty)! {
                 showAlert(title: "Error", message: "Comments can not be blank")
             }  else {
+                if let location = getCurrentLocation() {
+                    
+                    let lattitude = "\(location.coordinate.latitude)"
+                    let longitude = "\(location.coordinate.longitude)"
                 var dict: [String: String] = [
                     "CustomerName": generateLeadCell.customerNameTextField.text!,
                     "EmailID": generateLeadCell.emailIdTextField.text!,
@@ -478,33 +509,39 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 ]
                 showProgressLoader()
                 if isGenerateLead {
+                    
+                   if FNSReachability.checkInternetConnectivity() {
+                    
+                   } else {
                     ServerManager.sharedInstance().generateLead(leadDetails: dict) { (result, data) in
                         
                         if result == "Request time out error...!!!" {
                             DispatchQueue.main.async {
                                 self.showAlert(title: "Error", message: result)
                             }
-
+                            
                         } else {
-                        let parser = XMLParser(data: data)
-                        parser.delegate = self
-                        let success:Bool = parser.parse()
-                        DispatchQueue.main.async {
-                            self.hideProgressLoader()
-                        }
-                        
-                        if success {
+                            let parser = XMLParser(data: data)
+                            parser.delegate = self
+                            let success:Bool = parser.parse()
                             DispatchQueue.main.async {
-                                // self.clearAction()
-                                if self.responseCode == "200" {
-                                    self.showAlert(title: "Sucessful", message: "Lead Created Sucessfully")
-                                }
-                                
+                                self.hideProgressLoader()
                             }
+                            
+                            if success {
+                                DispatchQueue.main.async {
+                                    // self.clearAction()
+                                    if self.responseCode == "200" {
+                                        self.showAlert(title: "Sucessful", message: "Lead Created Sucessfully")
+                                    }
+                                    
+                                }
+                            }
+                            
                         }
-                        
                     }
                 }
+                    
                 } else {
                     if let seriesNumber = self.lead.value(forKey: "SeriesNumber") as? String {
                         dict["SeriesNumber"] = seriesNumber
@@ -539,7 +576,9 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 }
                 
                 
-            }
+                } else {
+                    showToast(message: "Location not found...!!!")
+                }
             
         }
         
@@ -549,14 +588,14 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let pincode = searchLeadCell.pincodeTextField.text!
         if (searchLeadCell.pincodeTextField.text?.characters.count)! > 0 {
             if pincode.characters.count == 6 {
-                ServerManager.sharedInstance().getPincodeDetails(pincode: pincode, completion: { (result, data) in
+                ServerManager.sharedInstance().getPincodeDetails(pincode: pincode) { (result, data) in
                     let parser = XMLParser(data: data)
                     parser.delegate = self
                     let success:Bool = parser.parse()
                     if success {
                         self.getLeads()
                     }
-                })
+                }
                 
             }
             
@@ -811,5 +850,9 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             vc?.lead = self.leads[selectedLead]
             
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("Touch.....")
     }
 }

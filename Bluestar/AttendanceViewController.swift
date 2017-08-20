@@ -18,14 +18,15 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
     var curentElement = ""
     var userDetails = ServerManager.sharedInstance().userDetailsDict
 
+    @IBOutlet weak var markAttendenceButtion: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   locationManager.delegate = self
-     //   locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      //  locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         self.title = "Blue Star"
-                // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +36,12 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         updatePlaceMark()
+        if UserDefaults.standard.bool(forKey: "isFromPunchOut") {
+            markAttendenceButtion.setTitle("Punch Out", for: .normal)
+        } else {
+            markAttendenceButtion.setTitle("Present", for: .normal)
+        }
+
         self.navigationItem.hidesBackButton = true
         
     }
@@ -61,8 +68,13 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                         print("\n\(address)")
                     }
                 }
+                var in_out_flag = true
+                 if UserDefaults.standard.bool(forKey: "isFromPunchOut") {
+                    in_out_flag = false
+                }
+                
                 showProgressLoader()
-                ServerManager.sharedInstance().getAttendance(userID: userId, in_out_flag: true, ipAddress: "10.236.125.14", lattitude: "\(currentLocation.coordinate.latitude)", longitude:  "\(currentLocation.coordinate.longitude)", address: address) { (result, data) in
+                ServerManager.sharedInstance().getAttendance(userID: userId, in_out_flag: in_out_flag, ipAddress: "10.236.125.14", lattitude: "\(currentLocation.coordinate.latitude)", longitude:  "\(currentLocation.coordinate.longitude)", address: address) { (result, data) in
                     print(result)
                     DispatchQueue.main.async {
                         self.hideProgressLoader()
@@ -79,17 +91,22 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                             switch  responseCode {
                             case "200":
                                 DispatchQueue.main.async {
-                                    self.showToast(message: "Attendence Marked")
+                                    if UserDefaults.standard.bool(forKey: "isFromPunchOut") {
+                                        self.showToast(message: "Punch Out Sucessfully.")
+                                        UserDefaults.standard.set(true, forKey: "isPunchOut")
+                                    } else {
+                                        self.showToast(message: "Attendence Marked.")
+                                    }
                                 UserDefaults.standard.set(true, forKey: "isAttendenceMarked")
                                 UserDefaults.standard.set(Date(), forKey: "CurrentDate")
-                                    self.performSegue(withIdentifier: "assignedLeadSegue", sender: nil)
+                                self.performSegue(withIdentifier: "assignedLeadSegue", sender: nil)
                                     
                                 }
                                 break
                                 
                             case "404", "402", "400":
                                 DispatchQueue.main.async {
-                                    self.showToast(message: "Location not found. Please try again...")
+                                    self.showToast(message: locationNotFound)
                                 }
                                 break
                             default:
@@ -106,12 +123,18 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                 }
 
             } else {
-                showToast(message: "Please enable GPS... Location not found...")
+                DispatchQueue.main.async {
+                    self.showToast(message: enableGPS)
+                }
+
             }
 
         } else {
             // show error
-            showToast(message: "Please enable GPS... Location not found...")
+            DispatchQueue.main.async {
+                self.showToast(message: enableGPS)
+            }
+
         }
         
     }

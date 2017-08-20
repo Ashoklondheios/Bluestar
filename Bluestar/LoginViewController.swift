@@ -22,9 +22,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         automaticallyAdjustsScrollViewInsets = false
-        setUpTextField()
-        
-        
+        setUpTextField() 
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,7 +41,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
     override func viewWillAppear(_ animated: Bool) {
         setUpTextField()
         self.navigationController?.isNavigationBarHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.noNetworkConnection), name: NSNotification.Name(rawValue: "InternetConnecionLostNotification"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.noNetworkConnection), name: NSNotification.Name(rawValue: "InternetConnecionLostNotification"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

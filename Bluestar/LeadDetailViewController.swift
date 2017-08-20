@@ -9,7 +9,7 @@
 import UIKit
 
 class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
-
+    
     @IBOutlet weak var leadDetailTableView: UITableView!
     var lead = NSMutableDictionary()
     var leads = [NSMutableDictionary]()
@@ -37,7 +37,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     var createdOn = ""
     var leadStatus = ""
     var location = ""
-    
+    var region = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,47 +46,60 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
         self.leadDetailTableView.register(UINib(nibName: "LeadHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "leadHistoryTableViewCell")
         addCustomNavigationButton()
         
-
-         if let seriesNumber = lead.value(forKey: "SeriesNumber") as? String ,let customerName = lead.value(forKey: "CustomerName") as? String, let productName = lead.value(forKey: "ProductName") as? String, let phoneNumber = lead.value(forKey: "MobileNumber") as? String, let status = lead.value(forKey: "Status") as? String  {
+        
+        if let seriesNumber = lead.value(forKey: "SeriesNumber") as? String ,let customerName = lead.value(forKey: "CustomerName") as? String, let productName = lead.value(forKey: "ProductName") as? String, let phoneNumber = lead.value(forKey: "MobileNumber") as? String, let status = lead.value(forKey: "Status") as? String  {
             showProgressLoader()
-            ServerManager.sharedInstance().getLeads(leadId: seriesNumber, customerName: customerName, phoneNumber: phoneNumber, pinCode: "", productName: productName, status: "") { (result, data) in
+            ServerManager.sharedInstance().getLeads(leadId: seriesNumber, customerName: customerName, phoneNumber: phoneNumber, pinCode: "", productName: productName, status: status) { (result, data) in
                 let parser = XMLParser(data: data)
                 parser.delegate = self
                 let success:Bool = parser.parse()
+                if success {
+                    self.getCityName()
+                }
                 DispatchQueue.main.async {
                     self.hideProgressLoader()
-                    self.leadDetailTableView.delegate = self
-                    self.leadDetailTableView.dataSource = self
-                }
-                if success {
-                    DispatchQueue.main.async {
-                        self.leadDetailTableView.reloadData()
-                        //self.clearAction()
-                    }
                 }
             }
-
+            
         }
         // Do any additional setup after loading the view.
     }
-
+    func getCityName() {
+        if (cityName.characters.count) > 2 {
+            ServerManager.sharedInstance().getCityDetails(cityName: cityName) { (result, data) in
+                let parser = XMLParser(data: data)
+                parser.delegate = self
+                let success:Bool = parser.parse()
+                if success {
+                    self.leads[0].setValue(self.region, forKey: "CityRegion")
+                    DispatchQueue.main.async {
+                        self.leadDetailTableView.delegate = self
+                        self.leadDetailTableView.dataSource = self
+                        self.leadDetailTableView.reloadData()
+                    }
+                }
+            }
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.leads.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ViewTableViewCell", for: indexPath) as? ViewTableViewCell
-        if cell == nil {
-            cell = (tableView.dequeueReusableCell(withIdentifier: "ViewTableViewCell", for: indexPath) as? ViewTableViewCell)!
-            
-        }
+            var cell = tableView.dequeueReusableCell(withIdentifier: "ViewTableViewCell", for: indexPath) as? ViewTableViewCell
+            if cell == nil {
+                cell = (tableView.dequeueReusableCell(withIdentifier: "ViewTableViewCell", for: indexPath) as? ViewTableViewCell)!
+                
+            }
             if let pincode = self.leads[indexPath.row].value(forKey: "Pincode") as? String {
                 if pincode.characters.count == 6 {
                     ServerManager.sharedInstance().getPincodeDetails(pincode: pincode, completion: { (result, data) in
@@ -95,14 +108,14 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                         let success:Bool = parser.parse()
                         if success {
                             print("location = \(self.location)")
-                            cell?.locationLabel.text = self.location
+                            self.leads[0].setValue(self.location, forKey: "Location")
                         }
                         
                     })
                     
                 }
             }
-        cell?.lead = self.leads[indexPath.row]
+            cell?.lead = self.leads[indexPath.row]
             return cell!
         } else {
             var cell = leadDetailTableView.dequeueReusableCell(withIdentifier: "leadHistoryTableViewCell", for: indexPath) as? LeadHistoryTableViewCell
@@ -111,7 +124,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             }
             cell?.lead = self.leads[indexPath.row];
             return  cell!
-
+            
         }
     }
     
@@ -155,7 +168,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             if !leads.contains(lead) {
                 leads.append(lead)
             }
-
+            
         }
         
         if elementName == "LeadUpdate" {
@@ -251,15 +264,20 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
         if curentElement == "LeadStatus" {
             leadStatus = string
         }
-
+        
         if curentElement == "ModelName" {
             modelName = string
         }
         if curentElement == "Location" {
             location = string
         }
-
-
+        
+        if curentElement == "CityRegion" {
+            region = string
+        }
+        
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -269,31 +287,33 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             vc?.lead = self.lead
         }
     }
-
-
+    
+    
     @IBAction func editButtonAction(_ sender: UIButton) {
         self.performSegue(withIdentifier: "leadSegue", sender: nil)
     }
-
+    
     @IBAction func historyButtonAction(_ sender: UIButton) {
         showProgressLoader()
-        ServerManager.sharedInstance().getLeadHistory(seriesNumber: self.leads[0].value(forKey: "SeriesNumber") as! String) { (result, data) in
-            let parser = XMLParser(data: data)
-            parser.delegate = self
-            let success:Bool = parser.parse()
-            DispatchQueue.main.async {
-                self.hideProgressLoader()
-            }
-            if success {
+        if let seriesNumber = self.leads[0].value(forKey: "SeriesNumber") as? String {
+            ServerManager.sharedInstance().getLeadHistory(seriesNumber: seriesNumber) { (result, data) in
+                let parser = XMLParser(data: data)
+                parser.delegate = self
+                let success:Bool = parser.parse()
                 DispatchQueue.main.async {
-                    self.leadDetailTableView.reloadData()
-                    if self.leads.count > 1 {
-                        self.leadDetailTableView.scrollToRow(at: IndexPath.init(row: self.leads.count-1, section: 0), at: UITableViewScrollPosition.top, animated: false)
-                    }
-
+                    self.hideProgressLoader()
                 }
+                if success {
+                    DispatchQueue.main.async {
+                        self.leadDetailTableView.reloadData()
+                        if self.leads.count > 1 {
+                            self.leadDetailTableView.scrollToRow(at: IndexPath.init(row: self.leads.count-1, section: 0), at: UITableViewScrollPosition.top, animated: false)
+                        }
+                        
+                    }
+                }
+                
             }
-
         }
     }
     
