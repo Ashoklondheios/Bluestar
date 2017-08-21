@@ -13,7 +13,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet weak var leadDetailTableView: UITableView!
     var lead = NSMutableDictionary()
     var leads = [NSMutableDictionary]()
-    var curentElement = ""
+    var currentElement = ""
     var custmerName = ""
     var mobileNumber = ""
     var alternateMobileNo = ""
@@ -142,7 +142,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        curentElement =  elementName
+        currentElement =  elementName
     }
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "Lead" {
@@ -188,92 +188,92 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
         
     }
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        if curentElement == "CustomerName" {
+        if currentElement == "CustomerName" {
             custmerName = string
         }
         
-        if curentElement == "MobileNumber" {
+        if currentElement == "MobileNumber" {
             mobileNumber = string
         }
-        if curentElement == "AlternateMobileNumber" {
+        if currentElement == "AlternateMobileNumber" {
             alternateMobileNo = string
         }
         
-        if curentElement == "SeriesNumber" {
+        if currentElement == "SeriesNumber" {
             seriesNumber = string
         }
         
-        if curentElement == "ProductName" {
+        if currentElement == "ProductName" {
             productName = string
         }
         
-        if curentElement == "LeadDate" {
+        if currentElement == "LeadDate" {
             leadDate = string
         }
         
-        if curentElement == "Status" {
+        if currentElement == "Status" {
             status = string
         }
-        if curentElement == "Address" {
+        if currentElement == "Address" {
             address = string
         }
         
-        if curentElement == "EmailID" {
+        if currentElement == "EmailID" {
             emailId = string
         }
         
-        if curentElement == "CityName" {
+        if currentElement == "CityName" {
             cityName = string
         }
         
-        if curentElement == "Pincode" {
+        if currentElement == "Pincode" {
             pincode = string
         }
         
-        if curentElement == "DemoFixedDate" {
+        if currentElement == "DemoFixedDate" {
             demoFixedDate = string
         }
         
-        if curentElement == "FollowUpFixedDate" {
+        if currentElement == "FollowUpFixedDate" {
             followupDate = string
         }
         
-        if curentElement == "SwcName" {
+        if currentElement == "SwcName" {
             swcName = string
         }
         
-        if curentElement == "CreatedBy" {
+        if currentElement == "CreatedBy" {
             createdBy = string
         }
         
-        if curentElement == "FollowUpDate" {
+        if currentElement == "FollowUpDate" {
             followupDate = string
         }
         
-        if curentElement == "CreatedOn" {
+        if currentElement == "CreatedOn" {
             createdOn = string
         }
         
-        if curentElement == "LeadAssignedTo" {
+        if currentElement == "LeadAssignedTo" {
             leadAssignedTo = string
         }
         
-        if curentElement == "Comments" {
+        if currentElement == "Comments" {
             comments = string
         }
         
-        if curentElement == "LeadStatus" {
+        if currentElement == "LeadStatus" {
             leadStatus = string
         }
         
-        if curentElement == "ModelName" {
+        if currentElement == "ModelName" {
             modelName = string
         }
-        if curentElement == "Location" {
+        if currentElement == "Location" {
             location = string
         }
         
-        if curentElement == "CityRegion" {
+        if currentElement == "CityRegion" {
             region = string
         }
         

@@ -50,11 +50,8 @@ class AssignedLeadTableViewCell: UITableViewCell {
         self.editLeadButton.layer.cornerRadius = 5.0
         
         leadDict = ServerManager.sharedInstance().leadDictionary
-        if leadDict.count > 0 {
-           // bindData()
-  
-        }
-        // Initialization code
+ 
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -62,22 +59,7 @@ class AssignedLeadTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func bindData() {
-        
-        if let custName = leadDict["CustomerName"] as? String {
-            customerNameLabel.text = custName
-        }
-        if let mobileNumber = leadDict["MobileNumber"] as? String {
-            mobileNoLabel.text = mobileNumber
-        }
-        if let productName = leadDict["ProductName"] as? String {
-            productNameLabel.text = productName
-        }
-        
-        self.layoutIfNeeded()
-        self.clipsToBounds = true
-    }
+
     
     @IBAction func viewLeadAction(_ sender: UIButton) {
         

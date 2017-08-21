@@ -29,6 +29,7 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
     var placemark: CLPlacemark?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -54,7 +55,7 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func offlineLeadSaved() {
-        showToast(message: "Previous lead data uploaded sucessfully.")
+        showToast(message: leadUploadMessage)
     }
     
     func addCustomNavigationButton() {
@@ -94,24 +95,6 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
         currentLocation = manager.location!
 
     }
-
-    func getAddressForLatLng(latitude: String, longitude: String) {
-        let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
-        let apikey = "12345"
-        let url = NSURL(string: "\(baseUrl)latlng=\(latitude),\(longitude)&key=\(apikey)")
-        let data = NSData(contentsOf: url as! URL)
-        let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-        if let result = json["results"] as? NSArray {
-//            if let address = result[0]["address_components"] as? NSArray {
-//                let number = address[0]["short_name"] as! String
-//                let street = address[1]["short_name"] as! String
-//                let city = address[2]["short_name"] as! String
-//                let state = address[4]["short_name"] as! String
-//                let zip = address[6]["short_name"] as! String
-//                print("\n\(number) \(street), \(city), \(state) \(zip)")
-//            }
-        }
-    }
     
     func getPlacemark() {
         
@@ -122,6 +105,7 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
             })
         }
     }
+    
     func getCurrentLocation() -> CLLocation? {
         
         if(CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.denied) {
@@ -134,8 +118,7 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
     func applyStyleForActivityIndicator() {
         
         activityView.layer.cornerRadius = CGFloat(activityViewLayerCornerRadius)
-        // activityView.center = self.view.center
-            activityView.center = CGPoint(x: self.view.frame.width / 2.0 , y: self.view.frame.size.height / 2.0)
+        activityView.center = CGPoint(x: self.view.frame.width / 2.0 , y: self.view.frame.size.height / 2.0)
         activityView.backgroundColor = UIColor(white: 0.0, alpha: CGFloat(activityViewBackgroundAlpha))
         activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
         activityView.color = UIColor(red:CGFloat(activityViewColorRed),green:CGFloat(activityViewColorGreen),blue:CGFloat(activityViewColorBlue),alpha:CGFloat(activityViewColorAlpha))
@@ -168,7 +151,5 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
         
         present(alertController, animated: true, completion: nil)
     }
-
-
 
 }

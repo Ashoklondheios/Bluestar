@@ -11,7 +11,7 @@ import UIKit
 class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, XMLParserDelegate {
 
     @IBOutlet weak var assignedLeadTableView: UITableView!
-    var curentElement = ""
+    var currentElement = ""
     let count = 0
     var lead = NSMutableDictionary()
     var custmerName = ""
@@ -119,7 +119,7 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
      func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : AnyObject] = [:]) {
         if elementName == "Leads" {
         }
-        curentElement =  elementName
+        currentElement =  elementName
     }
     func parserDidStartDocument(_ parser: XMLParser) {
         
@@ -142,30 +142,30 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
         
     }
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        if curentElement == "CustomerName" {
+        if currentElement == "CustomerName" {
             custmerName = string
         }
         
-        if curentElement == "MobileNumber" {
+        if currentElement == "MobileNumber" {
             mobileNumber = string
         }
         
-        if curentElement == "SeriesNumber" {
+        if currentElement == "SeriesNumber" {
             seriesNumber = string
         }
         
-        if curentElement == "ProductName" {
+        if currentElement == "ProductName" {
             productName = string
         }
 
-        if curentElement == "LeadDate" {
+        if currentElement == "LeadDate" {
             leadDate = string
         }
         
-        if curentElement == "Status" {
+        if currentElement == "Status" {
             status = string
         }
-        if curentElement == "Address" {
+        if currentElement == "Address" {
             address = string
         }
 

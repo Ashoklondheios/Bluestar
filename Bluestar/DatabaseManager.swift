@@ -109,7 +109,7 @@ class DatabaseManager: NSObject {
                 
                 if !database.executeStatements(query) {
                     print("Failed to insert initial data into the database.")
-                    print(database.lastError(), database.lastErrorMessage())
+                   // print(database.lastError(), database.lastErrorMessage())
                 } else {
                     
                 }

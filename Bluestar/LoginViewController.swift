@@ -14,7 +14,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
     @IBOutlet weak var emailTextField: BSTextField!
     @IBOutlet weak var passwordTextField: BSTextField!
     
-    var curentElement = ""
+    var currentElement = ""
     var inputDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
     
@@ -41,7 +41,6 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
     override func viewWillAppear(_ animated: Bool) {
         setUpTextField()
         self.navigationController?.isNavigationBarHidden = true
-//        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.noNetworkConnection), name: NSNotification.Name(rawValue: "InternetConnecionLostNotification"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,7 +82,6 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
                                     let formatter = DateFormatter()
                                     formatter.dateFormat = self.inputDateFormat
                                     formatter.timeZone = TimeZone.current
-                                    //        formatter.dateFormat = "h:mm a 'on' MMMM dd, yyyy"
                                     formatter.dateFormat = "'at' h:mm a"
                                     formatter.amSymbol = "AM"
                                     formatter.pmSymbol = "PM"
@@ -138,9 +136,8 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
                     }
                     
                 }
-                //                print(success)
             })
-            // showToast(message: "Logged In Suceessfully")
+           
         }
     }
     
@@ -154,10 +151,8 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
         
         let isEmpty = emailTextField.isEmpty(str: emailTextField.text!)
         if isEmpty.0{
-            //showAlert(title: "Error", message: isEmpty.1)
             showToast(message: isEmpty.1)
         } else if passwordTextField.isEmpty(str: passwordTextField.text!).0 {
-            //showAlert(title: "Error", message: passwordTextField.isEmpty(str: passwordTextField.text!).1)
             showToast(message: passwordTextField.isEmpty(str: passwordTextField.text!).1)
         } else {
             
@@ -168,7 +163,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        curentElement =  elementName
+        currentElement =  elementName
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
@@ -176,19 +171,19 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
         
         let userDetailsDict: NSMutableDictionary = ServerManager.sharedInstance().userDetailsDict
 
-        if curentElement == "ResponseCode" {
+        if currentElement == "ResponseCode" {
             userDetailsDict.setValue(string, forKey: "ResponseCode")
-        }else if curentElement == "ID" {
+        }else if currentElement == "ID" {
             userDetailsDict.setValue(string, forKey: "ID")
-        } else if curentElement == "Name" {
+        } else if currentElement == "Name" {
             userDetailsDict.setValue(string, forKey: "Name")
-        }else if curentElement == "Password" {
+        }else if currentElement == "Password" {
             userDetailsDict.setValue(string, forKey: "Password")
-        } else if curentElement == "FullName" {
+        } else if currentElement == "FullName" {
             userDetailsDict.setValue(string, forKey: "FullName")
-        } else if curentElement == "EmailID" {
+        } else if currentElement == "EmailID" {
             userDetailsDict.setValue(string, forKey: "EmailID")
-        } else if curentElement == "CanUserLogin" {
+        } else if currentElement == "CanUserLogin" {
             if string.lowercased() == "true" {
                 userDetailsDict.setValue(true, forKey: "CanUserLogin")
                 
@@ -196,9 +191,9 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
                 userDetailsDict.setValue(false, forKey: "CanUserLogin")
         }
             
-        } else if curentElement == "LoginAttempt" {
+        } else if currentElement == "LoginAttempt" {
             userDetailsDict.setValue(string, forKey: "LoginAttempt")
-        } else if curentElement == "RoleID" {
+        } else if currentElement == "RoleID" {
             userDetailsDict.setValue(string, forKey: "RoleID")
         }
         
@@ -209,9 +204,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
         let trimmedString = textField.text?.trimmingCharacters(in: .whitespaces)
         textField.text = trimmedString
             textField.setBorderToTextField(vBorder: .Bottom, withBorderColor: UIColor.gray, withBorderWidth: 1)
-        
     }
-    
     
     private func textFieldDidBeginEditing(_ textField: BSTextField) {
         textField.setBorderToTextField(vBorder: .Bottom, withBorderColor: UIColor.blue, withBorderWidth: 1)

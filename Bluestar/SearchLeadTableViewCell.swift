@@ -28,8 +28,19 @@ class SearchLeadTableViewCell: UITableViewCell {
         
         productName.rightImageName = "downArrow"
         self.productName.setStyle(.Picker)
+        setStyle()
     }
 
+    func setStyle(){
+        self.selectionStyle = .none
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.opacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 2
+        self.clipsToBounds = false
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

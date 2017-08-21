@@ -14,8 +14,8 @@ import AddressBookUI
 
 class AttendanceViewController: BaseViewController , XMLParserDelegate {
 
-    //let locationManager = CLLocationManager()
-    var curentElement = ""
+    
+    var currentElement = ""
     var userDetails = ServerManager.sharedInstance().userDetailsDict
 
     @IBOutlet weak var markAttendenceButtion: UIButton!
@@ -162,7 +162,7 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
     
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        curentElement =  elementName
+        currentElement =  elementName
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
@@ -170,9 +170,9 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
         
         let getAttendenceDict: NSMutableDictionary = ServerManager.sharedInstance().getAttendenceDict
         
-        if curentElement == "ResponseCode" {
+        if currentElement == "ResponseCode" {
             getAttendenceDict.setValue(string, forKey: "ResponseCode")
-        }else if curentElement == "DateTime" {
+        }else if currentElement == "DateTime" {
             getAttendenceDict.setValue(string, forKey: "DateTime")
         }
         

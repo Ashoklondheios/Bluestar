@@ -114,6 +114,7 @@ class GenerateLeadTableViewCell: UITableViewCell {
         self.layoutIfNeeded()
     }
     @IBAction func clearAction(_ sender: UIButton) {
+        
     }
 
     @IBAction func saveLeadAction(_ sender: UIButton) {

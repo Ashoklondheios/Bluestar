@@ -20,6 +20,13 @@ let blankTextFiledMessage = "This field can not be blank."
 let noNetworkConnectionMessage = "Please check you network connection...!!!"
 let enableGPS = "Please enable GPS. Location not found...!!!"
 let locationNotFound = "Location not found. Please try again...!!!"
+let leadUploadMessage = "Previous lead data uploaded sucessfully."
+let punchOutMessage = "You have already Punch Out."
+let leadUpdateMessage = "Lead updated Sucessfully"
+let leadSavedOfflineMessage = "Lead data saved offline."
+let requestTimeOutErrorMessage = "Request time out error...!!!"
+let noLeadMessage = "No Leads found."
+let locationNotFoundForPincode = "Location not found for pincode."
 
 // Server Message
 
