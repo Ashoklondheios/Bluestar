@@ -21,16 +21,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_screen" translatesAutoresizingMaskIntoConstraints="NO" id="7kJ-gl-u2p">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluestar_logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Mc-mX-LEx">
+                                <rect key="frame" x="70" y="206" width="235" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="FWc-Lv-MMU"/>
+                                    <constraint firstAttribute="width" constant="235" id="T1P-Y3-AmX"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="7kJ-gl-u2p" secondAttribute="bottom" id="6XX-S0-KQE"/>
-                            <constraint firstItem="7kJ-gl-u2p" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="CQc-ys-vIL"/>
-                            <constraint firstItem="7kJ-gl-u2p" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="QP6-cO-2J2"/>
-                            <constraint firstAttribute="trailing" secondItem="7kJ-gl-u2p" secondAttribute="trailing" id="R1j-n1-Btr"/>
+                            <constraint firstItem="9Mc-mX-LEx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NJ0-Ft-pNx"/>
+                            <constraint firstItem="9Mc-mX-LEx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="O1R-NF-AiM"/>
+                            <constraint firstItem="9Mc-mX-LEx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UgZ-K1-9ym"/>
+                            <constraint firstItem="9Mc-mX-LEx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lzH-Ge-1a9"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_screen" width="360" height="639"/>
+        <image name="bluestar_logo-1" width="512" height="512"/>
     </resources>
 </document>

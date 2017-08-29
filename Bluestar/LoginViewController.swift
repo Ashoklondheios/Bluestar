@@ -92,7 +92,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
                                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "attendenceVC")
                                           
                                             self.navigationController?.pushViewController(vc!, animated: false)
-                                            self.performSegue(withIdentifier: "assignedLeadSegue", sender: self)
+                                            self.performSegue(withIdentifier: "leadSegue", sender: self)
                                         } else {
                                             self.performSegue(withIdentifier: "attendenceSegue", sender: self)
                                         }
@@ -144,7 +144,10 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "leadSegue" {
+            let vc = segue.destination as? LeadViewController
+            vc?.isGenerateLead = true
+        }
     }
     
     func formIsValid() -> Bool {

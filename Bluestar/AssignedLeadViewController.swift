@@ -42,7 +42,8 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
          productName = ""
          status = ""
          leadDate = ""
-        self.navigationItem.hidesBackButton = true
+        //self.navigationItem.hidesBackButton = true()
+        addCustomNavigationButton()
         if let userId = ServerManager.sharedInstance().userDetailsDict.value(forKey: "ID") as? String {
             showProgressLoader()
             ServerManager.sharedInstance().getAssigned(userID: userId){ (result, data) in
@@ -56,8 +57,11 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
                 if success {
                     print("lead count \(self.leads.count)")
                     DispatchQueue.main.async {
-                        
                         self.assignedLeadTableView.reloadData()
+                        if self.leads.count == 0 {
+                            self.showToast(message: "No assigend leads for Today")
+                        }
+                        
                         
                     }
                 }

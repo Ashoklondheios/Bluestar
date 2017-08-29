@@ -102,7 +102,7 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                                 UserDefaults.standard.set(Date(), forKey: "CurrentDate")
                                     let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
                                     DispatchQueue.main.asyncAfter(deadline: when) {
-                                       self.performSegue(withIdentifier: "assignedLeadSegue", sender: nil)
+                                       self.performSegue(withIdentifier: "leadSegue", sender: nil)
                                     }
                                 
                                     

@@ -17,7 +17,7 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
     var currentLocation = CLLocation()
     let locationManager = CLLocationManager()
     let activityViewLayerCornerRadius = 05
-    let activityViewBackgroundAlpha = 0.5
+    let activityViewBackgroundAlpha = 0.7
     let activityViewColorAlpha = 1.0
     let activityViewColorRed = 1.0
     let activityViewColorGreen = 1.0

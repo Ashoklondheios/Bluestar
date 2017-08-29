@@ -12,7 +12,7 @@ import Foundation
 
 let blankIdAndPassword = "Enter ID and Password."
 let worngIdOrPassword = "Wrong ID or Password."
-let serverErrorMessage = "There is some problem from server."
+let serverErrorMessage = "Server is down. Please try again...!!!"
 let invalidEmail = "Please enter correct Email ID."
 let inValidPhoneNumber = "Please enter correct phone number."
 let mobileNoErrorMessage = "Mobile No. should be of 10 digits."

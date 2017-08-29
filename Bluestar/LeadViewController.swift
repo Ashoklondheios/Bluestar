@@ -14,6 +14,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tabSelectionView: UIView!
     @IBOutlet weak var generateLeadButton: UIButton!
     @IBOutlet weak var searchLeadButton: UIButton!
+    @IBOutlet weak var generateLeadHeightConstrint: NSLayoutConstraint!
     
     var isGenerateLead = false
     
@@ -60,15 +61,22 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     var subSource = ""
     var pinCode = ""
     var address = ""
+    var swcName = ""
     var seriesNumber = ""
     var fixedDemoDate = ""
     var followupDate = ""
     var status = ""
     var leadDate = ""
+    var comments = ""
+    
     var leads = [NSMutableDictionary]()
     var isSource = false
     var  selectedLead = 0
     var inputDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    var menuView = UIView()
+    var isMenuClicked = false
+    
+    var searchLeadMobileNo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,21 +87,34 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.title = "Blue Star"
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
-        self.tabSelectionView.frame = CGRect(x: self.generateLeadButton.frame.origin.x, y: self.generateLeadButton.frame.origin.y + self.generateLeadButton.frame.size.height , width: self.generateLeadButton.frame.size.width, height: 2)
-        self.tabSelectionView.layoutIfNeeded()
         
         if isGenerateLead {
+            self.tabSelectionView.frame = CGRect(x: self.searchLeadButton.frame.origin.x, y: self.searchLeadButton.frame.origin.y + self.searchLeadButton.frame.size.height , width: self.searchLeadButton.frame.size.width, height: 2)
+            self.tabSelectionView.layoutIfNeeded()
+            isSearch = true
+            generateLeadHeightConstrint.constant = 50
             self.generateLeadButton.setTitle("Generate Lead", for: .normal)
         } else {
             self.generateLeadButton.setTitle("Update Lead", for: .normal)
+            isGenerateLead = false
+            generateLeadAnimation()
+            isSearch = false
+            generateLeadHeightConstrint.constant = 0
+
         }
-        addCustomNavigationButton()
+        
+        if !isGenerateLead {
+             addCustomNavigationButton()
+        }
+        getProductDetails()
+        
+       //
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.hidesBackButton = false
+        self.navigationItem.hidesBackButton = true
         addRightNavigationBarButton()
-        getCityList()
+        
         self.leadTableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(LeadViewController.getDetailsApi), name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
     }
@@ -106,6 +127,8 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func generateLeadAnimation() {
         isSearch = false
+        generateLeadHeightConstrint.constant = 0
+
         self.leadTableView.layoutIfNeeded()
         leadTableView.contentOffset = CGPoint(x: 0.0, y: 0.0)
         UIView.animate(withDuration: 0.1) {
@@ -119,10 +142,13 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func generateLeadAction(_ sender: UIButton) {
         generateLeadAnimation()
+        getCityList()
     }
     
     @IBAction func searchLeadAction(_ sender: UIButton) {
         isSearch = true
+        generateLeadHeightConstrint.constant = 50
+
         if searchProductList.count == 0 {
             let dict = NSMutableDictionary()
             dict.setValue("Not Selected", forKey: "ProductName")
@@ -133,38 +159,45 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             self.generateLeadButton.setTitleColor(UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             self.searchLeadButton.setTitleColor(UIColor.white, for: .normal)
             self.tabSelectionView.frame = CGRect(x: self.searchLeadButton.frame.origin.x, y: self.searchLeadButton.frame.origin.y + 1 + self.searchLeadButton.frame.size.height , width: self.searchLeadButton.frame.size.width, height: 1)
-            self.getDetailsApi()
+           // self.getDetailsApi()
+            self.leadTableView.reloadData()
         }
         
     }
     
     func getDetailsApi() {
         
-        if (generateLeadCell.cityTextField.text?.characters.count)! > 2 {
-            ServerManager.sharedInstance().getCityDetails(cityName: generateLeadCell.cityTextField.text!, completion: { (result, data) in
-                self.parseData(data: data, result: result, apiName: "cityDetails")
-                
-            })
-        }
-        
-        if let productName = generateLeadCell.productNameTextField.text {
-            if productName.characters.count > 2 {
-                modelList = [String]()
-                for product in allProductList {
-                    if product.value(forKey: "ProductName") as? String ==  productName {
-                        if let modelName = product.value(forKey: "ModelName") as? String {
-                            if !modelList.contains(modelName){
-                                modelList.append(modelName)
+        if let cell = generateLeadCell as? GenerateLeadTableViewCell {
+            if let cityName = cell.cityTextField.text {
+                if (cityName.characters.count) > 2 {
+                    ServerManager.sharedInstance().getCityDetails(cityName: cell.cityTextField.text!, completion: { (result, data) in
+                        self.parseData(data: data, result: result, apiName: "cityDetails")
+                        
+                    })
+                }
+            }
+
+            
+            
+            if let productName = generateLeadCell.productNameTextField.text {
+                if productName.characters.count > 2 {
+                    modelList = [String]()
+                    for product in allProductList {
+                        if product.value(forKey: "ProductName") as? String ==  productName {
+                            if let modelName = product.value(forKey: "ModelName") as? String {
+                                if !modelList.contains(modelName){
+                                    modelList.append(modelName)
+                                }
+                                
                             }
                             
                         }
                         
                     }
                     
-                }
-                
-                DispatchQueue.main.async {
-                    self.generateLeadCell.productModelTextField.pickerData = self.modelList
+                    DispatchQueue.main.async {
+                        self.generateLeadCell.productModelTextField.pickerData = self.modelList
+                    }
                 }
             }
         }
@@ -189,7 +222,6 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func addRightNavigationBarButton() {
-        
         let rightBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action:  #selector(nextButtonClicked))
         rightBarButton.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.white], for: UIControlState.normal)
         rightBarButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.lightGray], for: UIControlState.disabled)
@@ -198,11 +230,20 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
     }
     func logout() {
+        isMenuClicked = !isMenuClicked
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    func assignedLeadsAction() {
+        isMenuClicked = !isMenuClicked
+        self.menuView.removeFromSuperview()
+        self.performSegue(withIdentifier: "assignedLeadSegue", sender: nil)
+       // self.navigationController?.popToRootViewController(animated: true)
+    }
+
+    
     func punchout() {
-        
+        isMenuClicked = !isMenuClicked
         let formatter = DateFormatter()
         formatter.dateFormat = self.inputDateFormat
         formatter.timeZone = TimeZone.current
@@ -236,32 +277,52 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func nextButtonClicked() {
-        let customView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width - 141, y: 0, width: 140 , height: 80))
-        let logoutButton = UIButton(type: UIButtonType.system)
-        //Set a frame for the button. Ignored in AutoLayout/ Stack Views
-        logoutButton.frame = CGRect(x: 0, y: 0, width: 140, height: 40)
-        logoutButton.setTitle("Log out", for: .normal)
-        logoutButton.setTitleColor(UIColor.black, for: .normal)
-        logoutButton.addTarget(self, action:#selector(logout), for: .touchUpInside)
         
-        let punchoutButton = UIButton(type: UIButtonType.system)
-        //Set a frame for the button. Ignored in AutoLayout/ Stack Views
-        punchoutButton.frame = CGRect(x: 0, y: 40, width: 140, height: 40)
-        punchoutButton.setTitle("Punch out", for: .normal)
-        punchoutButton.setTitleColor(UIColor.black, for: .normal)
-        punchoutButton.addTarget(self, action: #selector(punchout), for: .touchUpInside)
         
-        customView.addSubview(logoutButton)
-        customView.addSubview(punchoutButton)
-        customView.backgroundColor = UIColor.white
-        customView.layer.cornerRadius = 2.0
-        customView.layer.borderColor = UIColor.lightGray.cgColor
-        customView.layer.borderWidth = 1.0
-        customView.clipsToBounds = true
-        self.view.addSubview(customView)
-        self.navigationController?.isNavigationBarHidden = false
-        
+        isMenuClicked = !isMenuClicked
+        if isMenuClicked {
+            menuView = UIView(frame: CGRect(x: UIScreen.main.bounds.size.width - 141, y: 0, width: 160 , height: 120))
+            
+            let assignedLeadButton = UIButton(type: UIButtonType.system)
+            //Set a frame for the button. Ignored in AutoLayout/ Stack Views
+            assignedLeadButton.frame = CGRect(x: 0, y: 0, width: 160, height: 40)
+            assignedLeadButton.setTitle("Assigned Leads", for: .normal)
+            assignedLeadButton.setTitleColor(UIColor.black, for: .normal)
+            assignedLeadButton.addTarget(self, action:#selector(assignedLeadsAction), for: .touchUpInside)
+            
+            let logoutButton = UIButton(type: UIButtonType.system)
+            //Set a frame for the button. Ignored in AutoLayout/ Stack Views
+            logoutButton.frame = CGRect(x: 0, y: 40, width: 160, height: 40)
+            logoutButton.setTitle("Log out", for: .normal)
+            logoutButton.setTitleColor(UIColor.black, for: .normal)
+            logoutButton.addTarget(self, action:#selector(logout), for: .touchUpInside)
+            
+            let punchoutButton = UIButton(type: UIButtonType.system)
+            //Set a frame for the button. Ignored in AutoLayout/ Stack Views
+            punchoutButton.frame = CGRect(x: 0, y: 80, width: 160, height: 40)
+            punchoutButton.setTitle("Punch out", for: .normal)
+            punchoutButton.setTitleColor(UIColor.black, for: .normal)
+            punchoutButton.addTarget(self, action: #selector(punchout), for: .touchUpInside)
+            
+            menuView.addSubview(assignedLeadButton)
+            menuView.addSubview(logoutButton)
+            menuView.addSubview(punchoutButton)
+            menuView.backgroundColor = UIColor.white
+            menuView.layer.cornerRadius = 2.0
+            menuView.layer.borderColor = UIColor.lightGray.cgColor
+            menuView.layer.borderWidth = 1.0
+            menuView.clipsToBounds = true
+            self.view.addSubview(menuView)
+            self.navigationController?.isNavigationBarHidden = false
+           self.menuView.isHidden = false
+        } else {
+            menuView.removeFromSuperview()
+            self.menuView.isHidden = true
+            
+        }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -332,6 +393,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 cell?.followupDateTextField.isHidden = true
                 cell?.followupDateTextField.text = ""
             }
+            
             if isGenerateLead {
                 cell?.updateButton.setTitle("Save Lead", for: .normal)
                 cell?.leadNumberLabel.isHidden = true
@@ -339,62 +401,113 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             } else {
                 cell?.updateButton.setTitle("Update", for: .normal)
                 cell?.leadNumberLabel.isHidden = false
-                
-                if let customerName = lead.value(forKey: "CustomerName") as? String  {
-                    if (cell?.customerNameTextField.text?.isEmpty)! {
-                        cell?.customerNameTextField.text = customerName
-                    }
-                    
-                }
-                if let alternateNumber = lead.value(forKey: "AlternateMobileNumber") as? String  {
-                    if (cell?.alternameMobileNoTextField.text?.isEmpty)! {
-                        cell?.alternameMobileNoTextField.text = alternateNumber
-                    }
-                    
-                }
-                
-                if let comments = lead.value(forKey: "Comments") as? String  {
-                    if (cell?.commentTextField.text?.isEmpty)! {
-                        cell?.commentTextField.text = comments
-                    }
-                }
-                
-                if let customerMobileNoTextField = lead.value(forKey: "MobileNumber") as? String {
-                    if (cell?.customerMobileNoTextField.text?.isEmpty)! {
-                        cell?.customerMobileNoTextField.text = customerMobileNoTextField
-                    }
-                }
-                
-                if let status = lead.value(forKey: "Stauts") as? String {
-                    
-                    if (cell?.stateTextField.text?.isEmpty)! {
-                        cell?.stateTextField.text = status
-                    }
-                }
-                
-                if let address = lead.value(forKey: "Address") as? String {
-                    if (cell?.addressTextField.text?.isEmpty)! {
-                        cell?.addressTextField.text = address
-                    }
-                }
-                if let pincode = lead.value(forKey: "Pincode") as? String  {
-                    if (cell?.pinCodeTextField.text?.isEmpty)! {
-                        cell?.pinCodeTextField.text = pincode
-                    }
-                    
-                }
+            }
             
-                if let seriesNumber =  self.lead.value(forKey: "SeriesNumber") as? String {
-                    if (cell?.leadNumberLabel.text?.isEmpty)! {
-                        cell?.leadNumberLabel.text = "Lead No.: \(seriesNumber)"
-                    }
+            
+            if let customerName = lead.value(forKey: "CustomerName") as? String  {
+                if (cell?.customerNameTextField.text?.isEmpty)! {
+                    cell?.customerNameTextField.text = customerName
                 }
-                if let productName =  self.lead.value(forKey: "ProductName") as? String {
-                    if (cell?.productNameTextField.text?.isEmpty)! {
-                        cell?.productNameTextField.text = productName
-                    }
+                
+            }
+            if let alternateNumber = lead.value(forKey: "AlternateMobileNumber") as? String  {
+                if (cell?.alternameMobileNoTextField.text?.isEmpty)! {
+                    cell?.alternameMobileNoTextField.text = alternateNumber
+                }
+                
+            }
+            
+            if let comments = lead.value(forKey: "Comments") as? String  {
+                if (cell?.commentTextField.text?.isEmpty)! {
+                    cell?.commentTextField.text = comments
                 }
             }
+            
+            if let customerMobileNoTextField = lead.value(forKey: "MobileNumber") as? String {
+                if (cell?.customerMobileNoTextField.text?.isEmpty)! {
+                    cell?.customerMobileNoTextField.text = customerMobileNoTextField
+                }
+            } else {
+                cell?.customerMobileNoTextField.text = searchLeadMobileNo
+            }
+            
+            if let status = lead.value(forKey: "Stauts") as? String {
+                
+                if (cell?.stateTextField.text?.isEmpty)! {
+                    cell?.stateTextField.text = status
+                }
+            }
+            
+            if let address = lead.value(forKey: "Address") as? String {
+                if (cell?.addressTextField.text?.isEmpty)! {
+                    cell?.addressTextField.text = address
+                }
+            }
+            if let pincode = lead.value(forKey: "Pincode") as? String  {
+                if (cell?.pinCodeTextField.text?.isEmpty)! {
+                    cell?.pinCodeTextField.text = pincode
+                }
+                
+            }
+            
+            if let cityName =  self.lead.value(forKey: "CityName") as? String {
+                if (cell?.cityTextField.text?.isEmpty)! {
+                    cell?.cityTextField.text = cityName
+                }
+            }
+            if let location =  self.lead.value(forKey: "Location") as? String {
+                if (cell?.stateTextField.text?.isEmpty)! {
+                    cell?.followupDateTextField.text = location
+                }
+            }
+            
+            if let emailId =  self.lead.value(forKey: "EmailID") as? String {
+                if (cell?.emailIdTextField.text?.isEmpty)! {
+                    cell?.emailIdTextField.text = emailId
+                }
+            }
+            if let source =  self.lead.value(forKey: "LeadSource") as? String {
+                if (cell?.enquiryTextField.text?.isEmpty)! {
+                    cell?.enquiryTextField.text = source
+                }
+            }
+
+
+            
+            if let seriesNumber =  self.lead.value(forKey: "SeriesNumber") as? String {
+                if (cell?.leadNumberLabel.text?.isEmpty)! {
+                    cell?.leadNumberLabel.text = "Lead No.: \(seriesNumber)"
+                }
+            }
+            if let productName =  self.lead.value(forKey: "ProductName") as? String {
+                if (cell?.productNameTextField.text?.isEmpty)! {
+                    cell?.productNameTextField.text = productName
+                }
+            }
+            
+            if let swcName = lead.value(forKey: "SwcName") as? String {
+                if (cell?.swcNameTextField.text?.isEmpty)! {
+                    cell?.swcNameTextField.text = swcName
+                }
+            }
+            if let modelName = lead.value(forKey: "ModelName") as? String  {
+                if (cell?.productModelTextField.text?.isEmpty)! {
+                    cell?.productModelTextField.text = modelName
+                }
+            }
+            
+            if let demoFixedDate =  self.lead.value(forKey: "DemoFixedDate") as? String {
+                if (cell?.demoDateTextFiled.text?.isEmpty)! {
+                    cell?.demoDateTextFiled.text = demoFixedDate
+                }
+            }
+            if let followupDate =  self.lead.value(forKey: "FollowUpDate") as? String {
+                if (cell?.followupDateTextField.text?.isEmpty)! {
+                    cell?.followupDateTextField.text = followupDate
+                }
+            }
+
+            
             generateLeadCell = cell!
             generateLeadCell.layoutIfNeeded()
             return  cell!
@@ -425,10 +538,6 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             showAlert(title: "Error", message: "Mobile No. can not be blank")
         }else if (generateLeadCell.customerMobileNoTextField.text?.characters.count)! > 10 || (generateLeadCell.customerMobileNoTextField.text?.characters.count)! < 10 {
             showAlert(title: "Error", message: "Mobile No. should be 10 digit")
-        }else if (generateLeadCell.alternameMobileNoTextField.text?.isEmpty)! {
-            showAlert(title: "Error", message: "Alternate Mobile No. can not be blank")
-        } else if (generateLeadCell.alternameMobileNoTextField.text?.characters.count)! > 10 || (generateLeadCell.alternameMobileNoTextField.text?.characters.count)! < 10 {
-            showAlert(title: "Error", message: "Alternate Mobile No. should be 10 digit")
         }else if (generateLeadCell.stateTextField.text?.isEmpty)! {
             showAlert(title: "Error", message: "Location can not be blank")
         } else if (generateLeadCell.pinCodeTextField.text?.isEmpty)! {
@@ -449,61 +558,69 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         } else if (generateLeadCell.commentTextField.text?.isEmpty)! {
             showAlert(title: "Error", message: "Comments can not be blank")
         }  else {
-            if let location = getCurrentLocation() {
-                
-                let lattitude = "\(location.coordinate.latitude)"
-                let longitude = "\(location.coordinate.longitude)"
-                var dict: [String: String] = [
-                    "CustomerName": generateLeadCell.customerNameTextField.text!,
-                    "EmailID": generateLeadCell.emailIdTextField.text!,
-                    "MobileNumber": generateLeadCell.customerMobileNoTextField.text!,
-                    "AlternateNumber": generateLeadCell.alternameMobileNoTextField.text!,
-                    "Pincode": generateLeadCell.pinCodeTextField.text!,
-                    "CityName": generateLeadCell.cityTextField.text!,
-                    "Address": generateLeadCell.addressTextField.text!,
-                    "LeadSource": generateLeadCell.enquiryTextField.text!,
+            
+            if ((generateLeadCell.alternameMobileNoTextField.text?.characters.count)! > 0)  && (generateLeadCell.alternameMobileNoTextField.text?.characters.count != 10) {
+                showAlert(title: "Error", message: "Alternate Mobile No. should be 10 digit")
+            } else if !(generateLeadCell.emailIdTextField.text?.isEmpty)! && !generateLeadCell.emailIdTextField.isValidEmail().0 {
+                            showAlert(title: "Error", message: generateLeadCell.emailIdTextField.isValidEmail().1)
+            } else {
+                if let location = getCurrentLocation() {
                     
-                    "ProductName": generateLeadCell.productNameTextField.text!,
-                    "ModelName": generateLeadCell.productModelTextField.text!,
-                    "SwcName": generateLeadCell.swcNameTextField.text!,
-                    "DemoFixedDate": generateLeadCell.demoDateTextFiled.text!,
-                    "FollowUpDate": generateLeadCell.followupDateTextField.text!,
-                    "LeadStatus": generateLeadCell.statusTextField.text!,
-                    "Comments": generateLeadCell.commentTextField.text!,
-                    "RoleID": roleId,
-                    "CreatedBy": createdBy,
-                    "Longitude": longitude,
-                    "Latitude":  lattitude,
-                    "LeadRaisedAddress":  generateLeadCell.addressTextField.text!
-                ]
-                showProgressLoader()
-                if isGenerateLead {
-                    
-                    if FNSReachability.checkInternetConnectivity() {
-                        ServerManager.sharedInstance().generateLead(leadDetails: dict) { (result, data) in
-                            self.parseData(data: data, result: result, apiName: "generateLead")
+                    let lattitude = "\(location.coordinate.latitude)"
+                    let longitude = "\(location.coordinate.longitude)"
+                    var dict: [String: String] = [
+                        "CustomerName": generateLeadCell.customerNameTextField.text!,
+                        "EmailID": generateLeadCell.emailIdTextField.text!,
+                        "MobileNumber": generateLeadCell.customerMobileNoTextField.text!,
+                        "AlternateNumber": generateLeadCell.alternameMobileNoTextField.text!,
+                        "Pincode": generateLeadCell.pinCodeTextField.text!,
+                        "CityName": generateLeadCell.cityTextField.text!,
+                        "Address": generateLeadCell.addressTextField.text!,
+                        "LeadSource": generateLeadCell.enquiryTextField.text!,
+                        
+                        "ProductName": generateLeadCell.productNameTextField.text!,
+                        "ModelName": generateLeadCell.productModelTextField.text!,
+                        "SwcName": generateLeadCell.swcNameTextField.text!,
+                        "DemoFixedDate": generateLeadCell.demoDateTextFiled.text!,
+                        "FollowUpDate": generateLeadCell.followupDateTextField.text!,
+                        "LeadStatus": generateLeadCell.statusTextField.text!,
+                        "Comments": generateLeadCell.commentTextField.text!,
+                        "RoleID": roleId,
+                        "CreatedBy": createdBy,
+                        "Longitude": longitude,
+                        "Latitude":  lattitude,
+                        "LeadRaisedAddress":  generateLeadCell.addressTextField.text!
+                    ]
+                    showProgressLoader()
+                    if isGenerateLead {
+                        
+                        if FNSReachability.checkInternetConnectivity() {
+                            ServerManager.sharedInstance().generateLead(leadDetails: dict) { (result, data) in
+                                self.parseData(data: data, result: result, apiName: "generateLead")
+                            }
+                            
+                        } else {
+                            DatabaseManager.shared.insertLeadData(leadDetails: dict)
+                            DispatchQueue.main.async {
+                                self.hideProgressLoader()
+                            }
+                            showToast(message: leadSavedOfflineMessage)
                         }
                         
                     } else {
-                        DatabaseManager.shared.insertLeadData(leadDetails: dict)
-                        DispatchQueue.main.async {
-                            self.hideProgressLoader()
+                        if let seriesNumber = self.lead.value(forKey: "SeriesNumber") as? String {
+                            dict["SeriesNumber"] = seriesNumber
                         }
-                        showToast(message: leadSavedOfflineMessage)
+                        ServerManager.sharedInstance().updateLead(leadDetails: dict) { (result, data) in
+                            
+                            self.parseData(data: data, result: result, apiName: "updateLead")
+                        }
                     }
-                    
                 } else {
-                    if let seriesNumber = self.lead.value(forKey: "SeriesNumber") as? String {
-                        dict["SeriesNumber"] = seriesNumber
-                    }
-                    ServerManager.sharedInstance().updateLead(leadDetails: dict) { (result, data) in
-                        
-                    self.parseData(data: data, result: result, apiName: "updateLead")
-                    }
+                    showToast(message: locationNotFound)
                 }
-            } else {
-                showToast(message: locationNotFound)
             }
+            
             
         }
         
@@ -577,7 +694,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         if currentElement == "ID" {
             cityID = string
         }
-        if currentElement == "Name" {
+        if currentElement == "Name" || currentElement == "CityName" {
             cityName = string
         }
         
@@ -624,6 +741,11 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         if currentElement == "SubSource" {
             subSource = string
         }
+        if currentElement == "SwcName" {
+            swcName = string
+        }
+
+        
         if currentElement == "Status" {
             status = string
         }
@@ -636,6 +758,14 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         if currentElement == "FollowUpFixedDate" {
             followupDate = string
         }
+        
+        if currentElement == "Comments" {
+            comments = string
+        }
+        if currentElement == "Address" {
+            address = string
+        }
+
         
     }
     
@@ -693,7 +823,10 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             lead.setValue(mobileNumber, forKey: "MobileNumber")
             lead.setValue(seriesNumber, forKey: "SeriesNumber")
             lead.setValue(productName, forKey: "ProductName")
+            lead.setValue(modelName, forKey: "ModelName")
             lead.setValue(leadDate, forKey: "LeadDate")
+            lead.setValue(swcName, forKey: "SwcName")
+            lead.setValue(cityName, forKey: "CityName")
             lead.setValue(status, forKey: "Status")
             lead.setValue(address, forKey: "Address")
             lead.setValue(emailId, forKey: "EmailID")
@@ -703,6 +836,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             lead.setValue(leadDate, forKey: "SubSource")
             lead.setValue(fixedDemoDate, forKey: "DemoFixedDate")
             lead.setValue(followupDate, forKey: "FollowUpFixedDate")
+            lead.setValue(comments, forKey: "Comments")
             // print(lead)
             leads.append(lead)
         }
@@ -756,16 +890,19 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         } else if apiName == "cityList" {
                             self.generateLeadCell.cityTextField.data = self.cityList
                         } else if apiName == "productDetails" {
-                            self.generateLeadCell.statusTextField.statusData = self.statusArray
-                            if self.generateLeadCell.statusTextField.text == "Follow Up" {
-                                self.generateLeadCell.followupDateTextField.isHidden = false
-                            } else {
-                                self.generateLeadCell.followupDateTextField.isHidden = true
-                                self.generateLeadCell.followupDateTextField.text = ""
+                            if !self.isSearch {
+                                self.generateLeadCell.statusTextField.statusData = self.statusArray
+                                if self.generateLeadCell.statusTextField.text == "Follow Up" {
+                                    self.generateLeadCell.followupDateTextField.isHidden = false
+                                } else {
+                                    self.generateLeadCell.followupDateTextField.isHidden = true
+                                    self.generateLeadCell.followupDateTextField.text = ""
+                                }
+                                self.generateLeadCell.productNameTextField.data = self.productList
+                                self.generateLeadCell.enquiryTextField.statusData = self.sourceArray
+                                self.getDetailsApi()
                             }
-                            self.generateLeadCell.productNameTextField.data = self.productList
-                            self.generateLeadCell.enquiryTextField.statusData = self.sourceArray
-                            self.getDetailsApi()
+                           
                         } else if apiName == "generateLead" {
                             self.showAlert(title: "Sucessful", message: "Lead Created Sucessfully")
                         } else if apiName == "updateLead" {
@@ -787,8 +924,16 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     break
                     
                 case "404":
+                    
                     DispatchQueue.main.async {
-                        self.showToast(message: locationNotFoundForPincode)
+                        if apiName == "getLeads" {
+                            self.showToast(message: noLeadMessage)
+
+                        } else if apiName == "pincode" {
+                            self.showToast(message: locationNotFoundForPincode)
+
+                        }
+                        self.leadTableView.reloadData()
                     }
                     break
 
@@ -802,4 +947,21 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    @IBAction func searchGenerateLeadAction(_ sender: UIButton) {
+        if (searchLeadCell.mobileTextField.text?.characters.count)! > 0 {
+            searchLeadMobileNo = searchLeadCell.mobileTextField.text!
+            if leads.count > 0 {
+                isGenerateLead = true
+                self.lead = self.leads[0]
+                generateLeadAnimation()
+            } else {
+                isGenerateLead = true
+                generateLeadAnimation()
+            }
+        } else {
+            showAlert(title: "", message: "Please enter Mobile no. and Search")
+        }
+       
+        
+    }
 }

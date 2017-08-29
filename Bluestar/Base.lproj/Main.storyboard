@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -66,11 +65,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluestar_logo" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
-                                <rect key="frame" x="110" y="117.5" width="155" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="R1l-HO-kJg" secondAttribute="height" multiplier="31:15" id="wtE-61-hgt"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
+                                <rect key="frame" x="67" y="23" width="241" height="192"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,7 +76,7 @@
                             <constraint firstItem="Ecg-oM-p7y" firstAttribute="top" secondItem="JjN-ZP-wBb" secondAttribute="bottom" constant="34" id="7vr-4l-olj"/>
                             <constraint firstAttribute="trailing" secondItem="JjN-ZP-wBb" secondAttribute="trailing" constant="20" id="LV9-eH-m1B"/>
                             <constraint firstItem="R1l-HO-kJg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O5t-6j-iyI"/>
-                            <constraint firstItem="Fs4-mc-HNV" firstAttribute="top" secondItem="R1l-HO-kJg" secondAttribute="bottom" constant="29" id="PUg-rS-gRl"/>
+                            <constraint firstItem="Fs4-mc-HNV" firstAttribute="top" secondItem="R1l-HO-kJg" secondAttribute="bottom" constant="7" id="PUg-rS-gRl"/>
                             <constraint firstItem="JjN-ZP-wBb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="a2n-Cx-Z9f"/>
                             <constraint firstItem="1y9-Yj-qcv" firstAttribute="top" secondItem="Fs4-mc-HNV" secondAttribute="bottom" constant="30" id="ePi-gM-Ixf"/>
                             <constraint firstItem="1y9-Yj-qcv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hL5-m0-cyh"/>
@@ -96,12 +92,12 @@
                         <outlet property="emailTextField" destination="1y9-Yj-qcv" id="p7I-wz-78G"/>
                         <outlet property="passwordTextField" destination="JjN-ZP-wBb" id="i8X-ki-7ec"/>
                         <segue destination="qeh-qX-Nwx" kind="show" identifier="attendenceSegue" id="8gh-eP-YQt"/>
-                        <segue destination="VhD-7f-UO9" kind="show" identifier="assignedLeadSegue" id="CWy-in-K4Y"/>
+                        <segue destination="PNl-Bm-RFm" kind="show" identifier="leadSegue" id="u8Q-pF-93b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+            <point key="canvasLocation" x="918" y="137"/>
         </scene>
         <!--Attendance View Controller-->
         <scene sceneID="2fm-7n-Vbt">
@@ -165,12 +161,12 @@
                     </view>
                     <connections>
                         <outlet property="markAttendenceButtion" destination="w30-ji-ItZ" id="Bl6-qY-370"/>
-                        <segue destination="VhD-7f-UO9" kind="show" identifier="assignedLeadSegue" id="lsZ-XK-bjV"/>
+                        <segue destination="PNl-Bm-RFm" kind="show" identifier="leadSegue" id="Chn-Ie-wHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exx-G1-mUm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="-737"/>
+            <point key="canvasLocation" x="1785" y="-654"/>
         </scene>
         <!--Assigned Lead View Controller-->
         <scene sceneID="CaN-zu-4xx">
@@ -222,13 +218,13 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="assignedLeadTableView" destination="hgz-Qk-8dL" id="0U6-Wg-6fx"/>
-                        <segue destination="PNl-Bm-RFm" kind="show" identifier="leadSegue" id="2nX-01-WSt"/>
                         <segue destination="4Md-Ed-cNi" kind="show" identifier="leadDetailSegue" id="MNI-vy-3Vd"/>
+                        <segue destination="PNl-Bm-RFm" kind="show" identifier="leadSegue" id="Fh7-mB-vdH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZZ-dX-nFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1982" y="183"/>
+            <point key="canvasLocation" x="2836" y="-654"/>
         </scene>
         <!--Lead View Controller-->
         <scene sceneID="LsX-rO-X1b">
@@ -242,54 +238,77 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQf-OF-Afb">
+                                <rect key="frame" x="188" y="0.0" width="187" height="38"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Generate Lead">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="generateLeadAction:" destination="PNl-Bm-RFm" eventType="touchUpInside" id="CbZ-pl-U0P"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFn-nM-Kry">
                                 <rect key="frame" x="0.0" y="0.0" width="187" height="38"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="4OF-wc-wfx"/>
                                 </constraints>
-                                <state key="normal" title="Generate Lead">
+                                <state key="normal" title="Search Lead">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="generateLeadAction:" destination="PNl-Bm-RFm" eventType="touchUpInside" id="zl9-rb-Bgx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQf-OF-Afb">
-                                <rect key="frame" x="188" y="0.0" width="187" height="38"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Search Lead">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchLeadAction:" destination="PNl-Bm-RFm" eventType="touchUpInside" id="f5w-iL-UEK"/>
+                                    <action selector="searchLeadAction:" destination="PNl-Bm-RFm" eventType="touchUpInside" id="XCy-Io-Gvu"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1o8-RK-9Zk">
-                                <rect key="frame" x="0.0" y="39" width="187" height="1"/>
+                                <rect key="frame" x="0.0" y="59" width="187" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.1491314172744751" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GEX-ea-ho3">
-                                <rect key="frame" x="0.0" y="40" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="513"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="PNl-Bm-RFm" id="Trh-ob-GfU"/>
                                     <outlet property="delegate" destination="PNl-Bm-RFm" id="AX7-4W-E5M"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyN-j7-ppN">
+                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.031372549020000001" green="0.27058823529999998" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NvG-yZ-GOm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Generate Lead">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J9W-XZ-184"/>
+                                    <action selector="searchGenerateLeadAction:" destination="PNl-Bm-RFm" eventType="touchUpInside" id="A5a-P8-7J5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GEX-ea-ho3" firstAttribute="top" secondItem="aFn-nM-Kry" secondAttribute="bottom" constant="2" id="1QL-8m-AJv"/>
                             <constraint firstItem="bQf-OF-Afb" firstAttribute="leading" secondItem="aFn-nM-Kry" secondAttribute="trailing" constant="1" id="6uo-Ll-ag6"/>
                             <constraint firstAttribute="trailing" secondItem="bQf-OF-Afb" secondAttribute="trailing" id="7ke-wn-OMU"/>
+                            <constraint firstItem="fyN-j7-ppN" firstAttribute="leading" secondItem="Ba9-rd-6wb" secondAttribute="leading" id="9SY-3o-i5T"/>
+                            <constraint firstItem="fyN-j7-ppN" firstAttribute="top" secondItem="GEX-ea-ho3" secondAttribute="bottom" id="Bbs-sw-k8W"/>
+                            <constraint firstAttribute="trailing" secondItem="fyN-j7-ppN" secondAttribute="trailing" id="BdO-Ig-WiT"/>
                             <constraint firstAttribute="trailing" secondItem="bQf-OF-Afb" secondAttribute="trailing" id="Eku-DG-gzI"/>
                             <constraint firstItem="aFn-nM-Kry" firstAttribute="leading" secondItem="Ba9-rd-6wb" secondAttribute="leading" id="LhE-80-lft"/>
                             <constraint firstItem="bQf-OF-Afb" firstAttribute="width" secondItem="aFn-nM-Kry" secondAttribute="width" id="NQY-y0-TUb"/>
                             <constraint firstItem="aFn-nM-Kry" firstAttribute="top" secondItem="6Nb-X3-lKB" secondAttribute="bottom" id="YcV-kW-S2h"/>
                             <constraint firstItem="bQf-OF-Afb" firstAttribute="leading" secondItem="aFn-nM-Kry" secondAttribute="trailing" constant="1" id="c2S-oE-IOz"/>
-                            <constraint firstItem="sjk-gf-fKU" firstAttribute="top" secondItem="GEX-ea-ho3" secondAttribute="bottom" id="gMs-5Y-3c1"/>
+                            <constraint firstItem="sjk-gf-fKU" firstAttribute="top" secondItem="fyN-j7-ppN" secondAttribute="bottom" id="cl7-3z-k1r"/>
                             <constraint firstItem="GEX-ea-ho3" firstAttribute="leading" secondItem="Ba9-rd-6wb" secondAttribute="leading" id="odl-tG-Kin"/>
                             <constraint firstItem="GEX-ea-ho3" firstAttribute="top" secondItem="bQf-OF-Afb" secondAttribute="bottom" constant="2" id="t2D-Zn-qUx"/>
                             <constraint firstAttribute="trailing" secondItem="GEX-ea-ho3" secondAttribute="trailing" id="thT-90-PGh"/>
@@ -297,16 +316,18 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="generateLeadButton" destination="aFn-nM-Kry" id="yit-cU-2HT"/>
+                        <outlet property="generateLeadButton" destination="bQf-OF-Afb" id="2Bb-i7-zGr"/>
+                        <outlet property="generateLeadHeightConstrint" destination="NvG-yZ-GOm" id="apm-mQ-90n"/>
                         <outlet property="leadTableView" destination="GEX-ea-ho3" id="gy5-iq-jcQ"/>
-                        <outlet property="searchLeadButton" destination="bQf-OF-Afb" id="4Vr-UX-VsY"/>
+                        <outlet property="searchLeadButton" destination="aFn-nM-Kry" id="fGl-kz-GSE"/>
                         <outlet property="tabSelectionView" destination="1o8-RK-9Zk" id="Vka-yL-wai"/>
                         <segue destination="4Md-Ed-cNi" kind="show" identifier="leadDetailSegue" id="XHG-ic-mdq"/>
+                        <segue destination="VhD-7f-UO9" kind="show" identifier="assignedLeadSegue" id="hUP-dE-wnL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxa-pl-ThE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3342" y="666"/>
+            <point key="canvasLocation" x="1821.5999999999999" y="136.28185907046478"/>
         </scene>
         <!--Lead Detail View Controller-->
         <scene sceneID="Mgd-uN-haq">
@@ -317,15 +338,15 @@
                         <viewControllerLayoutGuide type="bottom" id="yBm-2c-dgc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DD3-1u-dLN">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ziO-zU-quA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="593"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1F-q7-6ws">
-                                <rect key="frame" x="20" y="557" width="99.5" height="38"/>
+                                <rect key="frame" x="20" y="621" width="99.5" height="38"/>
                                 <color key="backgroundColor" red="1" green="0.64628052711486816" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="DaF-OW-wW9"/>
@@ -344,7 +365,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnG-IP-NHS">
-                                <rect key="frame" x="137.5" y="557" width="100" height="38"/>
+                                <rect key="frame" x="137.5" y="621" width="100" height="38"/>
                                 <color key="backgroundColor" red="0.19984444975852966" green="0.20028755068778992" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="6mh-Oy-Unb"/>
@@ -363,7 +384,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-zZ-J0D">
-                                <rect key="frame" x="255.5" y="557" width="99.5" height="38"/>
+                                <rect key="frame" x="255.5" y="621" width="99.5" height="38"/>
                                 <color key="backgroundColor" red="0.19320017099380493" green="0.60111933946609497" blue="0.19658473134040833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="lIQ-73-I9M"/>
@@ -408,14 +429,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFV-2X-N7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4017" y="-251"/>
+            <point key="canvasLocation" x="2836" y="326"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FbD-EP-feL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jRr-J7-jSm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="MUG-3r-Eqb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="MUG-3r-Eqb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -436,12 +457,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bluestar_logo" width="155" height="75"/>
+        <image name="ic_launcher" width="192" height="192"/>
         <image name="ic_user" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lsZ-XK-bjV"/>
-        <segue reference="2nX-01-WSt"/>
+        <segue reference="Fh7-mB-vdH"/>
         <segue reference="MNI-vy-3Vd"/>
     </inferredMetricsTieBreakers>
 </document>
