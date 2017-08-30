@@ -167,7 +167,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             
         case .DatePicker:
             self.delegate = self
-            self.text = ""
+            // self.text = ""
             if let rightSideImageName = rightImageName {
                 self.textFieldImage = UIImage(named: rightSideImageName)
                 let rightIcon = UIImageView(image: self.textFieldImage)
@@ -181,32 +181,10 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             break
         case .Picker:
             self.delegate = self
-            self.text = ""
+           // self.text = ""
             pickerView.delegate = self
             pickerView.dataSource = self
-            if data.count > 0 && self.tag == 100 {
-                self.text = "\(data[0].value(forKey: "Name")!)"
-
-            }
-            
-            if statusData.count > 0 && self.tag == 101 {
-                self.text = "\(statusData[0])"
-    
-            }
-
-            if data.count > 0 && self.tag == 102 {
-                self.text = "\(data[0].value(forKey: "ProductName")!)"
-            }
-
-            if pickerData.count > 0 && self.tag == 103 {
-                self.text = "\(pickerData[0])"
-            }
-            
-            if statusData.count > 0  && self.tag == 105 {
-                self.text = "\(statusData[0])"
-            }
          
-            
             if let rightSideImageName = rightImageName {
                 self.textFieldImage = UIImage(named: rightSideImageName)
                 let rightIcon = UIImageView(image: self.textFieldImage)
@@ -221,7 +199,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             break
         case .UserName:
             self.delegate = self
-            self.text = ""
+            // self.text = ""
             self.keyboardType = .default
             if let rightSideImageName = rightImageName {
                 self.textFieldImage = UIImage(named: rightSideImageName)

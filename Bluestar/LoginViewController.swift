@@ -59,82 +59,95 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
     
     
     @IBAction func loginAction(_ sender: UIButton) {
+        
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
         if formIsValid() {
             showProgressLoader()
             ServerManager.sharedInstance().getUserDetails(userName: emailTextField.text!, completion: { (result, data) in
-                
-                let parser = XMLParser(data: data)
-                parser.delegate = self
-                let success:Bool = parser.parse()
-                
-                if success {
+                if result == requestTimeOutErrorMessage {
+                    DispatchQueue.main.async {
+                        self.hideProgressLoader()
+                        self.showToast(message: requestTimeOutErrorMessage)
+                    }
+
+                } else {
+                    
+                    let parser = XMLParser(data: data)
+                    parser.delegate = self
+                    let success:Bool = parser.parse()
+                    
+                    if success {
                         if ServerManager.sharedInstance().userDetailsDict.count > 0 {
-                        print(ServerManager.sharedInstance().userDetailsDict)
-                        let userDetailsDict = ServerManager.sharedInstance().userDetailsDict
-                        let responseCode = userDetailsDict.value(forKey: "ResponseCode") as! String
-                        switch  responseCode {
-                        case "200":
-                            if let password = userDetailsDict.value(forKey: "Password") as? String , password == self.passwordTextField.text! {
-                                DispatchQueue.main.async {
-                                    self.emailTextField.text = ""
-                                    self.passwordTextField.text = ""
-                                    
-                                    let formatter = DateFormatter()
-                                    formatter.dateFormat = self.inputDateFormat
-                                    formatter.timeZone = TimeZone.current
-                                    formatter.dateFormat = "'at' h:mm a"
-                                    formatter.amSymbol = "AM"
-                                    formatter.pmSymbol = "PM"
-                                    if let dateTime = UserDefaults.standard.value(forKey: "CurrentDate") as? Date {
-                                        let isAttendenceMarked =  UserDefaults.standard.bool(forKey: "isAttendenceMarked")
-                                        if formatter.calendar.isDateInToday(dateTime) && isAttendenceMarked  {
+                            print(ServerManager.sharedInstance().userDetailsDict)
+                            let userDetailsDict = ServerManager.sharedInstance().userDetailsDict
+                            let responseCode = userDetailsDict.value(forKey: "ResponseCode") as! String
+                            switch  responseCode {
+                            case "200":
+                                if let password = userDetailsDict.value(forKey: "Password") as? String , password == self.passwordTextField.text! {
+                                    DispatchQueue.main.async {
+                                        self.emailTextField.text = ""
+                                        self.passwordTextField.text = ""
+                                        
+                                        let formatter = DateFormatter()
+                                        formatter.dateFormat = self.inputDateFormat
+                                        formatter.timeZone = TimeZone.current
+                                        formatter.dateFormat = "'at' h:mm a"
+                                        formatter.amSymbol = "AM"
+                                        formatter.pmSymbol = "PM"
+                                        if let dateTime = UserDefaults.standard.value(forKey: "CurrentDate") as? Date {
+                                            let isAttendenceMarked =  UserDefaults.standard.bool(forKey: "isAttendenceMarked")
+                                            if formatter.calendar.isDateInToday(dateTime) && isAttendenceMarked  {
+                                                
+                                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "attendenceVC")
+                                                
+                                                self.navigationController?.pushViewController(vc!, animated: false)
+                                                self.performSegue(withIdentifier: "leadSegue", sender: self)
+                                            } else {
+                                                self.performSegue(withIdentifier: "attendenceSegue", sender: self)
+                                            }
                                             
-                                           let vc = self.storyboard?.instantiateViewController(withIdentifier: "attendenceVC")
-                                          
-                                            self.navigationController?.pushViewController(vc!, animated: false)
-                                            self.performSegue(withIdentifier: "leadSegue", sender: self)
                                         } else {
                                             self.performSegue(withIdentifier: "attendenceSegue", sender: self)
                                         }
                                         
-                                    } else {
-                                        self.performSegue(withIdentifier: "attendenceSegue", sender: self)
+                                        
+                                        
+                                        self.hideProgressLoader()
                                     }
-
-                                    
-                                    
-                                    self.hideProgressLoader()
+                                } else {
+                                    DispatchQueue.main.async {
+                                        self.hideProgressLoader()
+                                        self.showToast(message: worngIdOrPassword)
+                                    }
                                 }
-                            } else {
+                                
+                            case "404":
                                 DispatchQueue.main.async {
                                     self.hideProgressLoader()
+                                    
                                     self.showToast(message: worngIdOrPassword)
                                 }
+                            default:
+                                DispatchQueue.main.async {
+                                    self.hideProgressLoader()
+                                    self.showToast(message: serverErrorMessage)
+                                }
+                                break
+                                
                             }
                             
-                        case "404":
+                        } else {
+                            
                             DispatchQueue.main.async {
                                 self.hideProgressLoader()
-
                                 self.showToast(message: worngIdOrPassword)
                             }
-                        default:
-                            DispatchQueue.main.async {
-                                self.hideProgressLoader()
-                                self.showToast(message: serverErrorMessage)
-                            }
-                            break
-                            
                         }
                         
-                    } else {
-                            
-                        DispatchQueue.main.async {
-                            self.hideProgressLoader()
-                            self.showToast(message: worngIdOrPassword)
-                        }
                     }
-                    
+
                 }
             })
            

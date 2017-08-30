@@ -16,6 +16,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchLeadButton: UIButton!
     @IBOutlet weak var generateLeadHeightConstrint: NSLayoutConstraint!
     
+    @IBOutlet weak var searchGenerateLeadButton: UIButton!
     var isGenerateLead = false
     
     var generateLeadCell = GenerateLeadTableViewCell()
@@ -92,7 +93,8 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             self.tabSelectionView.frame = CGRect(x: self.searchLeadButton.frame.origin.x, y: self.searchLeadButton.frame.origin.y + self.searchLeadButton.frame.size.height , width: self.searchLeadButton.frame.size.width, height: 2)
             self.tabSelectionView.layoutIfNeeded()
             isSearch = true
-            generateLeadHeightConstrint.constant = 50
+            generateLeadHeightConstrint.constant = 52
+            searchGenerateLeadButton.isHidden = false
             self.generateLeadButton.setTitle("Generate Lead", for: .normal)
         } else {
             self.generateLeadButton.setTitle("Update Lead", for: .normal)
@@ -100,6 +102,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             generateLeadAnimation()
             isSearch = false
             generateLeadHeightConstrint.constant = 0
+            searchGenerateLeadButton.isHidden = true
 
         }
         
@@ -128,7 +131,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func generateLeadAnimation() {
         isSearch = false
         generateLeadHeightConstrint.constant = 0
-
+        searchGenerateLeadButton.isHidden = true
         self.leadTableView.layoutIfNeeded()
         leadTableView.contentOffset = CGPoint(x: 0.0, y: 0.0)
         UIView.animate(withDuration: 0.1) {
@@ -146,9 +149,14 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func searchLeadAction(_ sender: UIButton) {
+        self.searchLead()
+    }
+    
+    func searchLead() {
         isSearch = true
-        generateLeadHeightConstrint.constant = 50
-
+        generateLeadHeightConstrint.constant = 52
+        searchGenerateLeadButton.isHidden = false
+        
         if searchProductList.count == 0 {
             let dict = NSMutableDictionary()
             dict.setValue("Not Selected", forKey: "ProductName")
@@ -159,10 +167,9 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             self.generateLeadButton.setTitleColor(UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             self.searchLeadButton.setTitleColor(UIColor.white, for: .normal)
             self.tabSelectionView.frame = CGRect(x: self.searchLeadButton.frame.origin.x, y: self.searchLeadButton.frame.origin.y + 1 + self.searchLeadButton.frame.size.height , width: self.searchLeadButton.frame.size.width, height: 1)
-           // self.getDetailsApi()
+            // self.getDetailsApi()
             self.leadTableView.reloadData()
         }
-        
     }
     
     func getDetailsApi() {
@@ -196,7 +203,8 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     }
                     
                     DispatchQueue.main.async {
-                        self.generateLeadCell.productModelTextField.pickerData = self.modelList
+                        self.generateLeadCell.productModelTextField.pickerData = self.modelList.sorted(by: { ( $0 < $1 )
+                        })
                     }
                 }
             }
@@ -428,7 +436,10 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     cell?.customerMobileNoTextField.text = customerMobileNoTextField
                 }
             } else {
-                cell?.customerMobileNoTextField.text = searchLeadMobileNo
+                if searchLeadMobileNo.characters.count > 0 {
+                    cell?.customerMobileNoTextField.text = searchLeadMobileNo
+                }
+                
             }
             
             if let status = lead.value(forKey: "Stauts") as? String {
@@ -544,19 +555,17 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             showAlert(title: "Error", message: "Pincode can not be blank")
         } else if (generateLeadCell.pinCodeTextField.text?.characters.count != 6) {
             showAlert(title: "Error", message: "Pincode should be of 6 digits")
-        } else if (generateLeadCell.emailIdTextField.text?.isEmpty)! {
-            showAlert(title: "Error", message: "Email ID can not be blank")
-        } else if !generateLeadCell.emailIdTextField.isValidEmail().0 {
-            showAlert(title: "Error", message: generateLeadCell.emailIdTextField.isValidEmail().1)
-        }else if (generateLeadCell.swcNameTextField.text?.isEmpty)! {
+        }else if (generateLeadCell.enquiryTextField.text?.isEmpty)! {
+            showAlert(title: "Error", message: "Lead source can not be blank")
+        } else if (generateLeadCell.swcNameTextField.text?.isEmpty)! {
             showAlert(title: "Error", message: "SWC Name can not be blank")
         } else if (generateLeadCell.demoDateTextFiled.text?.isEmpty)! {
             showAlert(title: "Error", message: "Demo date can not be blank")
-        } else if generateLeadCell.statusTextField.text == "Follow Up" && (generateLeadCell.followupDateTextField.text?.isEmpty)! {
+        }  else if (generateLeadCell.statusTextField.text?.isEmpty)! {
+            showAlert(title: "Error", message: "Status can not be blank")
+        }else if generateLeadCell.statusTextField.text == "Follow Up" && (generateLeadCell.followupDateTextField.text?.isEmpty)! {
             showAlert(title: "Error", message: "Follow Up date can not be blank")
             
-        } else if (generateLeadCell.commentTextField.text?.isEmpty)! {
-            showAlert(title: "Error", message: "Comments can not be blank")
         }  else {
             
             if ((generateLeadCell.alternameMobileNoTextField.text?.characters.count)! > 0)  && (generateLeadCell.alternameMobileNoTextField.text?.characters.count != 10) {
@@ -656,22 +665,33 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func clearAction()  {
-        
-        generateLeadCell.customerNameTextField.text = ""
-        generateLeadCell.emailIdTextField.text = ""
-        generateLeadCell.customerMobileNoTextField.text = ""
-        generateLeadCell.alternameMobileNoTextField.text = ""
-        generateLeadCell.pinCodeTextField.text = ""
-        generateLeadCell.cityTextField.text = ""
-        generateLeadCell.addressTextField.text = ""
-        generateLeadCell.enquiryTextField.text = ""
-        generateLeadCell.productNameTextField.text = ""
-        generateLeadCell.productModelTextField.text = ""
-        generateLeadCell.swcNameTextField.text = ""
-        generateLeadCell.demoDateTextFiled.text = ""
-        generateLeadCell.followupDateTextField.text = ""
-        generateLeadCell.statusTextField.text = ""
-        generateLeadCell.commentTextField.text = ""
+        if isSearch {
+            searchLeadCell.customerNameTextField.text = ""
+            searchLeadCell.leadIdTextField.text = ""
+            searchLeadCell.mobileTextField.text = ""
+            searchLeadCell.pincodeTextField.text = ""
+            searchLeadCell.productName.text = ""
+            searchLeadCell.statusTextField.text = ""
+        } else {
+            generateLeadCell.customerNameTextField.text = ""
+            generateLeadCell.emailIdTextField.text = ""
+            generateLeadCell.customerMobileNoTextField.text = ""
+            generateLeadCell.alternameMobileNoTextField.text = ""
+            generateLeadCell.pinCodeTextField.text = ""
+            generateLeadCell.cityTextField.text = ""
+            generateLeadCell.addressTextField.text = ""
+            generateLeadCell.enquiryTextField.text = ""
+            generateLeadCell.productNameTextField.text = ""
+            generateLeadCell.productModelTextField.text = ""
+            generateLeadCell.swcNameTextField.text = ""
+            generateLeadCell.demoDateTextFiled.text = ""
+            generateLeadCell.followupDateTextField.text = ""
+            generateLeadCell.statusTextField.text = ""
+            generateLeadCell.commentTextField.text = ""
+            generateLeadCell.regionTextField.text = ""
+            generateLeadCell.stateTextField.text = ""
+
+        }
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -781,9 +801,15 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         if elementName == "string" {
             if isSource {
-                sourceArray.append(statusString)
+                
+                if !sourceArray.contains(statusString) {
+                    sourceArray.append(statusString)
+                }
+
             } else {
-                statusArray.append(statusString)
+                if !statusArray.contains(statusString) {
+                    statusArray.append(statusString)
+                }
             }
             
         }
@@ -802,7 +828,10 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     product.setValue(modelName, forKey: "ModelName")
                     product.setValue(modelDescription, forKey: "ModelDescription")
                     print(product)
-                    productList.append(product)
+                    if !productList.contains(product) {
+                        productList.append(product)
+
+                    }
                     productNameList.append(productNameDict)
                     
                 }
@@ -885,12 +914,20 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 switch responseCode {
                 case "200":
                     DispatchQueue.main.async {
+                        
                         if apiName == "cityDetails" {
                             self.generateLeadCell.regionTextField.text = self.region
                         } else if apiName == "cityList" {
+                          //  cityList.sorted(by: $0 < $1 )
+                            
+                            self.cityList.sort(by: { ($0["Name"] as! String) < $1["Name"] as! String })
+
+                           // cityList.sorted(by: { $0.0 < $1.0 })
                             self.generateLeadCell.cityTextField.data = self.cityList
                         } else if apiName == "productDetails" {
                             if !self.isSearch {
+//                                self.statusArray.sort(by: { ( $0 < $1 )
+//                                })
                                 self.generateLeadCell.statusTextField.statusData = self.statusArray
                                 if self.generateLeadCell.statusTextField.text == "Follow Up" {
                                     self.generateLeadCell.followupDateTextField.isHidden = false
@@ -898,15 +935,29 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                                     self.generateLeadCell.followupDateTextField.isHidden = true
                                     self.generateLeadCell.followupDateTextField.text = ""
                                 }
+                                self.productList.sort(by: { ($0["ProductName"] as! String) < $1["ProductName"] as! String })
+                                
+                               // self.productList.sort(by: {( $0 < $1 )})
                                 self.generateLeadCell.productNameTextField.data = self.productList
-                                self.generateLeadCell.enquiryTextField.statusData = self.sourceArray
+                                self.sourceArray.sort(by: {( $0 < $1 )})
+                                    self.generateLeadCell.enquiryTextField.statusData = self.sourceArray
                                 self.getDetailsApi()
                             }
                            
                         } else if apiName == "generateLead" {
                             self.showAlert(title: "Sucessful", message: "Lead Created Sucessfully")
+                            self.isSearch = false
+                            self.clearAction()
+                            self.searchLead()
+                            
+
+                           
                         } else if apiName == "updateLead" {
                             self.showAlert(title: "Sucessful", message: leadUpdateMessage)
+                            self.isSearch = false
+                            self.clearAction()
+                            self.searchLead()
+                            
                         } else if apiName == "getLeads" {
                             if self.leads.count == 0 {
                                 self.showToast(message: noLeadMessage)
@@ -922,6 +973,13 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         self.showToast(message: serverErrorMessage)
                     }
                     break
+                    
+                case "402":
+                    DispatchQueue.main.async {
+                        self.showToast(message: serverErrorForMandatoryFieldEmpty)
+                    }
+                    break
+
                     
                 case "404":
                     

@@ -65,7 +65,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bluestar_logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
                                 <rect key="frame" x="67" y="23" width="241" height="192"/>
                             </imageView>
                         </subviews>
@@ -290,7 +290,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J9W-XZ-184"/>
                                     <action selector="searchGenerateLeadAction:" destination="PNl-Bm-RFm" eventType="touchUpInside" id="A5a-P8-7J5"/>
                                 </connections>
                             </button>
@@ -316,9 +315,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="generateLeadButton" destination="bQf-OF-Afb" id="2Bb-i7-zGr"/>
+                        <outlet property="generateLeadButton" destination="bQf-OF-Afb" id="QUC-x2-kft"/>
                         <outlet property="generateLeadHeightConstrint" destination="NvG-yZ-GOm" id="apm-mQ-90n"/>
                         <outlet property="leadTableView" destination="GEX-ea-ho3" id="gy5-iq-jcQ"/>
+                        <outlet property="searchGenerateLeadButton" destination="fyN-j7-ppN" id="mIP-3r-bNb"/>
                         <outlet property="searchLeadButton" destination="aFn-nM-Kry" id="fGl-kz-GSE"/>
                         <outlet property="tabSelectionView" destination="1o8-RK-9Zk" id="Vka-yL-wai"/>
                         <segue destination="4Md-Ed-cNi" kind="show" identifier="leadDetailSegue" id="XHG-ic-mdq"/>
@@ -338,15 +338,15 @@
                         <viewControllerLayoutGuide type="bottom" id="yBm-2c-dgc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DD3-1u-dLN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ziO-zU-quA">
-                                <rect key="frame" x="0.0" y="20" width="375" height="593"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1F-q7-6ws">
-                                <rect key="frame" x="20" y="621" width="99.5" height="38"/>
+                                <rect key="frame" x="20" y="557" width="99.5" height="38"/>
                                 <color key="backgroundColor" red="1" green="0.64628052711486816" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="DaF-OW-wW9"/>
@@ -365,7 +365,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnG-IP-NHS">
-                                <rect key="frame" x="137.5" y="621" width="100" height="38"/>
+                                <rect key="frame" x="137.5" y="557" width="100" height="38"/>
                                 <color key="backgroundColor" red="0.19984444975852966" green="0.20028755068778992" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="6mh-Oy-Unb"/>
@@ -384,7 +384,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-zZ-J0D">
-                                <rect key="frame" x="255.5" y="621" width="99.5" height="38"/>
+                                <rect key="frame" x="255.5" y="557" width="99.5" height="38"/>
                                 <color key="backgroundColor" red="0.19320017099380493" green="0.60111933946609497" blue="0.19658473134040833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="lIQ-73-I9M"/>
@@ -457,11 +457,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_launcher" width="192" height="192"/>
+        <image name="bluestar_logo-1" width="152" height="152"/>
         <image name="ic_user" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fh7-mB-vdH"/>
-        <segue reference="MNI-vy-3Vd"/>
+        <segue reference="u8Q-pF-93b"/>
+        <segue reference="XHG-ic-mdq"/>
     </inferredMetricsTieBreakers>
 </document>

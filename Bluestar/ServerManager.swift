@@ -45,15 +45,31 @@ class ServerManager {
     
     func generateLead(leadDetails: [String: String], completion: @escaping (_ result: String, _ data: Data) -> Void)  {
         
-        if let customerName = leadDetails["CustomerName"] as? String, let emailID = leadDetails["EmailID"] as? String, let mobileNumber = leadDetails["MobileNumber"] as? String, let pincode = leadDetails["Pincode"] as? String, let cityName = leadDetails["CityName"] as? String, let address = leadDetails["Address"] as? String, let leadSource = leadDetails["LeadSource"] as? String, let productName = leadDetails["ProductName"] as? String, let modelName = leadDetails["ModelName"] as? String, let swcName = leadDetails["SwcName"] as? String, let demoFixedDate = leadDetails["DemoFixedDate"] as? String, let followUpDate = leadDetails["FollowUpDate"] as? String, let leadStatus = leadDetails["LeadStatus"] as? String, let comments = leadDetails["Comments"] as? String, let roleID = leadDetails["RoleID"] as? String, let createBy = leadDetails["CreatedBy"] as? String, let longitude = leadDetails["Longitude"] as? String, let Latitude = leadDetails["Latitude"] as? String, let leadRaisedAddress = leadDetails["LeadRaisedAddress"] {
+        if let customerName = leadDetails["CustomerName"] as? String,  let mobileNumber = leadDetails["MobileNumber"] as? String, let pincode = leadDetails["Pincode"] as? String, let cityName = leadDetails["CityName"] as? String, let address = leadDetails["Address"] as? String, let leadSource = leadDetails["LeadSource"] as? String, let productName = leadDetails["ProductName"] as? String, let swcName = leadDetails["SwcName"] as? String, let demoFixedDate = leadDetails["DemoFixedDate"] as? String, let followUpDate = leadDetails["FollowUpDate"] as? String, let leadStatus = leadDetails["LeadStatus"] as? String, let roleID = leadDetails["RoleID"] as? String, let createBy = leadDetails["CreatedBy"] as? String, let longitude = leadDetails["Longitude"] as? String, let Latitude = leadDetails["Latitude"] as? String, let leadRaisedAddress = leadDetails["LeadRaisedAddress"] {
             
             var alternateNumber = ""
             
-           if let alternateNumber1 = leadDetails["AlternateNumber"] as? String {
+           if let alternateNumber1 = leadDetails["AlternateNumber"] {
                 alternateNumber = alternateNumber1
             } else {
                 alternateNumber = ""
             }
+            
+            var comments = ""
+            if let leadComments = leadDetails["Comments"] {
+                comments = leadComments
+            }
+            
+            var emailID = ""
+            if let email_Id = leadDetails["EmailID"] {
+                emailID = email_Id
+            }
+            
+            var modelName = ""
+            if let modelName1 = leadDetails["ModelName"] {
+                modelName = modelName1
+            }
+            
             let leadSubSource = ""
             let soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'><soap:Body><createLead xmlns='http://tempuri.org/'><CustomerName>\(customerName)</CustomerName><EmailID>\(emailID)</EmailID><MobileNumber>\(mobileNumber)</MobileNumber><AlternateNumber>\(alternateNumber)</AlternateNumber><Pincode>\(pincode)</Pincode><CityName>\(cityName)</CityName><Address>\(address)</Address><LeadSource>\(leadSource)</LeadSource><LeadSubSource>\(leadSubSource)</LeadSubSource><ProductName>\(productName)</ProductName><ModelName>\(modelName)</ModelName><SwcName >\(swcName)</SwcName><DemoFixedDate>\(demoFixedDate)</DemoFixedDate><FollowUpDate>\(followUpDate)</FollowUpDate><LeadStatus>\(leadStatus)</LeadStatus><Comments>\(comments)</Comments><RoleID>\(roleID)</RoleID><CreatedBy>\(createBy)</CreatedBy><Longitude>\(longitude)</Longitude><Latitude>\(Latitude)</Latitude><LeadRaisedAddress>\(leadRaisedAddress)</LeadRaisedAddress></createLead></soap:Body></soap:Envelope>"
             self.postApiCall(soapMessage: soapMessage) { (result, data) in
@@ -140,7 +156,7 @@ class ServerManager {
     func updateLead(leadDetails: [String: String], completion: @escaping (_ result: String, _ data: Data) -> Void)  {
         
         
-        if let seriesNumber = leadDetails["SeriesNumber"], let customerName = leadDetails["CustomerName"], let emailID = leadDetails["EmailID"], let mobileNumber = leadDetails["MobileNumber"], let alternateNumber = leadDetails["AlternateNumber"], let pincode = leadDetails["Pincode"], let cityName = leadDetails["CityName"], let address = leadDetails["Address"] , let leadSource = leadDetails["LeadSource"] , let productName = leadDetails["ProductName"] , let modelName = leadDetails["ModelName"] , let swcName = leadDetails["SwcName"] , var demoFixedDate = leadDetails["DemoFixedDate"] , let leadStatus = leadDetails["LeadStatus"] , let comments = leadDetails["Comments"],  let createBy = leadDetails["CreatedBy"] , let longitude = leadDetails["Longitude"] , let Latitude = leadDetails["Latitude"] , let leadRaisedAddress = leadDetails["LeadRaisedAddress"] {
+        if let seriesNumber = leadDetails["SeriesNumber"], let customerName = leadDetails["CustomerName"], let mobileNumber = leadDetails["MobileNumber"], let pincode = leadDetails["Pincode"], let cityName = leadDetails["CityName"], let address = leadDetails["Address"] , let leadSource = leadDetails["LeadSource"] , let productName = leadDetails["ProductName"] , let swcName = leadDetails["SwcName"] , var demoFixedDate = leadDetails["DemoFixedDate"] , let leadStatus = leadDetails["LeadStatus"],  let createBy = leadDetails["CreatedBy"] , let longitude = leadDetails["Longitude"] , let Latitude = leadDetails["Latitude"] , let leadRaisedAddress = leadDetails["LeadRaisedAddress"] {
             
             var followUpDate = ""
             if let followUp = leadDetails["FollowUpDate"] {
@@ -149,14 +165,33 @@ class ServerManager {
                 followUpDate = followUpDate.dateToString(dateTime: date)
 
             }
+            var alternateMobileNo = ""
+            if let alternateNumber = leadDetails["AlternateNumber"] {
+                alternateMobileNo = alternateNumber
+            }
+            var comments = ""
+            if let leadComments = leadDetails["Comments"] {
+                comments = leadComments
+            }
+            
+            var emailID = ""
+            if let email_Id = leadDetails["EmailID"] {
+                emailID = email_Id
+            }
+            var modelName = ""
+            if  let modelName1 = leadDetails["ModelName"] {
+                modelName = modelName1
+            }
             
             let date = demoFixedDate.dateFromString()
             demoFixedDate = demoFixedDate.dateToString(dateTime: date)
             
-            let soapMessage = "<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:tem='http://tempuri.org/'><soapenv:Header/><soapenv:Body><updateLead xmlns='http://tempuri.org/'><SeriesNumber>\(seriesNumber)</SeriesNumber><CustomerName>\(customerName)</CustomerName><EmailID>\(emailID)</EmailID><MobileNumber>\(mobileNumber)</MobileNumber><AlternateNumber>\(alternateNumber)</AlternateNumber><Pincode>\(pincode)</Pincode><CityName>\(cityName)</CityName><Address>\(address)</Address><LeadSource>\(leadSource)</LeadSource><LeadSubSource></LeadSubSource><ProductName>\(productName)</ProductName><SwcName>\(swcName)</SwcName><ModelName>\(modelName)</ModelName><DemoFixedDate>\(demoFixedDate)</DemoFixedDate><FollowUpDate>\(followUpDate)</FollowUpDate><LeadStatus>\(leadStatus)</LeadStatus><Comments>\(comments)</Comments><UpdatedBy>\(createBy)</UpdatedBy><Longitude>\(longitude)</Longitude><Latitude>\(Latitude)</Latitude><LeadRaisedAddress>\(leadRaisedAddress)</LeadRaisedAddress></updateLead></soapenv:Body></soapenv:Envelope>"
+            let soapMessage = "<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' xmlns:tem='http://tempuri.org/'><soapenv:Header/><soapenv:Body><updateLead xmlns='http://tempuri.org/'><SeriesNumber>\(seriesNumber)</SeriesNumber><CustomerName>\(customerName)</CustomerName><EmailID>\(emailID)</EmailID><MobileNumber>\(mobileNumber)</MobileNumber><AlternateNumber>\(alternateMobileNo)</AlternateNumber><Pincode>\(pincode)</Pincode><CityName>\(cityName)</CityName><Address>\(address)</Address><LeadSource>\(leadSource)</LeadSource><LeadSubSource></LeadSubSource><ProductName>\(productName)</ProductName><SwcName>\(swcName)</SwcName><ModelName>\(modelName)</ModelName><DemoFixedDate>\(demoFixedDate)</DemoFixedDate><FollowUpDate>\(followUpDate)</FollowUpDate><LeadStatus>\(leadStatus)</LeadStatus><Comments>\(comments)</Comments><UpdatedBy>\(createBy)</UpdatedBy><Longitude>\(longitude)</Longitude><Latitude>\(Latitude)</Latitude><LeadRaisedAddress>\(leadRaisedAddress)</LeadRaisedAddress></updateLead></soapenv:Body></soapenv:Envelope>"
             self.postApiCall(soapMessage: soapMessage) { (result, data) in
                 completion(result, data)
             }
+        } else {
+            
         }
     }
     
@@ -176,7 +211,7 @@ class ServerManager {
                             completion(result, data)
                         }
                     } else {
-                        completion("Request time out error...!!!", NSData() as Data)
+                        completion(requestTimeOutErrorMessage, NSData() as Data)
                     }
                     
                     }.resume()

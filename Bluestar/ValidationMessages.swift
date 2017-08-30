@@ -13,6 +13,7 @@ import Foundation
 let blankIdAndPassword = "Enter ID and Password."
 let worngIdOrPassword = "Wrong ID or Password."
 let serverErrorMessage = "Server is down. Please try again...!!!"
+let serverErrorForMandatoryFieldEmpty = "One of mandatory field is empty"
 let invalidEmail = "Please enter correct Email ID."
 let inValidPhoneNumber = "Please enter correct phone number."
 let mobileNoErrorMessage = "Mobile No. should be of 10 digits."
@@ -31,8 +32,5 @@ let locationNotFoundForPincode = "Location not found for pincode."
 // Server Message
 
 let base_Url  = "http://14.142.218.42/LMS/service.asmx"
-let timeOutError = "Request time out error...!!!"
-//let serverErrorMessage = "There is some problem from server"
-//let invalidEmail = "Please enter correct Email ID"
-//let inValidPhoneNumber = "Please enter correct phone number"
+
 
