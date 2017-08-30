@@ -55,7 +55,7 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
                 }
 
                 if success {
-                    print("lead count \(self.leads.count)")
+                    
                     DispatchQueue.main.async {
                         self.assignedLeadTableView.reloadData()
                         if self.leads.count == 0 {
@@ -138,7 +138,6 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
             lead.setValue(leadDate, forKey: "LeadDate")
             lead.setValue(status, forKey: "Status")
             lead.setValue(address, forKey: "Address")
-            print(lead)
             if !leads.contains(lead) {
                 leads.append(lead)
             }

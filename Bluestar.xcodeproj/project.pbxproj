@@ -11,6 +11,7 @@
 		F7279D231F3E3864003C54C0 /* SearchLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */; };
 		F7279D241F3E3864003C54C0 /* SearchLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */; };
 		F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7279D291F3F42BF003C54C0 /* FNSReachability.swift */; };
+		F76AC3861F57198700449173 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76AC3851F57198700449173 /* DataManager.swift */; };
 		F78841E71F4AFB84009207DE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78841E61F4AFB84009207DE /* DatabaseManager.swift */; };
 		F789BBBF1F43643400506D50 /* LeadHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */; };
 		F789BBC01F43643400506D50 /* LeadHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */; };
@@ -67,6 +68,7 @@
 		F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLeadTableViewCell.swift; sourceTree = "<group>"; };
 		F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchLeadTableViewCell.xib; sourceTree = "<group>"; };
 		F7279D291F3F42BF003C54C0 /* FNSReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNSReachability.swift; sourceTree = "<group>"; };
+		F76AC3851F57198700449173 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F78841E51F4AFB15009207DE /* Bluestar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bluestar-Bridging-Header.h"; sourceTree = "<group>"; };
 		F78841E61F4AFB84009207DE /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 			name = "Third Party Libraries";
 			sourceTree = "<group>";
 		};
+		F76AC3841F57196400449173 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				F76AC3851F57198700449173 /* DataManager.swift */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
 		F782A08B1F44D553005EF594 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +239,7 @@
 		F7F56D8C1F1A880D006F0490 /* Bluestar */ = {
 			isa = PBXGroup;
 			children = (
+				F76AC3841F57196400449173 /* DataManager */,
 				F78841E51F4AFB15009207DE /* Bluestar-Bridging-Header.h */,
 				F782A08B1F44D553005EF594 /* Model */,
 				F7279CF91F3DE911003C54C0 /* Third Party Libraries */,
@@ -484,6 +495,7 @@
 				F7C332ED1F1BFACB00786FDC /* UIViewController.swift in Sources */,
 				F7F56DBD1F1A8E32006F0490 /* BSTextField.swift in Sources */,
 				F7FB5D611F48C8C000D191B3 /* String.swift in Sources */,
+				F76AC3861F57198700449173 /* DataManager.swift in Sources */,
 				F79152181F36FE2A00A0DB74 /* LeadViewController.swift in Sources */,
 				F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */,
 				F7D503981F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift in Sources */,

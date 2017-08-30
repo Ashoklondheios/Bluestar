@@ -65,7 +65,6 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                 if let placemark = self.placemark {
                     if let _ = placemark.locality {
                         address = ABCreateStringWithAddressDictionary(placemark.addressDictionary!, false)
-                        print("\n\(address)")
                     }
                 }
                 var in_out_flag = true
@@ -75,7 +74,6 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                 
                 showProgressLoader()
                 ServerManager.sharedInstance().getAttendance(userID: userId, in_out_flag: in_out_flag, ipAddress: "10.236.125.14", lattitude: "\(currentLocation.coordinate.latitude)", longitude:  "\(currentLocation.coordinate.longitude)", address: address) { (result, data) in
-                    print(result)
                     
                     let parser = XMLParser(data: data)
                     parser.delegate = self
@@ -86,7 +84,6 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
                     
                     if success {
                         if ServerManager.sharedInstance().getAttendenceDict.count > 0 {
-                            print(ServerManager.sharedInstance().getAttendenceDict)
                             let userDetailsDict = ServerManager.sharedInstance().getAttendenceDict
                             let responseCode = userDetailsDict.value(forKey: "ResponseCode") as! String
                             switch  responseCode {
@@ -149,14 +146,10 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
     
     }
     override func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(manager.location?.coordinate.latitude ?? "")
-        print(manager.location?.coordinate.longitude ?? "")
 
     }
     override func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        print(manager.location?.coordinate.latitude ?? "")
-        print(manager.location?.coordinate.longitude ?? "")
-
+        
     }
     
     

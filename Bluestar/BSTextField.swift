@@ -43,7 +43,7 @@ enum BSTextFieldStatus: Int {
 
 class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-
+    
     
     
     var datePickerView: UIDatePicker?
@@ -64,7 +64,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         didSet {
             updateSelf()
             updateStyle()
-           // updateSelf()
+            // updateSelf()
         }
     }
     
@@ -72,7 +72,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         didSet {
             updateSelf()
             updateStyle()
-           // updateSelf()
+            // updateSelf()
         }
     }
     
@@ -80,13 +80,13 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         didSet {
             updateSelf()
             updateStyle()
-          //  updateSelf()
+            //  updateSelf()
         }
     }
-
+    
     
     func commonInit() {
-
+        
         self.delegate = self
         datePickerView = UIDatePicker()
         self.borderColors = [UIColor.lightGray, UIColor.red]
@@ -94,7 +94,8 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         self.autocorrectionType = .no
         date = NSDate()
         self.textFieldBorderStyle = .Bottom
-        self.font = UIFont.systemFont(ofSize: 17)
+        self.font = UIFont.systemFont(ofSize: 16)
+        //self.place
         updateSelf()
         self.updateStyle()
         
@@ -177,14 +178,14 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 self.rightView = rightIcon
                 
             }
-
+            
             break
         case .Picker:
             self.delegate = self
-           // self.text = ""
+            // self.text = ""
             pickerView.delegate = self
             pickerView.dataSource = self
-         
+            
             if let rightSideImageName = rightImageName {
                 self.textFieldImage = UIImage(named: rightSideImageName)
                 let rightIcon = UIImageView(image: self.textFieldImage)
@@ -194,7 +195,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 self.rightView = rightIcon
                 
             }
-
+            
             
             break
         case .UserName:
@@ -225,9 +226,9 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 self.rightView = rightIcon
                 
             }
-
+            
             break
-
+            
         case .Password:
             self.delegate = self
             self.keyboardType = .default
@@ -252,7 +253,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 self.rightView = rightIcon
                 
             }
-
+            
             break
             
         case .PhoneNumber:
@@ -425,8 +426,6 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             }
         }
         self.resignFirstResponder()
-        // Post notification
-       // NotificationCenter.default.post(name: notificationIdentifierTextField, object: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
     }
     
@@ -439,30 +438,49 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             }
         }
         self.resignFirstResponder()
-      //  NotificationCenter.default.post(name: notificationIdentifierTextField, object: nil)
-        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         self.setBorderToTextField(vBorder: .Bottom, withBorderColor: UIColor(red: (0.0/255.0), green: (122.0/255.0), blue: (255.0/255.0), alpha: 1), withBorderWidth: 1.0)
-       // textField.layer.borderColor = UIColor.blue.cgColor
+        // textField.layer.borderColor = UIColor.blue.cgColor
         if self.style == .DatePicker {
             self.addDatePickerToTextField()
             self.addButtonToPickerTextField()
         }
         
-      if self.style == .Picker {
+        if self.style == .Picker {
+            
+            if self.tag == 101 {
+                self.statusData = DataManager.sharedInstance().leadSourceArray
+            }
+            
+            if self.tag == 102 {
+                self.data = DataManager.sharedInstance().productNameList
+                pickerView.delegate = self
+                pickerView.dataSource = self
+            }
+            
+            if self.tag == 105 {
+                self.statusData = DataManager.sharedInstance().statusArray
+            }
             self.inputView = pickerView
             self.addButtonToPickerViewTextField()
-       }
-       
+        }
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if self.style == .Password {
             return true
-        } else {
+        } else if self.tag == 106 {
+            let text = self.text?.appending(string)
+            if text?.characters.count == 6 {
+            DataManager.sharedInstance().pincode = text!
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PincodeEnteredNotification"), object: nil)
+            }
+            return true
+        }else {
             if self.text?.characters.count == 0 || range.location == 0 {
                 if string.characters.count > 0 {
                     if !(string == "") {
@@ -474,7 +492,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
                 return true
             }
             return true
-
+            
         }
     }
     
@@ -484,7 +502,7 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-      //  textField.layer.borderColor = UIColor.lightGray.cgColor
+        //  textField.layer.borderColor = UIColor.lightGray.cgColor
         self.setBorderToTextField(vBorder: .Bottom, withBorderColor: .gray, withBorderWidth: 1.0)
         let trimmedString = textField.text?.trimmingCharacters(in: .whitespaces)
         textField.text = trimmedString
@@ -492,11 +510,11 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             self.delegate = self
         }
         
-//        if self.style == .Picker {
-//            self.resignFirstResponder()
-//        }
+        //        if self.style == .Picker {
+        //            self.resignFirstResponder()
+        //        }
     }
-
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -517,9 +535,9 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         } else {
             return data.count
         }
-
-
-
+        
+        
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -528,13 +546,15 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         }else if statusData.count > 0 && self.tag == 101 {
             return "\(statusData[row])"
         }else  if self.tag == 102 {
+            let productName = String(describing: data[row].value(forKey: "ProductName")!)
+            DataManager.sharedInstance().selectedProductName = productName
             return "\(String(describing: data[row].value(forKey: "ProductName")!))"
         } else if pickerData.count > 0 && self.tag == 103 {
             return "\(pickerData[row])"
         }else  {
-           return "\(String(describing: data[row].value(forKey: "Name")!))"
+            return "\(String(describing: data[row].value(forKey: "Name")!))"
         }
-
+        
         //return "\(String(describing: data[row].value(forKey: "Name")!))"
     }
     
@@ -551,14 +571,14 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
         }
         else {
             if let name = data[row].value(forKey: "Name") as? String {
-                    self.text = name
-                }
+                self.text = name
+            }
         }
         
-       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
-
+        // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ValueSelectedNotification"), object: nil)
+        
     }
-
     
-
+    
+    
 }

@@ -15,17 +15,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="612.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgg-7A-7hF">
-                        <rect key="frame" x="365" y="5.9999999999999982" width="0.0" height="21.333333333333329"/>
+                        <rect key="frame" x="365" y="6" width="0.0" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Customer Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9En-Qy-2eF" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="40.333333333333329" width="355" height="29.999999999999986"/>
+                        <rect key="frame" x="10" y="40" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="jYk-6q-EMK"/>
                         </constraints>
@@ -34,7 +34,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cust. Mobile No" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OE0-HV-bQO" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="75.333333333333329" width="170" height="30"/>
+                        <rect key="frame" x="10" y="75" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="reQ-WF-t3s"/>
                         </constraints>
@@ -42,8 +42,8 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Alteranative Mobile No" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-Kl-fhY" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="195" y="75.333333333333329" width="170" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Alternative Mobile No" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-Kl-fhY" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
+                        <rect key="frame" x="195" y="75" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="2QW-3p-58X"/>
                         </constraints>
@@ -52,7 +52,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XLF-EG-oqb" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="110.33333333333334" width="355" height="30.000000000000028"/>
+                        <rect key="frame" x="10" y="110" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Ckw-9q-jHF"/>
                         </constraints>
@@ -61,7 +61,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfn-Qv-BKz" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="144.33333333333334" width="355" height="30"/>
+                        <rect key="frame" x="10" y="144" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="1TX-Uk-ez8"/>
                         </constraints>
@@ -69,8 +69,8 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3r5-vo-58b" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="179.33333333333334" width="170" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pincode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3r5-vo-58b" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
+                        <rect key="frame" x="10" y="179" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Yj9-Le-6jl"/>
                         </constraints>
@@ -79,7 +79,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2b5-wk-h0J" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="195" y="179.33333333333334" width="170" height="30"/>
+                        <rect key="frame" x="195" y="179" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="hKQ-Tn-Dae"/>
                         </constraints>
@@ -88,7 +88,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Region" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-nk-WH4" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="214.33333333333334" width="170" height="30"/>
+                        <rect key="frame" x="10" y="214" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="K09-Bq-W6m"/>
                         </constraints>
@@ -96,8 +96,8 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pincode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipA-gQ-Eea" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="195" y="214.33333333333334" width="170" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipA-gQ-Eea" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
+                        <rect key="frame" x="195" y="214" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="8yq-xN-vvl"/>
                         </constraints>
@@ -106,7 +106,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Edi-e1-KXF" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="249.33333333333331" width="355" height="29.999999999999943"/>
+                        <rect key="frame" x="10" y="249" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="P7e-Wb-6HZ"/>
                         </constraints>
@@ -115,7 +115,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lead Source" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zx5-tD-Utn" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="284.33333333333331" width="355" height="30"/>
+                        <rect key="frame" x="10" y="284" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="fci-1j-9nb"/>
                         </constraints>
@@ -124,7 +124,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="SWC Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgD-Zm-nNw" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="319.33333333333331" width="355" height="30"/>
+                        <rect key="frame" x="10" y="319" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="1hn-ck-biJ"/>
                         </constraints>
@@ -133,7 +133,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Product Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jfo-Sz-i0V" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="354.33333333333331" width="355" height="30"/>
+                        <rect key="frame" x="10" y="354" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="892-Ud-Kis"/>
                         </constraints>
@@ -142,7 +142,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Product Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDM-pc-otv" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="389.33333333333331" width="355" height="30"/>
+                        <rect key="frame" x="10" y="389" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="YKC-XS-EHi"/>
                         </constraints>
@@ -151,7 +151,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Demo Fixed Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GWQ-z8-BId" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="425.33333333333331" width="355" height="30"/>
+                        <rect key="frame" x="10" y="425" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="FMA-2b-ipw"/>
                         </constraints>
@@ -160,7 +160,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Status" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4j-d5-97r" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="460.33333333333331" width="170" height="30"/>
+                        <rect key="frame" x="10" y="460" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="kYx-3S-ftA"/>
                         </constraints>
@@ -169,7 +169,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Followup Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TQG-tZ-xeR" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="195" y="460.33333333333331" width="170" height="30"/>
+                        <rect key="frame" x="195" y="460" width="170" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="c4t-vy-9d8"/>
                         </constraints>
@@ -178,7 +178,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAs-1K-N6x" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
-                        <rect key="frame" x="10" y="500.33333333333337" width="355" height="30.000000000000114"/>
+                        <rect key="frame" x="10" y="500" width="355" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="9OT-eD-4cy"/>
                         </constraints>
@@ -187,7 +187,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drU-R1-8Sj">
-                        <rect key="frame" x="10" y="559" width="175.66666666666666" height="30"/>
+                        <rect key="frame" x="10" y="559" width="176" height="30"/>
                         <color key="backgroundColor" red="1" green="0.1491314172744751" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Hdb-Xm-O2T"/>
@@ -200,7 +200,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0B-ec-gkv">
-                        <rect key="frame" x="189.66666666666663" y="559" width="175.33333333333337" height="30"/>
+                        <rect key="frame" x="190" y="559" width="175" height="30"/>
                         <color key="backgroundColor" red="0.083788163959980011" green="0.48855119943618774" blue="0.042424201965332031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="aLq-jB-v8G"/>
@@ -288,7 +288,7 @@
             <connections>
                 <outlet property="addressTextField" destination="gfn-Qv-BKz" id="SPG-RK-6rH"/>
                 <outlet property="alternameMobileNoTextField" destination="PJ0-Kl-fhY" id="iFj-o2-T6W"/>
-                <outlet property="cityTextField" destination="3r5-vo-58b" id="tKJ-Cf-pf0"/>
+                <outlet property="cityTextField" destination="ipA-gQ-Eea" id="a7S-Ou-Bru"/>
                 <outlet property="clearButton" destination="drU-R1-8Sj" id="82m-SC-biS"/>
                 <outlet property="commentTextField" destination="RAs-1K-N6x" id="ert-gc-h2x"/>
                 <outlet property="customerMobileNoTextField" destination="OE0-HV-bQO" id="N9D-cZ-weJ"/>
@@ -299,7 +299,7 @@
                 <outlet property="followupDateTextField" destination="TQG-tZ-xeR" id="Ego-MK-fLP"/>
                 <outlet property="leadNumberLabel" destination="Qgg-7A-7hF" id="kFR-ax-QTa"/>
                 <outlet property="phoneNumberTextField" destination="XLF-EG-oqb" id="EJD-Oa-NPY"/>
-                <outlet property="pinCodeTextField" destination="ipA-gQ-Eea" id="kCV-8a-jRz"/>
+                <outlet property="pinCodeTextField" destination="3r5-vo-58b" id="ZUD-T0-eVo"/>
                 <outlet property="productModelTextField" destination="RDM-pc-otv" id="QC9-cR-6t6"/>
                 <outlet property="productNameTextField" destination="Jfo-Sz-i0V" id="uOU-68-iTB"/>
                 <outlet property="regionTextField" destination="7C8-nk-WH4" id="ihF-64-Lsl"/>

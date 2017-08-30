@@ -84,14 +84,10 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(manager.location?.coordinate.latitude ?? "")
-        print(manager.location?.coordinate.longitude ?? "")
         currentLocation = manager.location!
         
     }
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        print(manager.location?.coordinate.latitude ?? "")
-        print(manager.location?.coordinate.longitude ?? "")
         currentLocation = manager.location!
 
     }
@@ -100,7 +96,6 @@ class BaseViewController: UIViewController, CLLocationManagerDelegate {
         
         if let location = getCurrentLocation() {
             geocoder.reverseGeocodeLocation(location, completionHandler: { (placeMarks, error) in
-                print((placeMarks?[0])!)
                 self.placemark = (placeMarks?[0])!
             })
         }

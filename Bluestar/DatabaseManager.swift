@@ -1,6 +1,6 @@
 //
 //  DatabaseManager.swift
-//  
+//
 //
 //  Created by Ashok Londhe on 21/08/17.
 //
@@ -11,7 +11,7 @@ import UIKit
 import FMDB
 
 class DatabaseManager: NSObject {
-
+    
     var field_customerName = "customerName"
     var field_mobileNumber = "mobileNumber"
     var field_emailId = "emailId"
@@ -40,7 +40,7 @@ class DatabaseManager: NSObject {
     let databaseFileName = "database.sqlite"
     var pathToDatabase: String!
     var database: FMDatabase!
-
+    
     
     override init() {
         super.init()
@@ -69,7 +69,6 @@ class DatabaseManager: NSObject {
                     }
                     catch {
                         print("Could not create table.")
-                        print(error.localizedDescription)
                     }
                     database.close()
                 }
@@ -108,8 +107,7 @@ class DatabaseManager: NSObject {
                 query += "insert into lead (\(field_customerName),\(field_mobileNumber),\(field_emailId),\(field_alternateMobileNo),\(field_pinCode),\(field_cityName),\(field_address),\(field_leadSource),\(field_productName),\(field_modelName),\(field_fixedDemoDate),\(field_followupDate),\(field_status),\(field_comments),\(field_roleId),\(field_createdBy),\(field_longitude),\(field_latitude),\(field_leadRaisedAddress),\(field_swcName)) values ('\(customerName)','\(mobileNumber)','\(emailID)','\(alternateNumber)','\(pincode)', '\(cityName)','\(address)','\(leadSource)','\(productName)','\(modelName)','\(demoFixedDate)','\(followUpDate)','\(leadStatus)','\(comments)' , '\(roleID)','\(createdBy)','\(longitude)','\(latitude)','\(leadRaisedAddress)', '\(swcName)');"
                 
                 if !database.executeStatements(query) {
-                    print("Failed to insert initial data into the database.")
-                   // print(database.lastError(), database.lastErrorMessage())
+                    
                 } else {
                     
                 }
@@ -118,7 +116,7 @@ class DatabaseManager: NSObject {
         }
     }
     
-
+    
     func loadData() {
         if openDatabase() {
             var codes = [String]()
@@ -173,11 +171,11 @@ class DatabaseManager: NSObject {
                         "Latitude":  lattitude!,
                         "LeadRaisedAddress":  leadRaisedAddress!
                     ]
-
+                    
                     ServerManager.sharedInstance().generateLead(leadDetails:dict) { (result, data) in
-                        print(result)
-                            DispatchQueue.main.async {
-                                NotificationCenter.default.post(name: Notification.Name("LeadSavedNotification"), object: nil)
+                        
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: Notification.Name("LeadSavedNotification"), object: nil)
                         }
                     }
                 }

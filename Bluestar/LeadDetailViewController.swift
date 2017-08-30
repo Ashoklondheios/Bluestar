@@ -67,7 +67,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     }
     func getCityName() {
         if (cityName.characters.count) > 2 {
-            ServerManager.sharedInstance().getCityDetails(cityName: cityName) { (result, data) in
+            ServerManager.sharedInstance().getCityDetails(pincode: cityName) { (result, data) in
                 let parser = XMLParser(data: data)
                 parser.delegate = self
                 let success:Bool = parser.parse()
@@ -108,7 +108,6 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                         parser.delegate = self
                         let success:Bool = parser.parse()
                         if success {
-                            print("location = \(self.location)")
                             self.leads[0].setValue(self.location, forKey: "Location")
                         }
                         
@@ -165,7 +164,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             lead.setValue(demoFixedDate, forKey: "DemoFixedDate")
             lead.setValue(followupDate, forKey: "FollowUpFixedDate")
             lead.setValue(comments, forKey: "Comments")
-            print(lead)
+            
             if !leads.contains(lead) {
                 leads.append(lead)
             }

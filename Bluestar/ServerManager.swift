@@ -17,6 +17,7 @@ class ServerManager {
     var getAttendenceDict = NSMutableDictionary()
     var leadDictionary = NSMutableDictionary()
     
+    
     class func sharedInstance() -> ServerManager {
         struct Static {
             static let sharedInstance = ServerManager()
@@ -101,9 +102,9 @@ class ServerManager {
     }
     
     
-    func getCityDetails(cityName: String, completion: @escaping (_ result: String, _ data: Data) -> Void)  {
+    func getCityDetails(pincode: String, completion: @escaping (_ result: String, _ data: Data) -> Void)  {
         
-        let soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'><soap:Body> <getCityDetails xmlns='http://tempuri.org/'><CityName>\(cityName)</CityName></getCityDetails></soap:Body></soap:Envelope>"
+        let soapMessage = "<?xml version='1.0' encoding='utf-8'?><soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'><soap:Body> <getCityDetails xmlns='http://tempuri.org/'><Pincode>\(pincode)</Pincode></getCityDetails></soap:Body></soap:Envelope>"
         self.postApiCall(soapMessage: soapMessage) { (result, data) in
             completion(result, data)
         }

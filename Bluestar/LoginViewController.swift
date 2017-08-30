@@ -80,7 +80,7 @@ class LoginViewController: BaseViewController, XMLParserDelegate, UITextFieldDel
                     
                     if success {
                         if ServerManager.sharedInstance().userDetailsDict.count > 0 {
-                            print(ServerManager.sharedInstance().userDetailsDict)
+                            
                             let userDetailsDict = ServerManager.sharedInstance().userDetailsDict
                             let responseCode = userDetailsDict.value(forKey: "ResponseCode") as! String
                             switch  responseCode {

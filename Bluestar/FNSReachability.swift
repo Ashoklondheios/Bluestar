@@ -45,11 +45,9 @@ public class FNSReachability {
     class func checkInternetConnectivity() -> Bool {
         
         if FNSReachability.isConnectedToNetwork() == true {
-//            print("Internet connection OK")
             return true
         } else {
             print("Internet connection FAILED")
-//            NotificationCenter.default.post(name: Notification.Name("InternetConnecionLostNotification"), object: nil)
             return false
             
         }

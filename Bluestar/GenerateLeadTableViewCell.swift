@@ -41,7 +41,6 @@ class GenerateLeadTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpTextField()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,67 +49,51 @@ class GenerateLeadTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func setUpTextField() {
+        
         self.customerNameTextField.setStyle(.UserName)
-        customerNameTextField.returnKeyType = .next
         
         self.customerMobileNoTextField.setStyle(.PhoneNumber)
-        customerNameTextField.returnKeyType = .next
-
+        
         alternameMobileNoTextField.setStyle(.PhoneNumber)
-        customerNameTextField.returnKeyType = .next
-
+        
         phoneNumberTextField.setStyle(.PhoneNumber)
-        customerNameTextField.returnKeyType = .next
-
+        
         addressTextField.setStyle(.Default)
         addressTextField.returnKeyType = .next
 
-        cityTextField.rightImageName = "downArrow"
-        self.cityTextField.setStyle(.Picker)
-        customerNameTextField.returnKeyType = .next
+        cityTextField.setStyle(.Default)
+        
+        stateTextField.setStyle(.Default)
+        
+        regionTextField.setStyle(.Default)
+        
+        pinCodeTextField.setStyle(.PhoneNumber)
 
-        self.stateTextField.setStyle(.Default)
-        customerNameTextField.returnKeyType = .next
-
-        self.regionTextField.setStyle(.Default)
-        customerNameTextField.returnKeyType = .next
-
-        self.pinCodeTextField.setStyle(.PhoneNumber)
-        customerNameTextField.returnKeyType = .next
-
-
-        self.emailIdTextField.setStyle(.Email)
-        customerNameTextField.returnKeyType = .next
+        emailIdTextField.setStyle(.Email)
+        
         
         enquiryTextField.rightImageName = "downArrow"
-        self.enquiryTextField.setStyle(.Picker)
-        customerNameTextField.returnKeyType = .next
-
-        self.swcNameTextField.setStyle(.Default)
-        customerNameTextField.returnKeyType = .next
-
+        enquiryTextField.setStyle(.Picker)
+        
+        swcNameTextField.setStyle(.Default)
+        
         productNameTextField.rightImageName = "downArrow"
-        self.productNameTextField.setStyle(.Picker)
-        customerNameTextField.returnKeyType = .next
-
+        productNameTextField.setStyle(.Picker)
+        
         productModelTextField.rightImageName = "downArrow"
         self.productModelTextField.setStyle(.Picker)
-        customerNameTextField.returnKeyType = .next
-
+        
         statusTextField.rightImageName = "downArrow"
         self.statusTextField.setStyle(.Picker)
-        customerNameTextField.returnKeyType = .next
-
+        
         demoDateTextFiled.rightImageName = "downArrow"
         self.demoDateTextFiled.setStyle(.DatePicker)
-        customerNameTextField.returnKeyType = .next
-
+        
         followupDateTextField.rightImageName = "downArrow"
         self.followupDateTextField.setStyle(.DatePicker)
-        customerNameTextField.returnKeyType = .next
-
+    
         self.commentTextField.setStyle(.Default)
-        customerNameTextField.returnKeyType = .next
+        
         self.layoutIfNeeded()
     }
     @IBAction func clearAction(_ sender: UIButton) {
