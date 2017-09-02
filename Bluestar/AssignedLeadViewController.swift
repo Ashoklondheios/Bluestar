@@ -21,6 +21,7 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
     var productName = ""
     var status = ""
     var leadDate = ""
+    var region = ""
     var leads = [NSMutableDictionary]()
     var isGenerateLead = true
     var selectedLead = 0
@@ -42,6 +43,8 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
          productName = ""
          status = ""
          leadDate = ""
+        region = ""
+
         //self.navigationItem.hidesBackButton = true()
         addCustomNavigationButton()
         if let userId = ServerManager.sharedInstance().userDetailsDict.value(forKey: "ID") as? String {
@@ -138,6 +141,7 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
             lead.setValue(leadDate, forKey: "LeadDate")
             lead.setValue(status, forKey: "Status")
             lead.setValue(address, forKey: "Address")
+            lead.setValue(region, forKey: "Region")
             if !leads.contains(lead) {
                 leads.append(lead)
             }
@@ -170,6 +174,10 @@ class AssignedLeadViewController: BaseViewController, UITableViewDelegate, UITab
         }
         if currentElement == "Address" {
             address = string
+        }
+        
+        if currentElement == "Region" {
+            region = string
         }
 
     }

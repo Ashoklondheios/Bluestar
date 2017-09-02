@@ -58,7 +58,13 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 }
 
                 if success {
-                    self.getCityName()
+                   // self.getCityName()
+                    self.leadDetailTableView.delegate = self
+                    self.leadDetailTableView.dataSource = self
+                    DispatchQueue.main.async {
+                        self.leadDetailTableView.reloadData()
+                        
+                    }
                 }
             }
             
@@ -101,20 +107,20 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 cell = (tableView.dequeueReusableCell(withIdentifier: "ViewTableViewCell", for: indexPath) as? ViewTableViewCell)!
                 
             }
-            if let pincode = self.leads[indexPath.row].value(forKey: "Pincode") as? String {
-                if pincode.characters.count == 6 {
-                    ServerManager.sharedInstance().getPincodeDetails(pincode: pincode, completion: { (result, data) in
-                        let parser = XMLParser(data: data)
-                        parser.delegate = self
-                        let success:Bool = parser.parse()
-                        if success {
-                            self.leads[0].setValue(self.location, forKey: "Location")
-                        }
-                        
-                    })
-                    
-                }
-            }
+//            if let pincode = self.leads[indexPath.row].value(forKey: "Pincode") as? String {
+//                if pincode.characters.count == 6 {
+//                    ServerManager.sharedInstance().getPincodeDetails(pincode: pincode, completion: { (result, data) in
+//                        let parser = XMLParser(data: data)
+//                        parser.delegate = self
+//                        let success:Bool = parser.parse()
+//                        if success {
+//                            self.leads[0].setValue(self.location, forKey: "Location")
+//                        }
+//                        
+//                    })
+//                    
+//                }
+//            }
             cell?.lead = self.leads[indexPath.row]
             return cell!
         } else {
@@ -160,6 +166,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             lead.setValue(pincode, forKey: "Pincode")
             lead.setValue(location, forKey: "Location")
             lead.setValue(swcName, forKey: "SwcName")
+            lead.setValue(region, forKey: "Region")
             lead.setValue(modelName, forKey: "ModelName")
             lead.setValue(demoFixedDate, forKey: "DemoFixedDate")
             lead.setValue(followupDate, forKey: "FollowUpFixedDate")
@@ -272,11 +279,10 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             location = string
         }
         
-        if currentElement == "CityRegion" {
+        if currentElement == "CityRegion"  || currentElement == "Region"{
             region = string
         }
-        
-        
+ 
         
     }
     

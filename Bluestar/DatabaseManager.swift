@@ -119,7 +119,7 @@ class DatabaseManager: NSObject {
     
     func loadData() {
         if openDatabase() {
-            var codes = [String]()
+           
             let query = "select * from lead"
             do {
                 let results = try database.executeQuery(query, values: nil)

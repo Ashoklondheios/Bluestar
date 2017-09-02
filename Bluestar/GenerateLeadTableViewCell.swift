@@ -38,6 +38,7 @@ class GenerateLeadTableViewCell: UITableViewCell {
     
     @IBOutlet weak var leadNumberLabel: UILabel!
     
+    @IBOutlet weak var modelHeightConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpTextField()
@@ -58,6 +59,7 @@ class GenerateLeadTableViewCell: UITableViewCell {
         
         phoneNumberTextField.setStyle(.PhoneNumber)
         
+        addressTextField.placeholder = "Address"
         addressTextField.setStyle(.Default)
         addressTextField.returnKeyType = .next
 
@@ -80,8 +82,10 @@ class GenerateLeadTableViewCell: UITableViewCell {
         productNameTextField.rightImageName = "downArrow"
         productNameTextField.setStyle(.Picker)
         
-        productModelTextField.rightImageName = "downArrow"
-        self.productModelTextField.setStyle(.Picker)
+        productModelTextField.isHidden = true
+        self.modelHeightConstraint.constant = 0
+        //productModelTextField.rightImageName = "downArrow"
+        //self.productModelTextField.setStyle(.Picker)
         
         statusTextField.rightImageName = "downArrow"
         self.statusTextField.setStyle(.Picker)

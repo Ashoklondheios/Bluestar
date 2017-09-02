@@ -263,6 +263,11 @@ class BSTextField: UITextField, UITextFieldDelegate, UIActionSheetDelegate, UIPi
             break
             
         }
+        
+        self.layer.layoutIfNeeded()
+        self.layer.masksToBounds = true
+        self.layoutSubviews()
+        self.layoutIfNeeded()
     }
     
     func setAttributedText(defaultPlaceholder: String) {

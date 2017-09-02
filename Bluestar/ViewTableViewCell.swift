@@ -119,7 +119,7 @@ class ViewTableViewCell: UITableViewCell {
         }
         
         
-        if let region = lead.value(forKey: "CityRegion") as? String {
+        if let region = lead.value(forKey: "Region") as? String {
             self.regionLabel.attributedText = getAttributedString(mainString: "Region:  ", value: region)
         } else {
             self.regionLabel.attributedText = getAttributedString(mainString: "Region:  ", value: "")

@@ -20,13 +20,10 @@ class LeadHistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var createOnLabel: UILabel!
     
-    @IBOutlet weak var demoFixedDateLabel: UILabel!
-    
     @IBOutlet weak var demoFollowDateLabel: UILabel!
     
     @IBOutlet weak var followupLabel: UILabel!
-    @IBOutlet weak var leadAssignedToLabel: UILabel!
-    
+
     var lead = NSMutableDictionary() {
         didSet{
             bindData()
@@ -51,8 +48,9 @@ class LeadHistoryTableViewCell: UITableViewCell {
     }
     
     func bindData(){
+        
         if let customerName = self.lead.value(forKey: "CreatedBy") as? String {
-            self.customerNameLabel.text = customerName
+            self.customerNameLabel.text = "Created By:- \(customerName)"
         }
         
         if let comments = self.lead.value(forKey: "Comments") as? String {
@@ -63,17 +61,8 @@ class LeadHistoryTableViewCell: UITableViewCell {
             self.createOnLabel.text = "Created On:- \(createdOn)"
         }
 
-
-        if let assignedTo = self.lead.value(forKey: "LeadAssignedTo") as? String {
-            self.leadAssignedToLabel.text = "Lead Assigned To:- \(assignedTo)"
-        }
-
-        if let demoFixedDate = self.lead.value(forKey: "DemoFixedDate") as? String {
-            self.demoFixedDateLabel.text = "Demo Fixed Date:- \(demoFixedDate)"
-        }
-
         if let followUp = self.lead.value(forKey: "FollowUpDate") as? String {
-            self.demoFollowDateLabel.text = "Demo Follow Date:- \(followUp)"
+            self.demoFollowDateLabel.text = "Follow Up Date:- \(followUp)"
         }
 
         if let leadStatus = self.lead.value(forKey: "LeadStatus") as? String {

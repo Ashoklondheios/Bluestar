@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="612.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgg-7A-7hF">
@@ -187,7 +187,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drU-R1-8Sj">
-                        <rect key="frame" x="10" y="559" width="176" height="30"/>
+                        <rect key="frame" x="10" y="559" width="175.66666666666666" height="30"/>
                         <color key="backgroundColor" red="1" green="0.1491314172744751" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Hdb-Xm-O2T"/>
@@ -200,7 +200,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0B-ec-gkv">
-                        <rect key="frame" x="190" y="559" width="175" height="30"/>
+                        <rect key="frame" x="189.66666666666663" y="559" width="175.33333333333337" height="30"/>
                         <color key="backgroundColor" red="0.083788163959980011" green="0.48855119943618774" blue="0.042424201965332031" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="aLq-jB-v8G"/>
@@ -298,6 +298,7 @@
                 <outlet property="enquiryTextField" destination="zx5-tD-Utn" id="Aph-55-u68"/>
                 <outlet property="followupDateTextField" destination="TQG-tZ-xeR" id="Ego-MK-fLP"/>
                 <outlet property="leadNumberLabel" destination="Qgg-7A-7hF" id="kFR-ax-QTa"/>
+                <outlet property="modelHeightConstraint" destination="YKC-XS-EHi" id="G5L-wW-2YF"/>
                 <outlet property="phoneNumberTextField" destination="XLF-EG-oqb" id="EJD-Oa-NPY"/>
                 <outlet property="pinCodeTextField" destination="3r5-vo-58b" id="ZUD-T0-eVo"/>
                 <outlet property="productModelTextField" destination="RDM-pc-otv" id="QC9-cR-6t6"/>

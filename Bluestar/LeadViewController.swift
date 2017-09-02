@@ -203,32 +203,32 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getDetailsApi() {
-        
-            if DataManager.sharedInstance().selectedProductName.characters.count > 2 {
-                modelList = [String]()
-                for product in allProductList {
-                    if product.value(forKey: "ProductName") as? String ==  DataManager.sharedInstance().selectedProductName {
-                        if let modelName = product.value(forKey: "ModelName") as? String {
-                            if !modelList.contains(modelName){
-                                modelList.append(modelName)
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                }
-                
-                DispatchQueue.main.async {
-                    self.generateLeadCell.productModelTextField.pickerData = self.modelList.sorted(by: { ( $0 < $1 )
-                    })
-                }
-            }
-
-        DispatchQueue.main.async {
-            self.leadTableView.reloadData()
-            self.leadTableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
-        }
+//        
+//            if DataManager.sharedInstance().selectedProductName.characters.count > 2 {
+//                modelList = [String]()
+//                for product in allProductList {
+//                    if product.value(forKey: "ProductName") as? String ==  DataManager.sharedInstance().selectedProductName {
+//                        if let modelName = product.value(forKey: "ModelName") as? String {
+//                            if !modelList.contains(modelName){
+//                                modelList.append(modelName)
+//                            }
+//                            
+//                        }
+//                        
+//                    }
+//                    
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    self.generateLeadCell.productModelTextField.pickerData = self.modelList.sorted(by: { ( $0 < $1 )
+//                    })
+//                }
+//            }
+//
+//        DispatchQueue.main.async {
+//            self.leadTableView.reloadData()
+//            self.leadTableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
+//        }
     }
     
     func getProductDetails() {
@@ -735,11 +735,11 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             cityName = string
         }
         
-        if currentElement == "CityLocation" {
+        if currentElement == "CityLocation" || currentElement == "Location" {
             cityLocation = string
         }
         
-        if currentElement == "CityRegion" {
+        if currentElement == "CityRegion" || currentElement == "Region" {
             region = string
         }
         if currentElement == "string" {
@@ -873,6 +873,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             lead.setValue(leadDate, forKey: "LeadDate")
             lead.setValue(swcName, forKey: "SwcName")
             lead.setValue(cityName, forKey: "CityName")
+            lead.setValue(region, forKey: "CityRegion")
             lead.setValue(status, forKey: "Status")
             lead.setValue(address, forKey: "Address")
             lead.setValue(emailId, forKey: "EmailID")
@@ -970,6 +971,12 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         } else if apiName == "getLeads" {
                             if self.leads.count == 0 {
                                 self.showToast(message: noLeadMessage)
+                                let when = DispatchTime.now() + 1
+                                DispatchQueue.main.asyncAfter(deadline: when) {
+                                    self.lead = NSMutableDictionary()
+                                    self.isGenerateLead = true
+                                    self.generateLeadAnimation()
+                                }
                             }
                             self.leadTableView.reloadData()
                         } else if apiName == "pincode" {
@@ -995,6 +1002,12 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     DispatchQueue.main.async {
                         if apiName == "getLeads" {
                             self.showToast(message: noLeadMessage)
+                            let when = DispatchTime.now() + 1
+                            DispatchQueue.main.asyncAfter(deadline: when) {
+                                self.lead = NSMutableDictionary()
+                                self.isGenerateLead = true
+                                self.generateLeadAnimation()
+                            }
                             
                         } else if apiName == "pincode" {
                             self.showToast(message: locationNotFoundForPincode)
@@ -1022,6 +1035,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 self.lead = self.leads[0]
                 generateLeadAnimation()
             } else {
+                self.lead = NSMutableDictionary()
                 isGenerateLead = true
                 generateLeadAnimation()
             }
