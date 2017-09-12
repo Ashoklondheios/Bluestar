@@ -25,7 +25,7 @@ class AttendanceViewController: BaseViewController , XMLParserDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        self.title = "Blue Star"
+        self.title = "Delight"
         
     }
 

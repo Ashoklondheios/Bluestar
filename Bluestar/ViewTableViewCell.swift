@@ -25,9 +25,9 @@ class ViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityLabel: UILabel!
     
-    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
     
-    @IBOutlet weak var regionLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
     
     @IBOutlet weak var pincodeLabel: UILabel!
     
@@ -119,16 +119,16 @@ class ViewTableViewCell: UITableViewCell {
         }
         
         
-        if let region = lead.value(forKey: "Region") as? String {
-            self.regionLabel.attributedText = getAttributedString(mainString: "Region:  ", value: region)
+        if let country = lead.value(forKey: "Country") as? String {
+            self.countryLabel.attributedText = getAttributedString(mainString: "Country:  ", value: country)
         } else {
-            self.regionLabel.attributedText = getAttributedString(mainString: "Region:  ", value: "")
+            self.countryLabel.attributedText = getAttributedString(mainString: "Country:  ", value: "")
         }
         
-        if let location = lead.value(forKey: "Location") as? String {
-            self.locationLabel.attributedText = getAttributedString(mainString: "Location:  ", value: location)
+        if let state = lead.value(forKey: "State") as? String {
+            self.stateLabel.attributedText = getAttributedString(mainString: "State:  ", value: state)
         } else {
-            self.locationLabel.attributedText = getAttributedString(mainString: "Location:  ", value: "")
+            self.stateLabel.attributedText = getAttributedString(mainString: "State:  ", value: "")
         }
 
 

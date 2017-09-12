@@ -28,9 +28,12 @@ let leadSavedOfflineMessage = "Lead data saved offline."
 let requestTimeOutErrorMessage = "Request time out error...!!!"
 let noLeadMessage = "No Leads found."
 let locationNotFoundForPincode = "Location not found for pincode."
+let cityDetailsNotFoundForPincode = "City Details not found for pincode."
+
+
 
 // Server Message
 
-let base_Url  = "http://14.142.218.42/LMS/service.asmx"
+let base_Url  = "http://14.142.218.42/lmsservice/service.asmx"
 
 

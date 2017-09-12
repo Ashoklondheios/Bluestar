@@ -38,11 +38,13 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     var leadStatus = ""
     var location = ""
     var region = ""
+    var state = ""
+    var country = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.leadDetailTableView.register(UINib(nibName: "ViewTableViewCell", bundle: nil), forCellReuseIdentifier: "ViewTableViewCell")
-        self.title = "BlueStar"
+        self.title = "Delight"
         self.leadDetailTableView.register(UINib(nibName: "LeadHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "leadHistoryTableViewCell")
         addCustomNavigationButton()
         
@@ -56,9 +58,9 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 DispatchQueue.main.async {
                     self.hideProgressLoader()
                 }
-
+                
                 if success {
-                   // self.getCityName()
+                    // self.getCityName()
                     self.leadDetailTableView.delegate = self
                     self.leadDetailTableView.dataSource = self
                     DispatchQueue.main.async {
@@ -107,20 +109,20 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 cell = (tableView.dequeueReusableCell(withIdentifier: "ViewTableViewCell", for: indexPath) as? ViewTableViewCell)!
                 
             }
-//            if let pincode = self.leads[indexPath.row].value(forKey: "Pincode") as? String {
-//                if pincode.characters.count == 6 {
-//                    ServerManager.sharedInstance().getPincodeDetails(pincode: pincode, completion: { (result, data) in
-//                        let parser = XMLParser(data: data)
-//                        parser.delegate = self
-//                        let success:Bool = parser.parse()
-//                        if success {
-//                            self.leads[0].setValue(self.location, forKey: "Location")
-//                        }
-//                        
-//                    })
-//                    
-//                }
-//            }
+            //            if let pincode = self.leads[indexPath.row].value(forKey: "Pincode") as? String {
+            //                if pincode.characters.count == 6 {
+            //                    ServerManager.sharedInstance().getPincodeDetails(pincode: pincode, completion: { (result, data) in
+            //                        let parser = XMLParser(data: data)
+            //                        parser.delegate = self
+            //                        let success:Bool = parser.parse()
+            //                        if success {
+            //                            self.leads[0].setValue(self.location, forKey: "Location")
+            //                        }
+            //
+            //                    })
+            //
+            //                }
+            //            }
             cell?.lead = self.leads[indexPath.row]
             return cell!
         } else {
@@ -164,9 +166,9 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
             lead.setValue(alternateMobileNo, forKey: "AlternateMobileNumber")
             lead.setValue(cityName, forKey: "CityName")
             lead.setValue(pincode, forKey: "Pincode")
-            lead.setValue(location, forKey: "Location")
+            lead.setValue(state, forKey: "State")
             lead.setValue(swcName, forKey: "SwcName")
-            lead.setValue(region, forKey: "Region")
+            lead.setValue(country, forKey: "Country")
             lead.setValue(modelName, forKey: "ModelName")
             lead.setValue(demoFixedDate, forKey: "DemoFixedDate")
             lead.setValue(followupDate, forKey: "FollowUpFixedDate")
@@ -282,7 +284,7 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
         if currentElement == "CityRegion"  || currentElement == "Region"{
             region = string
         }
- 
+        
         
     }
     
@@ -302,27 +304,27 @@ class LeadDetailViewController: BaseViewController, UITableViewDelegate, UITable
     @IBAction func historyButtonAction(_ sender: UIButton) {
         
         if leads.count > 0 {
-        showProgressLoader()
-        if let seriesNumber = self.leads[0].value(forKey: "SeriesNumber") as? String {
-            ServerManager.sharedInstance().getLeadHistory(seriesNumber: seriesNumber) { (result, data) in
-                let parser = XMLParser(data: data)
-                parser.delegate = self
-                let success:Bool = parser.parse()
-                DispatchQueue.main.async {
-                    self.hideProgressLoader()
-                }
-                if success {
+            showProgressLoader()
+            if let seriesNumber = self.leads[0].value(forKey: "SeriesNumber") as? String {
+                ServerManager.sharedInstance().getLeadHistory(seriesNumber: seriesNumber) { (result, data) in
+                    let parser = XMLParser(data: data)
+                    parser.delegate = self
+                    let success:Bool = parser.parse()
                     DispatchQueue.main.async {
-                        self.leadDetailTableView.reloadData()
-                        if self.leads.count > 1 {
-                            self.leadDetailTableView.scrollToRow(at: IndexPath.init(row: self.leads.count-1, section: 0), at: UITableViewScrollPosition.top, animated: false)
-                        }
-                        
+                        self.hideProgressLoader()
                     }
+                    if success {
+                        DispatchQueue.main.async {
+                            self.leadDetailTableView.reloadData()
+                            if self.leads.count > 1 {
+                                self.leadDetailTableView.scrollToRow(at: IndexPath.init(row: self.leads.count-1, section: 0), at: UITableViewScrollPosition.top, animated: false)
+                            }
+                            
+                        }
+                    }
+                    
                 }
-                
             }
-        }
         } else {
             showToast(message: "No history Found.")
         }

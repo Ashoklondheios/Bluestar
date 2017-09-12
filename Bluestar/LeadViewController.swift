@@ -28,7 +28,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     var cityLocation = ""
     var cityID = ""
     var cityList = [NSMutableDictionary]()
-    var region = ""
+    var country = ""
     var responseCode = ""
     var isLeadCreated = false
     
@@ -88,7 +88,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         // Setup navigation bar...
         
-        self.title = "Blue Star"
+        self.title = "Delight"
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
         
@@ -170,7 +170,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func generateLeadAction(_ sender: UIButton) {
         lead = NSMutableDictionary()
-            generateLeadAnimation()
+        generateLeadAnimation()
     }
     
     @IBAction func searchLeadAction(_ sender: UIButton) {
@@ -195,7 +195,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             self.generateLeadButton.setTitleColor(UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             self.searchLeadButton.setTitleColor(UIColor.white, for: .normal)
             self.tabSelectionView.frame = CGRect(x: self.searchLeadButton.frame.origin.x, y: self.searchLeadButton.frame.origin.y + 1 + self.searchLeadButton.frame.size.height , width: self.searchLeadButton.frame.size.width, height: 1)
-//            self.leadTableView.reloadData()
+            //            self.leadTableView.reloadData()
         }
         
         self.leadTableView.reloadData()
@@ -203,32 +203,32 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getDetailsApi() {
-//        
-//            if DataManager.sharedInstance().selectedProductName.characters.count > 2 {
-//                modelList = [String]()
-//                for product in allProductList {
-//                    if product.value(forKey: "ProductName") as? String ==  DataManager.sharedInstance().selectedProductName {
-//                        if let modelName = product.value(forKey: "ModelName") as? String {
-//                            if !modelList.contains(modelName){
-//                                modelList.append(modelName)
-//                            }
-//                            
-//                        }
-//                        
-//                    }
-//                    
-//                }
-//                
-//                DispatchQueue.main.async {
-//                    self.generateLeadCell.productModelTextField.pickerData = self.modelList.sorted(by: { ( $0 < $1 )
-//                    })
-//                }
-//            }
-//
-//        DispatchQueue.main.async {
-//            self.leadTableView.reloadData()
-//            self.leadTableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
-//        }
+        //
+        //            if DataManager.sharedInstance().selectedProductName.characters.count > 2 {
+        //                modelList = [String]()
+        //                for product in allProductList {
+        //                    if product.value(forKey: "ProductName") as? String ==  DataManager.sharedInstance().selectedProductName {
+        //                        if let modelName = product.value(forKey: "ModelName") as? String {
+        //                            if !modelList.contains(modelName){
+        //                                modelList.append(modelName)
+        //                            }
+        //
+        //                        }
+        //
+        //                    }
+        //
+        //                }
+        //
+        //                DispatchQueue.main.async {
+        //                    self.generateLeadCell.productModelTextField.pickerData = self.modelList.sorted(by: { ( $0 < $1 )
+        //                    })
+        //                }
+        //            }
+        //
+        //        DispatchQueue.main.async {
+        //            self.leadTableView.reloadData()
+        //            self.leadTableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
+        //        }
     }
     
     func getProductDetails() {
@@ -469,7 +469,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 
                 if pincode.characters.count == 6 {
                     cell?.stateTextField.text = cityLocation
-                    cell?.regionTextField.text = region
+                    cell?.countryTextField.text = country
                 }
                 
             }
@@ -479,7 +479,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     cell?.cityTextField.text = cityName
                 }
             }
-            if let location =  self.lead.value(forKey: "Location") as? String {
+            if let location =  self.lead.value(forKey: "State") as? String {
                 if (cell?.stateTextField.text?.isEmpty)! {
                     cell?.stateTextField.text = location
                 }
@@ -703,7 +703,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             generateLeadCell.followupDateTextField.text = ""
             generateLeadCell.statusTextField.text = ""
             generateLeadCell.commentTextField.text = ""
-            generateLeadCell.regionTextField.text = ""
+            generateLeadCell.countryTextField.text = ""
             generateLeadCell.stateTextField.text = ""
             
         }
@@ -731,16 +731,16 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         if currentElement == "ID" {
             cityID = string
         }
-        if currentElement == "Name" || currentElement == "CityName" {
+        if currentElement == "Name" || currentElement == "CityName" || currentElement == "City" {
             cityName = string
         }
         
-        if currentElement == "CityLocation" || currentElement == "Location" {
+        if currentElement == "State" {
             cityLocation = string
         }
         
-        if currentElement == "CityRegion" || currentElement == "Region" {
-            region = string
+        if currentElement == "Country" {
+            country = string
         }
         if currentElement == "string" {
             statusString = string
@@ -873,7 +873,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             lead.setValue(leadDate, forKey: "LeadDate")
             lead.setValue(swcName, forKey: "SwcName")
             lead.setValue(cityName, forKey: "CityName")
-            lead.setValue(region, forKey: "CityRegion")
+            lead.setValue(country, forKey: "Country")
             lead.setValue(status, forKey: "Status")
             lead.setValue(address, forKey: "Address")
             lead.setValue(emailId, forKey: "EmailID")
@@ -891,6 +891,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func editLead(button: UIButton) {
         selectedLead = button.tag
+        lead = self.leads[selectedLead]
         isGenerateLead = false
         generateLeadAnimation()
     }
@@ -936,7 +937,7 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         if apiName == "cityDetails" {
                             self.generateLeadCell.cityTextField.text = self.cityName
                             self.generateLeadCell.stateTextField.text = self.cityLocation
-                            self.generateLeadCell.regionTextField.text = self.region
+                            self.generateLeadCell.countryTextField.text = self.country
                         } else if apiName == "productDetails" {
                             
                             self.productList.sort(by: { ($0["ProductName"] as! String) < $1["ProductName"] as! String })
@@ -1011,8 +1012,11 @@ class LeadViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                             
                         } else if apiName == "pincode" {
                             self.showToast(message: locationNotFoundForPincode)
+                        } else if apiName == "cityDetails" {
+                            self.showToast(message: cityDetailsNotFoundForPincode)
                             
                         }
+                        
                         self.leadTableView.reloadData()
                     }
                     break

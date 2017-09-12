@@ -21,7 +21,7 @@ class GenerateLeadTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityTextField: BSTextField!
     @IBOutlet weak var stateTextField: BSTextField!
-    @IBOutlet weak var regionTextField: BSTextField!
+    @IBOutlet weak var countryTextField: BSTextField!
     @IBOutlet weak var pinCodeTextField: BSTextField!
     @IBOutlet weak var emailIdTextField: BSTextField!
     @IBOutlet weak var enquiryTextField: BSTextField!
@@ -67,7 +67,7 @@ class GenerateLeadTableViewCell: UITableViewCell {
         
         stateTextField.setStyle(.Default)
         
-        regionTextField.setStyle(.Default)
+        countryTextField.setStyle(.Default)
         
         pinCodeTextField.setStyle(.PhoneNumber)
 

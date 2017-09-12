@@ -16,14 +16,14 @@
 		F789BBBF1F43643400506D50 /* LeadHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */; };
 		F789BBC01F43643400506D50 /* LeadHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */; };
 		F79152181F36FE2A00A0DB74 /* LeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79152171F36FE2A00A0DB74 /* LeadViewController.swift */; };
-		F791521C1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F791521A1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift */; };
-		F791521D1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F791521B1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib */; };
-		F7B4B47E1F40F26C00CFEE96 /* ViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */; };
-		F7B4B47F1F40F26C00CFEE96 /* ViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */; };
 		F7B4B4811F40F44F00CFEE96 /* LeadDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4B4801F40F44F00CFEE96 /* LeadDetailViewController.swift */; };
 		F7C332E81F1BA11100786FDC /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C332E71F1BA11100786FDC /* Validation.swift */; };
 		F7C332EA1F1BA22300786FDC /* ValidationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C332E91F1BA22300786FDC /* ValidationMessages.swift */; };
 		F7C332ED1F1BFACB00786FDC /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C332EC1F1BFACB00786FDC /* UIViewController.swift */; };
+		F7D3D5851F677AB700F4DBB3 /* GenerateLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3D5831F677AB700F4DBB3 /* GenerateLeadTableViewCell.swift */; };
+		F7D3D5861F677AB700F4DBB3 /* GenerateLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D3D5841F677AB700F4DBB3 /* GenerateLeadTableViewCell.xib */; };
+		F7D3D5891F677BE000F4DBB3 /* ViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3D5871F677BE000F4DBB3 /* ViewTableViewCell.swift */; };
+		F7D3D58A1F677BE000F4DBB3 /* ViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D3D5881F677BE000F4DBB3 /* ViewTableViewCell.xib */; };
 		F7D503951F3B815600D6F2E4 /* AssignedLeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D503941F3B815600D6F2E4 /* AssignedLeadViewController.swift */; };
 		F7D503981F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D503961F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift */; };
 		F7D503991F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D503971F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib */; };
@@ -74,30 +74,30 @@
 		F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeadHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		F79152171F36FE2A00A0DB74 /* LeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadViewController.swift; sourceTree = "<group>"; };
-		F791521A1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateLeadTableViewCell.swift; sourceTree = "<group>"; };
-		F791521B1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateLeadTableViewCell.xib; sourceTree = "<group>"; };
-		F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTableViewCell.swift; sourceTree = "<group>"; };
-		F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewTableViewCell.xib; sourceTree = "<group>"; };
 		F7B4B4801F40F44F00CFEE96 /* LeadDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadDetailViewController.swift; sourceTree = "<group>"; };
 		F7C332E71F1BA11100786FDC /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		F7C332E91F1BA22300786FDC /* ValidationMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationMessages.swift; sourceTree = "<group>"; };
 		F7C332EC1F1BFACB00786FDC /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		F7D3D5831F677AB700F4DBB3 /* GenerateLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateLeadTableViewCell.swift; sourceTree = "<group>"; };
+		F7D3D5841F677AB700F4DBB3 /* GenerateLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateLeadTableViewCell.xib; sourceTree = "<group>"; };
+		F7D3D5871F677BE000F4DBB3 /* ViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTableViewCell.swift; sourceTree = "<group>"; };
+		F7D3D5881F677BE000F4DBB3 /* ViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewTableViewCell.xib; sourceTree = "<group>"; };
 		F7D503941F3B815600D6F2E4 /* AssignedLeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedLeadViewController.swift; sourceTree = "<group>"; };
 		F7D503961F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignedLeadTableViewCell.swift; sourceTree = "<group>"; };
 		F7D503971F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssignedLeadTableViewCell.xib; sourceTree = "<group>"; };
 		F7D5039A1F3BAE6600D6F2E4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F7E07F1C1F229B8C00C8B61D /* AttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
-		F7F56D8A1F1A880D006F0490 /* Bluestar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bluestar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F56D8A1F1A880D006F0490 /* Delight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Delight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F56D8D1F1A880D006F0490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7F56D8F1F1A880D006F0490 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F7F56D921F1A880D006F0490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7F56D941F1A880D006F0490 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7F56D971F1A880D006F0490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7F56D991F1A880D006F0490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7F56D9E1F1A880E006F0490 /* BluestarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluestarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F56D9E1F1A880E006F0490 /* DelightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DelightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F56DA21F1A880E006F0490 /* BluestarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluestarTests.swift; sourceTree = "<group>"; };
 		F7F56DA41F1A880E006F0490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7F56DA91F1A880E006F0490 /* BluestarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluestarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F56DA91F1A880E006F0490 /* DelightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DelightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F56DAD1F1A880E006F0490 /* BluestarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluestarUITests.swift; sourceTree = "<group>"; };
 		F7F56DAF1F1A880E006F0490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7F56DBC1F1A8E32006F0490 /* BSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSTextField.swift; sourceTree = "<group>"; };
@@ -178,15 +178,15 @@
 		F79152191F36FE7100A0DB74 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F791521A1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift */,
-				F791521B1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib */,
+				F7D3D5871F677BE000F4DBB3 /* ViewTableViewCell.swift */,
+				F7D3D5881F677BE000F4DBB3 /* ViewTableViewCell.xib */,
+				F7D3D5831F677AB700F4DBB3 /* GenerateLeadTableViewCell.swift */,
+				F7D3D5841F677AB700F4DBB3 /* GenerateLeadTableViewCell.xib */,
 				F7D503961F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift */,
 				F7D503971F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib */,
 				F7D5039A1F3BAE6600D6F2E4 /* BaseViewController.swift */,
 				F7279D211F3E3864003C54C0 /* SearchLeadTableViewCell.swift */,
 				F7279D221F3E3864003C54C0 /* SearchLeadTableViewCell.xib */,
-				F7B4B47C1F40F26C00CFEE96 /* ViewTableViewCell.swift */,
-				F7B4B47D1F40F26C00CFEE96 /* ViewTableViewCell.xib */,
 				F789BBBD1F43643400506D50 /* LeadHistoryTableViewCell.swift */,
 				F789BBBE1F43643400506D50 /* LeadHistoryTableViewCell.xib */,
 			);
@@ -229,9 +229,9 @@
 		F7F56D8B1F1A880D006F0490 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F7F56D8A1F1A880D006F0490 /* Bluestar.app */,
-				F7F56D9E1F1A880E006F0490 /* BluestarTests.xctest */,
-				F7F56DA91F1A880E006F0490 /* BluestarUITests.xctest */,
+				F7F56D8A1F1A880D006F0490 /* Delight.app */,
+				F7F56D9E1F1A880E006F0490 /* DelightTests.xctest */,
+				F7F56DA91F1A880E006F0490 /* DelightUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,9 +296,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F7F56D891F1A880D006F0490 /* Bluestar */ = {
+		F7F56D891F1A880D006F0490 /* Delight */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7F56DB21F1A880E006F0490 /* Build configuration list for PBXNativeTarget "Bluestar" */;
+			buildConfigurationList = F7F56DB21F1A880E006F0490 /* Build configuration list for PBXNativeTarget "Delight" */;
 			buildPhases = (
 				9CF9381779AE56528C53CED5 /* [CP] Check Pods Manifest.lock */,
 				F7F56D861F1A880D006F0490 /* Sources */,
@@ -311,14 +311,14 @@
 			);
 			dependencies = (
 			);
-			name = Bluestar;
+			name = Delight;
 			productName = Bluestar;
-			productReference = F7F56D8A1F1A880D006F0490 /* Bluestar.app */;
+			productReference = F7F56D8A1F1A880D006F0490 /* Delight.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F7F56D9D1F1A880E006F0490 /* BluestarTests */ = {
+		F7F56D9D1F1A880E006F0490 /* DelightTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7F56DB51F1A880E006F0490 /* Build configuration list for PBXNativeTarget "BluestarTests" */;
+			buildConfigurationList = F7F56DB51F1A880E006F0490 /* Build configuration list for PBXNativeTarget "DelightTests" */;
 			buildPhases = (
 				F7F56D9A1F1A880E006F0490 /* Sources */,
 				F7F56D9B1F1A880E006F0490 /* Frameworks */,
@@ -329,14 +329,14 @@
 			dependencies = (
 				F7F56DA01F1A880E006F0490 /* PBXTargetDependency */,
 			);
-			name = BluestarTests;
+			name = DelightTests;
 			productName = BluestarTests;
-			productReference = F7F56D9E1F1A880E006F0490 /* BluestarTests.xctest */;
+			productReference = F7F56D9E1F1A880E006F0490 /* DelightTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F7F56DA81F1A880E006F0490 /* BluestarUITests */ = {
+		F7F56DA81F1A880E006F0490 /* DelightUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7F56DB81F1A880E006F0490 /* Build configuration list for PBXNativeTarget "BluestarUITests" */;
+			buildConfigurationList = F7F56DB81F1A880E006F0490 /* Build configuration list for PBXNativeTarget "DelightUITests" */;
 			buildPhases = (
 				F7F56DA51F1A880E006F0490 /* Sources */,
 				F7F56DA61F1A880E006F0490 /* Frameworks */,
@@ -347,9 +347,9 @@
 			dependencies = (
 				F7F56DAB1F1A880E006F0490 /* PBXTargetDependency */,
 			);
-			name = BluestarUITests;
+			name = DelightUITests;
 			productName = BluestarUITests;
-			productReference = F7F56DA91F1A880E006F0490 /* BluestarUITests.xctest */;
+			productReference = F7F56DA91F1A880E006F0490 /* DelightUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -380,7 +380,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F7F56D851F1A880D006F0490 /* Build configuration list for PBXProject "Bluestar" */;
+			buildConfigurationList = F7F56D851F1A880D006F0490 /* Build configuration list for PBXProject "Delight" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -393,9 +393,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F7F56D891F1A880D006F0490 /* Bluestar */,
-				F7F56D9D1F1A880E006F0490 /* BluestarTests */,
-				F7F56DA81F1A880E006F0490 /* BluestarUITests */,
+				F7F56D891F1A880D006F0490 /* Delight */,
+				F7F56D9D1F1A880E006F0490 /* DelightTests */,
+				F7F56DA81F1A880E006F0490 /* DelightUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -407,12 +407,12 @@
 			files = (
 				F7F56D981F1A880D006F0490 /* LaunchScreen.storyboard in Resources */,
 				F7F56D951F1A880D006F0490 /* Assets.xcassets in Resources */,
+				F7D3D5861F677AB700F4DBB3 /* GenerateLeadTableViewCell.xib in Resources */,
 				F789BBC01F43643400506D50 /* LeadHistoryTableViewCell.xib in Resources */,
+				F7D3D58A1F677BE000F4DBB3 /* ViewTableViewCell.xib in Resources */,
 				F7279D241F3E3864003C54C0 /* SearchLeadTableViewCell.xib in Resources */,
-				F791521D1F36FE9200A0DB74 /* GenerateLeadTableViewCell.xib in Resources */,
 				F7D503991F3B82F600D6F2E4 /* AssignedLeadTableViewCell.xib in Resources */,
 				F7F56D931F1A880D006F0490 /* Main.storyboard in Resources */,
-				F7B4B47F1F40F26C00CFEE96 /* ViewTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +485,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7B4B47E1F40F26C00CFEE96 /* ViewTableViewCell.swift in Sources */,
 				F789BBBF1F43643400506D50 /* LeadHistoryTableViewCell.swift in Sources */,
 				F7279D231F3E3864003C54C0 /* SearchLeadTableViewCell.swift in Sources */,
 				F7D5039B1F3BAE6600D6F2E4 /* BaseViewController.swift in Sources */,
@@ -500,12 +499,13 @@
 				F7279D2A1F3F42BF003C54C0 /* FNSReachability.swift in Sources */,
 				F7D503981F3B82F600D6F2E4 /* AssignedLeadTableViewCell.swift in Sources */,
 				F7F801941F212CCE00D4AB8C /* ServerManager.swift in Sources */,
-				F791521C1F36FE9200A0DB74 /* GenerateLeadTableViewCell.swift in Sources */,
 				F7B4B4811F40F44F00CFEE96 /* LeadDetailViewController.swift in Sources */,
+				F7D3D5851F677AB700F4DBB3 /* GenerateLeadTableViewCell.swift in Sources */,
 				F7C332E81F1BA11100786FDC /* Validation.swift in Sources */,
 				F7F56D8E1F1A880D006F0490 /* AppDelegate.swift in Sources */,
 				F7D503951F3B815600D6F2E4 /* AssignedLeadViewController.swift in Sources */,
 				F7E07F1D1F229B8C00C8B61D /* AttendanceViewController.swift in Sources */,
+				F7D3D5891F677BE000F4DBB3 /* ViewTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,12 +530,12 @@
 /* Begin PBXTargetDependency section */
 		F7F56DA01F1A880E006F0490 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F7F56D891F1A880D006F0490 /* Bluestar */;
+			target = F7F56D891F1A880D006F0490 /* Delight */;
 			targetProxy = F7F56D9F1F1A880E006F0490 /* PBXContainerItemProxy */;
 		};
 		F7F56DAB1F1A880E006F0490 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F7F56D891F1A880D006F0490 /* Bluestar */;
+			target = F7F56D891F1A880D006F0490 /* Delight */;
 			targetProxy = F7F56DAA1F1A880E006F0490 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -706,7 +706,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ashok.BluestarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bluestar.app/Bluestar";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Delight.app/Delight";
 			};
 			name = Debug;
 		};
@@ -720,7 +720,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ashok.BluestarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bluestar.app/Bluestar";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Delight.app/Delight";
 			};
 			name = Release;
 		};
@@ -753,7 +753,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F7F56D851F1A880D006F0490 /* Build configuration list for PBXProject "Bluestar" */ = {
+		F7F56D851F1A880D006F0490 /* Build configuration list for PBXProject "Delight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F7F56DB01F1A880E006F0490 /* Debug */,
@@ -762,7 +762,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7F56DB21F1A880E006F0490 /* Build configuration list for PBXNativeTarget "Bluestar" */ = {
+		F7F56DB21F1A880E006F0490 /* Build configuration list for PBXNativeTarget "Delight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F7F56DB31F1A880E006F0490 /* Debug */,
@@ -771,7 +771,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7F56DB51F1A880E006F0490 /* Build configuration list for PBXNativeTarget "BluestarTests" */ = {
+		F7F56DB51F1A880E006F0490 /* Build configuration list for PBXNativeTarget "DelightTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F7F56DB61F1A880E006F0490 /* Debug */,
@@ -780,7 +780,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7F56DB81F1A880E006F0490 /* Build configuration list for PBXNativeTarget "BluestarUITests" */ = {
+		F7F56DB81F1A880E006F0490 /* Build configuration list for PBXNativeTarget "DelightUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F7F56DB91F1A880E006F0490 /* Debug */,

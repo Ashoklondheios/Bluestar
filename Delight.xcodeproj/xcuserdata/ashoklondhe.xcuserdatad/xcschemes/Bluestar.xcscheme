@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F7F56D891F1A880D006F0490"
-               BuildableName = "Bluestar.app"
-               BlueprintName = "Bluestar"
-               ReferencedContainer = "container:Bluestar.xcodeproj">
+               BuildableName = "Delight.app"
+               BlueprintName = "Delight"
+               ReferencedContainer = "container:Delight.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F7F56D9D1F1A880E006F0490"
-               BuildableName = "BluestarTests.xctest"
-               BlueprintName = "BluestarTests"
-               ReferencedContainer = "container:Bluestar.xcodeproj">
+               BuildableName = "DelightTests.xctest"
+               BlueprintName = "DelightTests"
+               ReferencedContainer = "container:Delight.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F7F56DA81F1A880E006F0490"
-               BuildableName = "BluestarUITests.xctest"
-               BlueprintName = "BluestarUITests"
-               ReferencedContainer = "container:Bluestar.xcodeproj">
+               BuildableName = "DelightUITests.xctest"
+               BlueprintName = "DelightUITests"
+               ReferencedContainer = "container:Delight.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F7F56D891F1A880D006F0490"
-            BuildableName = "Bluestar.app"
-            BlueprintName = "Bluestar"
-            ReferencedContainer = "container:Bluestar.xcodeproj">
+            BuildableName = "Delight.app"
+            BlueprintName = "Delight"
+            ReferencedContainer = "container:Delight.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F7F56D891F1A880D006F0490"
-            BuildableName = "Bluestar.app"
-            BlueprintName = "Bluestar"
-            ReferencedContainer = "container:Bluestar.xcodeproj">
+            BuildableName = "Delight.app"
+            BlueprintName = "Delight"
+            ReferencedContainer = "container:Delight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F7F56D891F1A880D006F0490"
-            BuildableName = "Bluestar.app"
-            BlueprintName = "Bluestar"
-            ReferencedContainer = "container:Bluestar.xcodeproj">
+            BuildableName = "Delight.app"
+            BlueprintName = "Delight"
+            ReferencedContainer = "container:Delight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

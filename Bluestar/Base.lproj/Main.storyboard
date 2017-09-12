@@ -12,7 +12,7 @@
         <!--Blue Star-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Bluestar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Delight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1y9-Yj-qcv" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1y9-Yj-qcv" customClass="BSTextField" customModule="Delight" customModuleProvider="target">
                                 <rect key="frame" x="20" y="286.5" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8mc-kn-3iW"/>
@@ -30,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JjN-ZP-wBb" customClass="BSTextField" customModule="Bluestar" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JjN-ZP-wBb" customClass="BSTextField" customModule="Delight" customModuleProvider="target">
                                 <rect key="frame" x="20" y="343.5" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8Qu-k0-DcW"/>
@@ -65,8 +65,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bluestar_logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-HO-kJg">
                                 <rect key="frame" x="67" y="23" width="241" height="192"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="35B-1b-GPz"/>
+                                    <constraint firstAttribute="width" constant="241" id="yc8-FA-J1U"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,7 +106,7 @@
         <!--Attendance View Controller-->
         <scene sceneID="2fm-7n-Vbt">
             <objects>
-                <viewController storyboardIdentifier="attendenceVC" id="qeh-qX-Nwx" customClass="AttendanceViewController" customModule="Bluestar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="attendenceVC" id="qeh-qX-Nwx" customClass="AttendanceViewController" customModule="Delight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iDp-lx-svY"/>
                         <viewControllerLayoutGuide type="bottom" id="DOe-LY-T2o"/>
@@ -171,7 +175,7 @@
         <!--Assigned Lead View Controller-->
         <scene sceneID="CaN-zu-4xx">
             <objects>
-                <viewController storyboardIdentifier="assignLeadVC" id="VhD-7f-UO9" customClass="AssignedLeadViewController" customModule="Bluestar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="assignLeadVC" id="VhD-7f-UO9" customClass="AssignedLeadViewController" customModule="Delight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ysw-Qh-sao"/>
                         <viewControllerLayoutGuide type="bottom" id="rvQ-dk-9sB"/>
@@ -229,7 +233,7 @@
         <!--Lead View Controller-->
         <scene sceneID="LsX-rO-X1b">
             <objects>
-                <viewController id="PNl-Bm-RFm" customClass="LeadViewController" customModule="Bluestar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PNl-Bm-RFm" customClass="LeadViewController" customModule="Delight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Nb-X3-lKB"/>
                         <viewControllerLayoutGuide type="bottom" id="sjk-gf-fKU"/>
@@ -332,7 +336,7 @@
         <!--Lead Detail View Controller-->
         <scene sceneID="Mgd-uN-haq">
             <objects>
-                <viewController id="4Md-Ed-cNi" customClass="LeadDetailViewController" customModule="Bluestar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Md-Ed-cNi" customClass="LeadDetailViewController" customModule="Delight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x0k-0l-l3j"/>
                         <viewControllerLayoutGuide type="bottom" id="yBm-2c-dgc"/>
@@ -457,8 +461,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bluestar_logo-1" width="152" height="152"/>
         <image name="ic_user" width="64" height="64"/>
+        <image name="logo" width="76" height="76"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="u8Q-pF-93b"/>
